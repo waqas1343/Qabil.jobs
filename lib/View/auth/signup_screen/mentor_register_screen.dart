@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
+import 'package:qabil_app/view_model/providers/generalProvider.dart';
 
 import '../../../Navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
@@ -18,10 +20,12 @@ class MentorRegisterScreen extends StatelessWidget {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confiremPassController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   MentorRegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.read<GeneralProvider>();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -82,9 +86,16 @@ class MentorRegisterScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 AppTextFields.customTextField(
+                  obscureText: provider.isVisibleFirst,
                   keyboardType: TextInputType.phone,
                   validator: Validators.phoneNumber,
-                  suffixIcon: AppIcons.suffixIconOff,
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        provider.iconToggleFirst();
+                      },
+                      icon: provider.isVisibleFirst
+                          ? AppIcons.suffixIconOnn
+                          : AppIcons.suffixIconOff),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
                   controller: passwordController,
@@ -94,8 +105,16 @@ class MentorRegisterScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 AppTextFields.customTextField(
+                  obscureText: provider.isVisibleSecond,
                   validator: Validators.passwordValidator,
-                  suffixIcon: AppIcons.suffixIconOff,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      provider.iconToggleSecond();
+                    },
+                    icon: provider.isVisibleSecond
+                        ? AppIcons.suffixIconOnn
+                        : AppIcons.suffixIconOff,
+                  ),
                   prefixIcon: AppIcons.emailIcon,
                   hintText: AppStrings.passwordTitle,
                   controller: confiremPassController,

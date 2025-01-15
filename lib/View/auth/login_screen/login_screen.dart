@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qabil_app/constant/app_button/app_button.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_icons/app_icons.dart';
@@ -9,6 +10,7 @@ import 'package:qabil_app/constant/custom_text/custom_text.dart';
 import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
+import 'package:qabil_app/view_model/providers/generalProvider.dart';
 
 import '../../../Navigation_screening/app_navigators.dart';
 
@@ -20,6 +22,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = context.read<GeneralProvider>();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,6 +56,7 @@ class LoginScreen extends StatelessWidget {
                   height: AppSizes.height01(context),
                 ),
                 AppTextFields.customTextField(
+
                   keyboardType: TextInputType.number,
                   validator: Validators.studentId,
                   prefixIcon: AppIcons.emailIcon,
@@ -66,13 +70,19 @@ class LoginScreen extends StatelessWidget {
                   text: AppStrings.passwordTitle,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                AppTextFields.customTextField(
-                  validator: Validators.passwordValidator,
-                  suffixIcon: AppIcons.suffixIconOff,
-                  prefixIcon: AppIcons.emailIcon,
-                  hintText: AppStrings.passwordTitle,
-                  controller: passwordController,
-                ),
+                Consumer<GeneralProvider>(builder: (context, value, child) {
+                  return AppTextFields.customTextField(
+                    obscureText: value.isVisibleFirst,
+                    validator: Validators.passwordValidator,
+                    suffixIcon: IconButton(onPressed: (){
+                      print("object");
+                      value.iconToggleFirst();
+                    }, icon: value.isVisibleFirst ? AppIcons.suffixIconOnn : AppIcons.suffixIconOff),
+                    prefixIcon: AppIcons.emailIcon,
+                    hintText: AppStrings.passwordTitle,
+                    controller: passwordController,
+                  );
+                },),
                 SizedBox(
                   height: AppSizes.height01(context),
                 ),
@@ -109,8 +119,8 @@ class LoginScreen extends StatelessWidget {
                         SnackBar(content: Text("Please correct the errors")),
                       );
                     }
-                  },
-                ),
+                  }
+                )
               ],
             ),
           ),
