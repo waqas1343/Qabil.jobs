@@ -72,4 +72,24 @@ class AppStrings {
 
   //CustomAppBar
   static const String home = "Home";
+  static const String gender = "Gender";
+  static const String headLine = "headLine";
+  static const String genderdis = "male or female ";
+  static const String bio = "bio";
+  static const String domain = "Domain";
+  static const String about = "About me";
+
+  //complete profile
+  static const String completeTitle = "Complete Profile";
+
+  // coursses
+
+  static const String flutter = "Flutter mobile app development";
+  static const String dataAnalytics = "Data Analytics";
+  static const String amazonFBA = "Amazon FBA virtual Assistant";
+  static const String marketing = "Affliate Marketing";
+  static const String devOPS = "DevOPS Foundation";
+  static const String sqa = "Driven SQA Automation";
+  static const String hacking = "Ethical Hacking";
+  static const String gameing = "Game Developments";
 }

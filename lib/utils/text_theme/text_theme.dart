@@ -10,12 +10,12 @@ class AppTheme {
         headlineLarge: TextStyle(
           fontSize: 32.0,
           fontWeight: FontWeight.bold,
-          color: AppColors.textColor,
+          color: AppColors.blackTextClr,
         ),
         headlineMedium: TextStyle(
           fontSize: 24.0,
           fontWeight: FontWeight.bold,
-          color: AppColors.textColor,
+          color: AppColors.blackTextClr,
         ),
         headlineSmall: TextStyle(
           fontSize: 20.0,
@@ -25,7 +25,7 @@ class AppTheme {
         titleLarge: TextStyle(
           fontSize: 22.0,
           fontWeight: FontWeight.w600,
-          color: AppColors.appBackground,
+          color: AppColors.blackTextClr,
         ),
         titleMedium: TextStyle(
           fontSize: 18.0,
