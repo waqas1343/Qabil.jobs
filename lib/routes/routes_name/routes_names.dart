@@ -16,6 +16,7 @@ class RouteNames {
   static const String resend = "/";
   static const String verify = "";
   static const String save = "";
+  static const String completP = "/completeProfile";
 
   //dashboard
 

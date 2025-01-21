@@ -37,6 +37,7 @@ class AppStrings {
   static const String haveAcount = "Already have an account?";
 
   static const String nameText = "Name";
+  static const String nHintText = "Waqas iLyas";
   static const String phone = "0XXX XXXXXXX";
 
   static const String regButton = "Register";
@@ -72,4 +73,6 @@ class AppStrings {
 
   //CustomAppBar
   static const String home = "Home";
+  static const String biO = "Headline";
+  static const String completP = "Complete your Profile";
 }
