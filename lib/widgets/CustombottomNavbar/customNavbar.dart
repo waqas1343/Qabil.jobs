@@ -1,105 +1,119 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
-import 'package:qabil_app/View/auth/login_screen/login_screen.dart';
+import 'package:provider/provider.dart';
+import 'package:qabil_app/Navigation_screening/app_navigators.dart';
+import 'package:qabil_app/View/dashboardScreen/dashboardScreen.dart';
 import 'package:qabil_app/View/exploreScreen/exploreScreen.dart';
 import 'package:qabil_app/View/profileScreen/profileScreen.dart';
-import 'package:qabil_app/View/querryScreen/querryScreen.dart';
 import 'package:qabil_app/View/saveScreen/saveScreen.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
+import 'package:qabil_app/routes/routes_name/routes_names.dart';
 
-class Customnavbar extends StatelessWidget {
-  const Customnavbar({super.key});
+import '../../view_model/providers/generalProvider.dart';
+
+class CustomNavbar extends StatelessWidget {
+  const CustomNavbar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> buildScreens() {
-      return [
-        LoginScreen(),
-        Explorescreen(),
-        Querryscreen(),
-        Savescreen(),
-        Profilescreen(),
-      ];
-    }
+    final provider = Provider.of<GeneralProvider>(context);
 
-    List<PersistentBottomNavBarItem> navBarsItems() {
-      return [
-        PersistentBottomNavBarItem(
-          icon: Icon(Icons.home_outlined),
-          activeColorPrimary: AppColors.textColor,
-          inactiveColorPrimary: AppColors.blackTextClr,
-        ),
-        PersistentBottomNavBarItem(
-          icon: Icon(Icons.explore_off_outlined),
-          activeColorPrimary: AppColors.textColor,
-          inactiveColorPrimary: AppColors.blackTextClr,
-        ),
-        PersistentBottomNavBarItem(
-          icon: Container(
-            width: 45,
-            height: 45,
-            decoration: BoxDecoration(
-              color: AppColors.textColor,
-              borderRadius: BorderRadius.circular(50)
-            ),
-            child: Icon(
-              Icons.add_outlined,
-              color: AppColors.appBackground,size: 35,
+    final pages = [
+      DashboardScreen(),
+      Explorescreen(),
+      Savescreen(),
+      Profilescreen(),
+    ];
+    return Consumer(builder: (context, value, child) {
+      return Scaffold(
+        backgroundColor: AppColors.appBackground,
+        body: pages[provider.pageIndex],
+        floatingActionButton: Container(
+          width: 82,
+          height: 82,
+          decoration: BoxDecoration(
+              color: AppColors.appBackground,
+              borderRadius: BorderRadius.circular(50)),
+          child: Center(
+            child: Container(
+              width: 70,
+              height: 70,
+              decoration: BoxDecoration(
+                  color: AppColors.textColor,
+                  borderRadius: BorderRadius.circular(50)),
+              child: Center(
+                child: IconButton(onPressed: () {
+
+                }, icon: Icon(
+                  Icons.add,
+                  color: AppColors.appBackground,
+                  size: 50,
+                )),
+              ),
             ),
           ),
-          activeColorPrimary: AppColors.appBackground,
-          inactiveColorPrimary: Colors.grey,
         ),
-        PersistentBottomNavBarItem(
-          icon: Icon(Icons.save_outlined),
-          activeColorPrimary: Colors.blue,
-          inactiveColorPrimary: Colors.grey,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        bottomNavigationBar: Container(
+            width: double.infinity,
+            height: 80,
+            decoration: BoxDecoration(
+              color: AppColors.textColorGrey,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    provider.setBotttomNaviagtionIndex(0);
+                  },
+                  icon: Icon(
+                    Icons.home_outlined,
+                    color: provider.pageIndex==0
+                        ? AppColors.textColor
+                        : AppColors.appBackground,
+                    size: 50,
+                  ),
+                ),
+                IconButton(onPressed: () {
+                  provider.setBotttomNaviagtionIndex(1);
+                }, icon: Icon(
+                  Icons.explore_outlined,
+                  color: provider.pageIndex==1
+                      ? AppColors.textColor
+                      : AppColors.appBackground,
+                  size: 50,
+                )),
+                SizedBox(
+                  width: 70,
+                  height: 70,
+                ),
+                IconButton(
+                    onPressed: () {
+                      provider.setBotttomNaviagtionIndex(2);
+                    },
+                    icon: Icon(
+                      Icons.bookmark_outline,
+                      color: provider.pageIndex==2
+                          ? AppColors.textColor
+                          : AppColors.appBackground,
+                      size: 50,
+                    )),
+                IconButton(
+                    onPressed: () {
+                      provider.setBotttomNaviagtionIndex(3);
+                    },
+                    icon: Icon(
+                      Icons.person_outlined,
+                      color: provider.pageIndex==3
+                          ? AppColors.textColor
+                          : AppColors.appBackground,
+                      size: 50,
+                    )),
+              ],
+            )
         ),
-        PersistentBottomNavBarItem(
-          icon: Icon(Icons.person_off_outlined),
-          activeColorPrimary: Colors.blue,
-          inactiveColorPrimary: Colors.grey,
-        ),
-      ];
-    }
-
-    PersistentTabController controller;
-
-    controller = PersistentTabController(initialIndex: 0);
-
-    return PersistentTabView(
-      context,
-      controller: controller,
-      screens: buildScreens(),
-      items: navBarsItems(),
-      handleAndroidBackButtonPress: true,
-      // Default is true.
-      resizeToAvoidBottomInset: true,
-      // This needs to be true if you want to move up the screen on a non-scrollable screen when keyboard appears. Default is true.
-      stateManagement: true,
-      // Default is true.
-      hideNavigationBarWhenKeyboardAppears: true,
-      popBehaviorOnSelectedNavBarItemPress: PopBehavior.all,
-      backgroundColor: Colors.grey.shade300,
-      isVisible: true,
-      animationSettings: const NavBarAnimationSettings(
-        navBarItemAnimation: ItemAnimationSettings(
-          // Navigation Bar's items animation properties.
-          duration: Duration(milliseconds: 400),
-          curve: Curves.ease,
-        ),
-        screenTransitionAnimation: ScreenTransitionAnimationSettings(
-          // Screen transition animation on change of selected tab.
-          animateTabTransition: true,
-          duration: Duration(milliseconds: 200),
-          screenTransitionAnimationType: ScreenTransitionAnimationType.fadeIn,
-        ),
-      ),
-      confineToSafeArea: true,
-      navBarHeight: 60,
-      navBarStyle:
-          NavBarStyle.style15, // Choose the nav bar style with this property
-    );
-    ;
+      );
+    },);
   }
 }
