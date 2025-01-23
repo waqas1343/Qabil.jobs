@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.read<GeneralProvider>();
+    // final provider = context.read<GeneralProvider>();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
