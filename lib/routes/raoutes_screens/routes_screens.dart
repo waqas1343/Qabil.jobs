@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qabil_app/View/auth/signup_screen/mentor_register_screen.dart';
 import 'package:qabil_app/View/auth/signup_screen/student_rigister_screen.dart';
+import 'package:qabil_app/View/dashboard_screens/dashboard_screen.dart';
 
 import '../../View/auth/complete_profile/complete_profile.dart';
 import '../../View/auth/forget_password_screens/enter_otp.dart';
@@ -26,6 +27,7 @@ class RouteScreens {
       RouteNames.login: (context) => LoginScreen(),
       RouteNames.registersStudentScreen: (context) => StudentRigisterScreen(),
       RouteNames.completP: (context) => CompleteProfile(),
+      RouteNames.dashboard: (context) => DashboardScreen(),
 
       //bottom navigation
 
