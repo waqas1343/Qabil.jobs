@@ -75,4 +75,6 @@ class AppStrings {
   static const String home = "Home";
   static const String biO = "Headline";
   static const String completP = "Complete your Profile";
+  static const String gender = "Select your Gender";
+  static const String course = "Select Course";
 }

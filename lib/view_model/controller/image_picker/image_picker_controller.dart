@@ -4,15 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerController extends ChangeNotifier {
-  File? selectingImages;
+  File? selectedImage;
 
-  Future<void> selectingFunction(ImageSource source) async {
+  Future<void> pickImage(ImageSource source) async {
     try {
-      final imageVeriable = ImagePicker();
-      final pickerFile = await imageVeriable.pickImage(source: source);
-      if (pickerFile != null) {
-        selectingImages = File(pickerFile.path);
+      final ImagePicker imagePicker = ImagePicker();
+      final XFile? pickedFile = await imagePicker.pickImage(source: source);
+      
+      if (pickedFile != null) {
+        selectedImage = File(pickedFile.path);
         notifyListeners();
+      } else {
+        debugPrint('No image selected.');
       }
     } catch (e) {
       debugPrint('Error while picking image: $e');

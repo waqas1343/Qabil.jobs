@@ -1,94 +1,101 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/constant/app_sizes/app_sizes.dart';
-import '../../../view_model/providers/corse_select_provider.dart';
+import '../../constant/app_sizes/app_sizes.dart';
+import '../../constant/app_strings/appstrings.dart';
+import '../../constant/custom_text/custom_text.dart';
+import '../../view_model/providers/corse_select_provider.dart';
 
-class CourseDropdown extends StatelessWidget {
-  final List<String> courses = [
-    'Web Development',
-    'Flutter Development',
-    'Graphic Designing',
-    'Data Science',
-    'Digital Marketing',
-  ];
-
-  CourseDropdown({super.key});
+class SelectCourseWidget extends StatelessWidget {
+  const SelectCourseWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final courseProvider = Provider.of<CourseProvider>(context);
+    final proProvider = Provider.of<ListPractice>(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
-          height: AppSizes.height02(context),
-        ),
-        Material(
-          elevation: 2,
-          borderRadius: BorderRadius.circular(8),
-          child: Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: AppSizes.height08(context), vertical: 4),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey.shade300, width: 1),
-              borderRadius: BorderRadius.circular(8),
+        DropdownButtonFormField<String>(
+          isExpanded: true,
+          decoration: InputDecoration(
+            filled: true,
+            fillColor: Colors.white,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: const BorderSide(
+                color: Colors.grey, 
+                width: 1.0,
+              ),
             ),
-            child: DropdownButton<String>(
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey.shade800,
-                fontWeight: FontWeight.w500,
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: const BorderSide(
+                color: Colors.grey, 
+                width: 1.0,
               ),
-              hint: const Text(
-                'Select a course',
-                style: TextStyle(color: Colors.grey),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8.0),
+              borderSide: const BorderSide(
+                color: Colors.blue, 
+                width: 1.5,
               ),
-              value: null,
-              icon: Icon(Icons.arrow_drop_down, color: Colors.blue.shade600),
-              underline: SizedBox.shrink(),
-              items: courses.map((course) {
-                return DropdownMenuItem<String>(
-                  value: course,
-                  child: Text(course),
-                );
-              }).toList(),
-              onChanged: (value) {
-                if (value != null) {
-                  courseProvider.addCourse(value);
-                }
+            ),
+          ),
+          dropdownColor: Colors.white,
+          hint: CustomText(
+            text: AppStrings.course,
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          items: proProvider.studentsName.map((student) {
+            return DropdownMenuItem<String>(
+              value: student,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    student,
+                    style: const TextStyle(color: Colors.black),
+                  ),
+                  Consumer<ListPractice>(
+                    builder: (context, value1, child) {
+                      return Checkbox(
+                        activeColor: Colors.blue,
+                        value: value1.studentChecked[student] ?? false,
+                        onChanged: (value) {
+                          value1.toggleCheckbox(student);
+                        },
+                      );
+                    },
+                  )
+                ],
+              ),
+            );
+          }).toList(),
+          onChanged: (value) {},
+        ),
+        SizedBox(height: AppSizes.height01(context)),
+        Wrap(
+          children: proProvider.studentChecked.entries
+              .where((entry) => entry.value == true)
+              .map((entry) {
+            return Chip(
+              label: Text(
+                entry.key,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              labelPadding:
+                  const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
+              deleteIcon: const Icon(Icons.close, size: 16),
+              onDeleted: () {
+                proProvider.toggleCheckbox(entry.key);
               },
-            ),
-          ),
-        ),
-        const SizedBox(height: 16),
-        Material(
-          child: Wrap(
-            spacing: 8,
-            runSpacing: 8,
-            children: courseProvider.selectedCourses.map((course) {
-              return Chip(
-                label: Text(
-                  course,
-                  style: const TextStyle(fontSize: 14),
-                ),
-                backgroundColor: Colors.blue.shade50,
-                labelStyle: TextStyle(color: Colors.blue.shade800),
-                deleteIcon: Icon(
-                  Icons.close,
-                  size: 20,
-                  color: Colors.blue.shade800,
-                ),
-                onDeleted: () => courseProvider.removeCourse(course),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  side: BorderSide(color: Colors.blue.shade200),
-                ),
-              );
-            }).toList(),
-          ),
+              backgroundColor: Colors.grey,
+            );
+          }).toList(),
         ),
       ],
     );
