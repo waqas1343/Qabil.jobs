@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: multiAppProviders,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         initialRoute: RouteNames.dashboard,
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,

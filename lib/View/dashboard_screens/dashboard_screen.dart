@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:qabil_app/constant/custom_appbar/custom_appbar.dart';
 
 import '../../widgets/dashboard_widgets/dashboard_courses.dart';
+import '../../widgets/dashboard_widgets/post_cards.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -15,10 +16,16 @@ class DashboardScreen extends StatelessWidget {
         profileImagePath: 'assets/images/forumLogo.png',
         notificationCount: 3,
       ),
-      body: Column(
-        children: [
-          Practice(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            DashboardCourses(),
+            Text('Query sections'),
+            PostCards(),
+            PostCards(),
+          ],
+        ),
       ),
     );
   }
