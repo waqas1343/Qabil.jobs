@@ -1,4 +1,6 @@
+
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -19,6 +21,7 @@ class GeneralProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+
   final List<File> images = [];
 
   void addImage(File image) {
@@ -31,5 +34,30 @@ class GeneralProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+
+}
+
+
+  //category selectors
+
+  int iconSelect = 0;
+  double? iconSize;
+  void isSelected(int index) {
+    iconSelect = index;
+    iconSelect == iconSize;
+    notifyListeners();
+  }
+
+  //profile mentor camera
+
+final List<File> image = [];
+  void addImage(File images){
+    image.add(images);
+    notifyListeners();
+  }
+  void removeImage(index){
+    image.removeAt(index);
+    notifyListeners();
+  }
 
 }
