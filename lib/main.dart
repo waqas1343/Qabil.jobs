@@ -6,8 +6,6 @@ import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/utils/text_theme/text_theme.dart';
 import 'package:qabil_app/view_model/providers/multi_providers.dart';
 
-
-
 void main() {
   runApp(const MyApp());
 }
@@ -17,6 +15,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return MultiProvider(
       providers: multiAppProviders,
       child: MaterialApp(
