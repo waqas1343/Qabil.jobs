@@ -2,21 +2,40 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
-class GeneralProvider extends ChangeNotifier{
+import '../../constant/select_Imagesource/select_image_source.dart'; // Make sure this widget is defined
 
+class GeneralProvider extends ChangeNotifier {
   bool isVisibleFirst = true;
-  void iconToggleFirst(){
+
+  void iconToggleFirst() {
     isVisibleFirst = !isVisibleFirst;
     notifyListeners();
   }
 
-
   bool isVisibleSecond = true;
-  void iconToggleSecond(){
+
+  void iconToggleSecond() {
     isVisibleSecond = !isVisibleSecond;
     notifyListeners();
   }
+
+
+  final List<File> images = [];
+
+  void addImage(File image) {
+    images.add(image);
+    notifyListeners();
+  }
+
+  void removeImage(int index) {
+    images.removeAt(index);
+    notifyListeners();
+  }
+
+
+}
 
 
   //category selectors

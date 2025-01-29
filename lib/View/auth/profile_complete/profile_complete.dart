@@ -38,17 +38,16 @@ class ProfileComplete extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Complete Profile'),
-      ),
-      body: Padding(
+            body: Padding(
         padding: const EdgeInsets.all(16.0),
+
         child: Form(
           key: formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              SizedBox(height: 80,),
               CustomText(
                 text: AppStrings.completeTitle,
                 style: Theme.of(context).textTheme.headlineMedium,

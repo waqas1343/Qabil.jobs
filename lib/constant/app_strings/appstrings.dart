@@ -100,5 +100,19 @@ class AppStrings {
   static const String devOPS = "DevOPS Foundation";
   static const String sqa = "Driven SQA Automation";
   static const String hacking = "Ethical Hacking";
+
+  static const String gameing = "Game Developments";
+
+  //query info
+  static const String addquery = "Add Query Detail";
+  static const String querydescription = "QueryDescription";
+  static const String addaphoto = "Add a Picture";
+  static const String postquery = "Post Query";
+
+  static const String takeaphoto = "Take a photo";
+  static const String insertgallery = "Insert a Gallery";
+
+
   static const String gaming = "Game Developments";
+
 }
