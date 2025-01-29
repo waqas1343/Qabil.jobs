@@ -117,8 +117,6 @@ class LoginScreen extends StatelessWidget {
                       if (formKey.currentState?.validate() ?? false) {
                         CustomFlushBar.customFlushBar(context,
                             'Login Successfully', Icons.verified, Colors.green);
-
-
                         Future.delayed(Duration(milliseconds: 1700),(){
                           AppNavigators.changescreen(
                               context, RouteNames.registersMentorScreen);
@@ -127,12 +125,26 @@ class LoginScreen extends StatelessWidget {
                         CustomFlushBar.customFlushBar(context,
                             'Please fill all fields', Icons.info, Colors.red);
                       }
-                    })
+                    }),
+
+                      AppNavigators.changescreen(
+                          context, RouteNames.dashboard)
+                    //  else {
+                    //   ScaffoldMessenger.of(context).showSnackBar(
+                    //     SnackBar(content: Text("Please correct the errors")),
+                    //   );
+                    // }
               ],
+                )
+          
+              
+          
             ),
           ),
         ),
-      ),
-    );
+      );
+    
+    
+  
   }
 }

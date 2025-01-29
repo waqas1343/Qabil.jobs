@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/View/auth/login_screen/login_screen.dart';
-import 'package:qabil_app/routes/raoutes_screens/routes_screens.dart';
+
+import 'package:qabil_app/View/auth/profile_mentor/profile_mentor.dart';
+
+import 'package:qabil_app/View/auth/mentor_profile/profile_mentor.dart';
+import 'package:qabil_app/View/dashboard/dashboard_screen.dart';
+
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
+import 'package:qabil_app/routes/routes_screens/routes_screens.dart';
 import 'package:qabil_app/utils/text_theme/text_theme.dart';
 import 'package:qabil_app/view_model/providers/generalProvider.dart';
+
 import 'package:qabil_app/widgets/CustombottomNavbar/customNavbar.dart';
+
+import 'View/auth/profile_complete/profile_complete.dart';
+import 'View/auth/query_information/query_info.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -16,12 +26,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
+
       providers: [ChangeNotifierProvider<GeneralProvider>(create: (_) => GeneralProvider()),],
     child: MaterialApp(
       initialRoute: '/',
       routes: RouteScreens.getScreens(),
       theme: AppTheme.theme,
-      home: LoginScreen(),
+      home: DashBoardScreen(),
     ),);
+
   }
 }

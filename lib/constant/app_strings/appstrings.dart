@@ -72,4 +72,47 @@ class AppStrings {
 
   //CustomAppBar
   static const String home = "Home";
+  static const String gender = "Gender";
+  static const String headLine = "headLine";
+  static const String genderdis = "male or female ";
+  static const String bio = "bio";
+  static const String domain = "Domain";
+  static const String about = "About me";
+
+  //complete profile
+  static const String completeTitle = "Complete Profile";
+
+
+  //logoNames
+
+
+  static const String dartLogo = "Dart";
+  static const String flutterLogo = "Flutter";
+  static const String htmlCssLogo = "HTML,CSS\n& JavaScript";
+  static const String figmaLogo = "Figma";
+
+  // courses
+
+  static const String flutter = "Flutter mobile app development";
+  static const String dataAnalytics = "Data Analytics";
+  static const String amazonFBA = "Amazon FBA virtual Assistant";
+  static const String marketing = "Affiliate Marketing";
+  static const String devOPS = "DevOPS Foundation";
+  static const String sqa = "Driven SQA Automation";
+  static const String hacking = "Ethical Hacking";
+
+  static const String gameing = "Game Developments";
+
+  //query info
+  static const String addquery = "Add Query Detail";
+  static const String querydescription = "QueryDescription";
+  static const String addaphoto = "Add a Picture";
+  static const String postquery = "Post Query";
+
+  static const String takeaphoto = "Take a photo";
+  static const String insertgallery = "Insert a Gallery";
+
+
+  static const String gaming = "Game Developments";
+
 }
