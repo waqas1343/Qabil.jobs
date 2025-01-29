@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+
 
 import '../../constant/select_Imagesource/select_image_source.dart'; // Make sure this widget is defined
+
 
 class GeneralProvider extends ChangeNotifier {
   bool isVisibleFirst = true;
@@ -19,6 +20,22 @@ class GeneralProvider extends ChangeNotifier {
     isVisibleSecond = !isVisibleSecond;
     notifyListeners();
   }
+
+
+
+  int pageIndex = 0;
+  bool isClick1 = false;
+
+  void colorChange1() {
+    isClick1 = !isClick1;
+    notifyListeners();
+  }
+
+  void setBotttomNaviagtionIndex(int index) {
+    pageIndex = index;
+    notifyListeners();
+  }
+
 
   final List<File> images = [];
 
@@ -42,5 +59,4 @@ class GeneralProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  
 }

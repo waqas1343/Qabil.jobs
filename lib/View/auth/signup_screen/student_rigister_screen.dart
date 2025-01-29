@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 import 'package:qabil_app/view_model/providers/generalProvider.dart';
+import 'package:qabil_app/widgets/customFlushbar/customFlushbar.dart';
 
 import '../../../Navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
@@ -138,9 +139,8 @@ class StudentRigisterScreen extends StatelessWidget {
                       );
                       AppNavigators.changescreen(context, RouteNames.login);
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Please correct the errors")),
-                      );
+                      CustomFlushBar.customFlushBar(context,
+                          'Please fill all fields', Icons.info, Colors.red);
                     }
                   },
                 ),
