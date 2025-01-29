@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:qabil_app/View/auth/profile_mentor/profile_mentor.dart';
-import 'package:qabil_app/routes/raoutes_screens/routes_screens.dart';
 
 import 'package:qabil_app/View/auth/mentor_profile/profile_mentor.dart';
 import 'package:qabil_app/View/dashboard/dashboard_screen.dart';
@@ -36,11 +35,6 @@ class MyApp extends StatelessWidget {
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
         home: ProfileMentor(),
-
-        initialRoute: RouteNames.profileMentor,
-        routes: RouteScreens.getScreens(),
-        theme: AppTheme.theme,
-        home: MentorProfile(),
 
       ),
     );

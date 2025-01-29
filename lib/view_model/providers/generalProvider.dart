@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -21,7 +20,6 @@ class GeneralProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
   final List<File> images = [];
 
   void addImage(File image) {
@@ -34,10 +32,6 @@ class GeneralProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
-}
-
-
   //category selectors
 
   int iconSelect = 0;
@@ -48,16 +42,5 @@ class GeneralProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  //profile mentor camera
-
-final List<File> image = [];
-  void addImage(File images){
-    image.add(images);
-    notifyListeners();
-  }
-  void removeImage(index){
-    image.removeAt(index);
-    notifyListeners();
-  }
-
+  
 }
