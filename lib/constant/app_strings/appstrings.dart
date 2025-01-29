@@ -88,7 +88,7 @@ class AppStrings {
 
   static const String dartLogo = "Dart";
   static const String flutterLogo = "Flutter";
-  static const String htmlCssLogo = "HTML,CSS & \n Java";
+  static const String htmlCssLogo = "HTML,CSS\n& JavaScript";
   static const String figmaLogo = "Figma";
 
   // courses

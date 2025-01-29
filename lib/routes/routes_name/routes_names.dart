@@ -22,6 +22,10 @@ class RouteNames {
 
   static const String dashboard = "/DashboardScreen";
 
+  //profile mentor
+
+  static const String profileMentor = "/MentorProfile";
+
   //notification
 
   static const String notification = "/";

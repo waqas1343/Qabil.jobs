@@ -25,6 +25,7 @@ class ProfileComplete extends StatelessWidget {
   Widget build(BuildContext context) {
     String? selectedGender;
     String? selectedDomain;
+
     final ValueNotifier<File?> image = ValueNotifier<File?>(null);
     final ImagePicker picker = ImagePicker();
 

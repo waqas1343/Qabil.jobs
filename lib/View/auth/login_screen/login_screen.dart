@@ -113,7 +113,7 @@ class LoginScreen extends StatelessWidget {
                       );
 
                       AppNavigators.changescreen(
-                          context, RouteNames.registersMentorScreen);
+                          context, RouteNames.dashboard);
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Please correct the errors")),
