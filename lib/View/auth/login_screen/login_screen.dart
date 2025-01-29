@@ -1,3 +1,4 @@
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qabil_app/constant/app_button/app_button.dart';
@@ -13,11 +14,13 @@ import 'package:qabil_app/view_model/controller/validation.dart';
 import 'package:qabil_app/view_model/providers/generalProvider.dart';
 
 import '../../../Navigation_screening/app_navigators.dart';
+import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController studenIDController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   LoginScreen({super.key});
 
   @override
@@ -56,7 +59,6 @@ class LoginScreen extends StatelessWidget {
                   height: AppSizes.height01(context),
                 ),
                 AppTextFields.customTextField(
-
                   keyboardType: TextInputType.number,
                   validator: Validators.studentId,
                   prefixIcon: AppIcons.emailIcon,
@@ -70,19 +72,25 @@ class LoginScreen extends StatelessWidget {
                   text: AppStrings.passwordTitle,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                Consumer<GeneralProvider>(builder: (context, value, child) {
-                  return AppTextFields.customTextField(
-                    obscureText: value.isVisibleFirst,
-                    validator: Validators.passwordValidator,
-                    suffixIcon: IconButton(onPressed: (){
-                      print("object");
-                      value.iconToggleFirst();
-                    }, icon: value.isVisibleFirst ? AppIcons.suffixIconOnn : AppIcons.suffixIconOff),
-                    prefixIcon: AppIcons.emailIcon,
-                    hintText: AppStrings.passwordTitle,
-                    controller: passwordController,
-                  );
-                },),
+                Consumer<GeneralProvider>(
+                  builder: (context, value, child) {
+                    return AppTextFields.customTextField(
+                      obscureText: value.isVisibleFirst,
+                      validator: Validators.passwordValidator,
+                      suffixIcon: IconButton(
+                          onPressed: () {
+                            print("object");
+                            value.iconToggleFirst();
+                          },
+                          icon: value.isVisibleFirst
+                              ? AppIcons.suffixIconOnn
+                              : AppIcons.suffixIconOff),
+                      prefixIcon: AppIcons.emailIcon,
+                      hintText: AppStrings.passwordTitle,
+                      controller: passwordController,
+                    );
+                  },
+                ),
                 SizedBox(
                   height: AppSizes.height01(context),
                 ),
@@ -104,23 +112,23 @@ class LoginScreen extends StatelessWidget {
                   height: AppSizes.height04(context),
                 ),
                 CustomButton(
-                  btnText: AppStrings.loginButton,
-                  color: AppColors.blackTextClr,
-                  ontap: () {
-                    if (formKey.currentState?.validate() ?? false) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: CustomText(text: 'Login Successful')),
-                      );
+                    btnText: AppStrings.loginButton,
+                    color: AppColors.blackTextClr,
+                    ontap: () {
+                      if (formKey.currentState?.validate() ?? false) {
+                        CustomFlushBar.customFlushBar(context,
+                            'Login Successfully', Icons.verified, Colors.green);
 
-                      AppNavigators.changescreen(
-                          context, RouteNames.registersMentorScreen);
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Please correct the errors")),
-                      );
-                    }
-                  }
-                )
+
+                        Future.delayed(Duration(milliseconds: 1700),(){
+                          AppNavigators.changescreen(
+                              context, RouteNames.registersMentorScreen);
+                        });
+                      } else {
+                        CustomFlushBar.customFlushBar(context,
+                            'Please fill all fields', Icons.info, Colors.red);
+                      }
+                    })
               ],
             ),
           ),

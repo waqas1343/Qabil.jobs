@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: RouteScreens.getScreens(),
       theme: AppTheme.theme,
-      home: CustomNavbar(),
+      home: LoginScreen(),
     ),);
   }
 }
