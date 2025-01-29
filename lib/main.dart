@@ -20,10 +20,10 @@ class MyApp extends StatelessWidget {
       providers: multiAppProviders,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteNames.dashboard,
+        initialRoute: RouteNames.login,
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
-        home: DashboardScreen(),
+        home: LoginScreen(),
       ),
     );
   }
