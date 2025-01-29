@@ -19,6 +19,7 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8
     }
 
+    
     defaultConfig {
     applicationId = "com.qabil.jobs" // Unique Application ID
     minSdkVersion 21                // Minimum SDK version
