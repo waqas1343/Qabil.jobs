@@ -6,6 +6,9 @@ class AppIcons {
   static const Icon passwordIcon = Icon(Icons.lock);
   static const Icon suffixIconOff = Icon(Icons.visibility_off_outlined);
   static const Icon suffixIconOnn = Icon(Icons.visibility_outlined);
+  static const Icon gender = Icon(Icons.transgender_outlined);
+  static const Icon domain = Icon(Icons.domain_add_outlined);
+  static const Icon bio = Icon(Icons.description);
 
   static Icon customIcon(IconData iconData,
       {Color color = Colors.grey, double size = 24.0}) {
