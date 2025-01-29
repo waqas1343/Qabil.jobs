@@ -27,13 +27,20 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
 
-      providers: [ChangeNotifierProvider<GeneralProvider>(create: (_) => GeneralProvider()),],
-    child: MaterialApp(
-      initialRoute: '/',
-      routes: RouteScreens.getScreens(),
-      theme: AppTheme.theme,
-      home: DashBoardScreen(),
-    ),);
+      providers: [
+        ChangeNotifierProvider<GeneralProvider>(
+            create: (_) => GeneralProvider()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+
+        initialRoute: RouteNames.splashscreen,
+        routes: RouteScreens.getScreens(),
+        theme: AppTheme.theme,
+        home: ProfileMentor(),
+
+      ),
+    );
 
   }
 }

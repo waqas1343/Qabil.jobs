@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:qabil_app/View/auth/mentor_profile/profile_mentor.dart';
 import 'package:qabil_app/View/auth/signup_screen/mentor_register_screen.dart';
@@ -8,7 +9,10 @@ import '../../View/auth/forget_password_screens/enter_otp.dart';
 import '../../View/auth/forget_password_screens/forget_password_screen.dart';
 import '../../View/auth/forget_password_screens/reset_password_screen.dart';
 import '../../View/auth/login_screen/login_screen.dart';
+
+
 import '../../View/auth/profile_complete/profile_complete.dart';
+
 import '../routes_name/routes_names.dart';
 
 class RouteScreens {
@@ -26,6 +30,7 @@ class RouteScreens {
       RouteNames.registersMentorScreen: (context) => MentorRegisterScreen(),
       RouteNames.login: (context) => LoginScreen(),
       RouteNames.registersStudentScreen: (context) => StudentRigisterScreen(),
+
       RouteNames.completeProfile: (context) => ProfileComplete(),
 
       //dashBoard
@@ -44,3 +49,4 @@ class RouteScreens {
     };
   }
 }
+

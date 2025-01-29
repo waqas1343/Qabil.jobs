@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -21,6 +20,7 @@ class GeneralProvider extends ChangeNotifier {
     isVisibleSecond = !isVisibleSecond;
     notifyListeners();
   }
+
 
 
   int pageIndex = 0;
@@ -49,10 +49,6 @@ class GeneralProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
-
-
-
   //category selectors
 
   int iconSelect = 0;
@@ -62,7 +58,5 @@ class GeneralProvider extends ChangeNotifier {
     iconSelect == iconSize;
     notifyListeners();
   }
-
-  //profile mentor camera
 
 }

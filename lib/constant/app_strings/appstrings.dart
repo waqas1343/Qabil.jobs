@@ -37,6 +37,7 @@ class AppStrings {
   static const String haveAcount = "Already have an account?";
 
   static const String nameText = "Name";
+  static const String nHintText = "Waqas iLyas";
   static const String phone = "0XXX XXXXXXX";
 
   static const String regButton = "Register";
@@ -72,7 +73,12 @@ class AppStrings {
 
   //CustomAppBar
   static const String home = "Home";
-  static const String gender = "Gender";
+
+  static const String biO = "Headline";
+  static const String completP = "Complete your Profile";
+  static const String gender = "Select your Gender";
+  static const String course = "Select Course";
+  static const String genderr = "Gender";
   static const String headLine = "headLine";
   static const String genderdis = "male or female ";
   static const String bio = "bio";
