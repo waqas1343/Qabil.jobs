@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/routes/raoutes_screens/routes_screens.dart';
+import 'package:qabil_app/View/auth/mentor_profile/profile_mentor.dart';
+import 'package:qabil_app/View/dashboard/dashboard_screen.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
+import 'package:qabil_app/routes/routes_screens/routes_screens.dart';
 import 'package:qabil_app/utils/text_theme/text_theme.dart';
 import 'package:qabil_app/view_model/providers/generalProvider.dart';
 
@@ -22,10 +24,11 @@ class MyApp extends StatelessWidget {
             create: (_) => GeneralProvider()),
       ],
       child: MaterialApp(
-        initialRoute: RouteNames.splashscreen,
+        debugShowCheckedModeBanner: false,
+        initialRoute: RouteNames.profileMentor,
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
-        home: ProfileComplete(),
+        home: MentorProfile(),
       ),
     );
   }

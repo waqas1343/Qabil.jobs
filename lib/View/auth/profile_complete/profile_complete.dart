@@ -25,14 +25,15 @@ class ProfileComplete extends StatelessWidget {
   Widget build(BuildContext context) {
     String? selectedGender;
     String? selectedDomain;
-    final ValueNotifier<File?> _image = ValueNotifier<File?>(null);
-    final ImagePicker _picker = ImagePicker();
 
-    Future<void> _pickImage(ImageSource source) async {
-      final XFile? pickedFile = await _picker.pickImage(source: source);
+    final ValueNotifier<File?> image = ValueNotifier<File?>(null);
+    final ImagePicker picker = ImagePicker();
+
+    Future<void> pickImage(ImageSource source) async {
+      final XFile? pickedFile = await picker.pickImage(source: source);
 
       if (pickedFile != null) {
-        _image.value = File(pickedFile.path);
+        image.value = File(pickedFile.path);
       }
     }
 
@@ -55,10 +56,10 @@ class ProfileComplete extends StatelessWidget {
               SizedBox(height: 10),
               Center(
                 child: ValueListenableBuilder<File?>(
-                  valueListenable: _image,
+                  valueListenable: image,
                   builder: (context, file, child) {
                     return GestureDetector(
-                      onTap: () => _pickImage(ImageSource.camera),
+                      onTap: () => pickImage(ImageSource.camera),
                       child: CircleAvatar(
                         radius: 60,
                         backgroundColor: Colors.grey[300],

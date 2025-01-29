@@ -82,14 +82,23 @@ class AppStrings {
   //complete profile
   static const String completeTitle = "Complete Profile";
 
-  // coursses
+
+  //logoNames
+
+
+  static const String dartLogo = "Dart";
+  static const String flutterLogo = "Flutter";
+  static const String htmlCssLogo = "HTML,CSS\n& JavaScript";
+  static const String figmaLogo = "Figma";
+
+  // courses
 
   static const String flutter = "Flutter mobile app development";
   static const String dataAnalytics = "Data Analytics";
   static const String amazonFBA = "Amazon FBA virtual Assistant";
-  static const String marketing = "Affliate Marketing";
+  static const String marketing = "Affiliate Marketing";
   static const String devOPS = "DevOPS Foundation";
   static const String sqa = "Driven SQA Automation";
   static const String hacking = "Ethical Hacking";
-  static const String gameing = "Game Developments";
+  static const String gaming = "Game Developments";
 }
