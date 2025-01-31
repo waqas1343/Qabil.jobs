@@ -17,7 +17,7 @@ class CustomNavbar extends StatelessWidget {
     final pages = [
       DashBoardScreen(),
       ExploreScreen(),
-      Savescreen(),
+      SavedPostsScreen(),
       Profilescreen(),
     ];
     return Consumer(

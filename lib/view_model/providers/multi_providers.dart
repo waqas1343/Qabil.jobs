@@ -6,6 +6,7 @@ import '../controller/bottom_navbar_controller/bottom_navbar_controller.dart';
 import '../controller/course_select_controller/course_select_scontroller.dart';
 import '../controller/icon_selecting/icon_selecting.dart';
 import '../controller/image_picker/image_picker_controller.dart';
+import '../controller/post_card_screen/explore_cards_controller.dart';
 import '../controller/suffix_icon_controller/suffix_icon_controller.dart';
 
 final List<ChangeNotifierProvider> multiAppProviders = [
@@ -24,4 +25,7 @@ final List<ChangeNotifierProvider> multiAppProviders = [
   ChangeNotifierProvider<BottomNavbarController>(create: (_) => BottomNavbarController()),
   ////////////////////////
   ChangeNotifierProvider<IconSelecting>(create: (_) => IconSelecting()),
+
+  /////////////////////
+  ChangeNotifierProvider<PostProvider>(create: (_) => PostProvider()),
 ];
