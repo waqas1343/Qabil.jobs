@@ -51,8 +51,7 @@ class CustomLogoCategory extends StatelessWidget {
                                         value.iconSelect == index ? 0 : 2,
                                     spreadRadius:
                                         value.iconSelect == index ? 0 : 2,
-                                    color: AppColors.indicatorColor
-                                        .withOpacity(0.3),
+                                    color: AppColors.indicatorColor,
                                   ),
                                 ]),
                             child: Center(

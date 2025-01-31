@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -14,13 +13,6 @@ class ProfileMentor extends StatelessWidget {
   Widget build(BuildContext context) {
     final ImagePicker picker = ImagePicker();
 
-    Future<void> pickImage(ImageSource source) async {
-      final XFile? pickFile = await picker.pickImage(source: source);
-
-      if (pickFile != null) {
-        context.read<GeneralProvider>().addImage(File(pickFile.path));
-      }
-    }
 
     return SafeArea(
       child: Scaffold(

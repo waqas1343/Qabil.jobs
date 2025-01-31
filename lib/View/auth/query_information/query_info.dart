@@ -157,22 +157,20 @@ class QueryInfo extends StatelessWidget {
                     padding: const EdgeInsets.all(8),
                     child: Wrap(
                       spacing: 8,
-                      children:
-                        List.generate(
-                          query.images.length,
-                          (index) {
-                            return Chip(
-                              avatar: CircleAvatar(
-                                backgroundImage: FileImage(query.images[index]),
-                              ),
-                              label: Text("Image ${index + 1}"),
-                              deleteIcon: Icon(Icons.cancel),
-                              onDeleted: () => query.removeImage(index),
-                              backgroundColor: Colors.grey[300],
-                            );
-                          },
-                        ),
-
+                      children: List.generate(
+                        query.images.length,
+                        (index) {
+                          return Chip(
+                            avatar: CircleAvatar(
+                              backgroundImage: FileImage(query.images[index]),
+                            ),
+                            label: Text("Image ${index + 1}"),
+                            deleteIcon: Icon(Icons.cancel),
+                            onDeleted: () => query.removeImage(index),
+                            backgroundColor: Colors.grey[300],
+                          );
+                        },
+                      ),
                     ),
                   ),
                   Container(

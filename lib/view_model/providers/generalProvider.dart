@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 
-import '../../constant/select_Imagesource/select_image_source.dart'; // Make sure this widget is defined
 
 class GeneralProvider extends ChangeNotifier {
   bool isVisibleFirst = true;

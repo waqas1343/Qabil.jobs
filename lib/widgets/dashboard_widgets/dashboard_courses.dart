@@ -5,7 +5,7 @@ import '../../view_model/Lists/courses_category_list.dart';
 import '../../view_model/controller/course_select_controller/course_select_scontroller.dart';
 
 class DashboardCourses extends StatelessWidget {
-  DashboardCourses({super.key});
+  const DashboardCourses({super.key});
 
   @override
   Widget build(BuildContext context) {

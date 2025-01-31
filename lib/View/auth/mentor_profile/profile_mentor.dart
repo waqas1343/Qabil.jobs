@@ -11,12 +11,6 @@ class MentorProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     final ImagePicker pickImage = ImagePicker();
 
-    Future<void> imageFunction(ImageSource source) async {
-      final XFile? filePicked = await pickImage.pickImage(source: source);
-
-      if(filePicked != null){
-      }
-    }
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(70),
