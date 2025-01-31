@@ -61,9 +61,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                 ),
                 AppTextFields.customTextField(
                   keyboardType: TextInputType.emailAddress,
-                  validator: Validators.studentId,
+                  validator: Validators.emailValidation,
                   prefixIcon: AppIcons.emailIcon,
-                  hintText: AppStrings.studentId,
+                  hintText: AppStrings.enteremail,
                   controller: emailController,
                 ),
                 SizedBox(

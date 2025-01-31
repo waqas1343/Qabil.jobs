@@ -1,13 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/Navigation_screening/app_navigators.dart';
 import 'package:qabil_app/View/dashboardScreen/dashboardScreen.dart';
 import 'package:qabil_app/View/exploreScreen/exploreScreen.dart';
 import 'package:qabil_app/View/profileScreen/profileScreen.dart';
 import 'package:qabil_app/View/saveScreen/saveScreen.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/routes/routes_name/routes_names.dart';
 
 import '../../view_model/providers/generalProvider.dart';
 

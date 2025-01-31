@@ -3,6 +3,7 @@ class AppStrings {
   static const String loginTitle = "log In account";
   static const String loginSubtitle = "Please sign in to continue";
   static const String passwordTitle = "Password";
+  static const String phoneTitle = "03---------";
   static const String studentTab = "Student";
   static const String mentorTab = "Mentor";
   static const String loginButton = "Login";
@@ -44,6 +45,7 @@ class AppStrings {
   static const String haveAccount = "You have an Account?";
   static const String contactNo = "Contact no";
   static const String email = "Email";
+  static const String enteremail = "Enter your Email";
   static const String emailEnter = "waqas5904@gmail.com";
 
   //forgot password
@@ -88,9 +90,7 @@ class AppStrings {
   //complete profile
   static const String completeTitle = "Complete Profile";
 
-
   //logoNames
-
 
   static const String dartLogo = "Dart";
   static const String flutterLogo = "Flutter";
@@ -118,7 +118,5 @@ class AppStrings {
   static const String takeaphoto = "Take a photo";
   static const String insertgallery = "Insert a Gallery";
 
-
   static const String gaming = "Game Developments";
-
 }

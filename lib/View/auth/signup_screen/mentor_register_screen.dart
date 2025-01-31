@@ -89,15 +89,8 @@ class MentorRegisterScreen extends StatelessWidget {
                   obscureText: provider.isVisibleFirst,
                   keyboardType: TextInputType.phone,
                   validator: Validators.phoneNumber,
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        provider.iconToggleFirst();
-                      },
-                      icon: provider.isVisibleFirst
-                          ? AppIcons.suffixIconOnn
-                          : AppIcons.suffixIconOff),
-                  prefixIcon: AppIcons.passwordIcon,
-                  hintText: AppStrings.passwordTitle,
+                  prefixIcon: AppIcons.phoneIcon,
+                  hintText: AppStrings.phoneTitle,
                   controller: passwordController,
                 ),
                 CustomText(
@@ -115,7 +108,7 @@ class MentorRegisterScreen extends StatelessWidget {
                         ? AppIcons.suffixIconOnn
                         : AppIcons.suffixIconOff,
                   ),
-                  prefixIcon: AppIcons.emailIcon,
+                  prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
                   controller: confiremPassController,
                 ),
