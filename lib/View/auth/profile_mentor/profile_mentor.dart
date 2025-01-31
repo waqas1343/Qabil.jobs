@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 import 'package:qabil_app/constant/app_strings/appstrings.dart';
 import 'package:qabil_app/constant/select_Imagesource/select_image_source.dart';
-import 'package:qabil_app/view_model/providers/generalProvider.dart';
+import '../../../view_model/controller/image_post_controller/query_post_controller.dart';
 
 class ProfileMentor extends StatelessWidget {
   const ProfileMentor({super.key});
@@ -13,13 +12,12 @@ class ProfileMentor extends StatelessWidget {
   Widget build(BuildContext context) {
     final ImagePicker picker = ImagePicker();
 
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: Text("Profile"),
         ),
-        body: Consumer<GeneralProvider>(
+        body: Consumer<QueryPostController>(
           builder: (context, click, child) {
             return Padding(
               padding: const EdgeInsets.all(20),
@@ -31,8 +29,6 @@ class ProfileMentor extends StatelessWidget {
                       CircleAvatar(
                         radius: 60,
                         backgroundColor: Colors.grey,
-
-
                       ),
                       Positioned(
                         bottom: -5,
@@ -55,7 +51,8 @@ class ProfileMentor extends StatelessWidget {
                                         title: AppStrings.addaphoto,
                                         onTap: () {
                                           Navigator.pop(context);
-                                          picker.pickImage(source: ImageSource.camera);
+                                          picker.pickImage(
+                                              source: ImageSource.camera);
                                         },
                                       ),
                                       SizedBox(
@@ -66,7 +63,8 @@ class ProfileMentor extends StatelessWidget {
                                         title: AppStrings.insertgallery,
                                         onTap: () {
                                           Navigator.pop(context);
-                                          picker.pickImage(source: ImageSource.gallery);
+                                          picker.pickImage(
+                                              source: ImageSource.gallery);
                                         },
                                       ),
                                     ],
@@ -85,7 +83,6 @@ class ProfileMentor extends StatelessWidget {
                   )),
                 ],
               ),
-
             );
           },
         ),
