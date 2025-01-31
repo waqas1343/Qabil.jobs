@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
-import 'package:qabil_app/view_model/providers/generalProvider.dart';
 import 'package:qabil_app/widgets/customFlushbar/customFlushbar.dart';
-
 import '../../../Navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
@@ -26,7 +25,7 @@ class StudentRigisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.read<GeneralProvider>();
+    final provider = Provider.of<SuffixIconController>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -59,11 +58,8 @@ class StudentRigisterScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Spacer(),
-
                     CustomText(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       text: AppStrings.studentId,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,

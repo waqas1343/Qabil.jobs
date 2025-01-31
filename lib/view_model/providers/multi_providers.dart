@@ -4,12 +4,18 @@ import 'package:qabil_app/view_model/providers/select%20gender.dart';
 
 import '../controller/course_select_controller/course_select_scontroller.dart';
 import '../controller/image_picker/image_picker_controller.dart';
+import '../controller/suffix_icon_controller/suffix_icon_controller.dart';
 
 final List<ChangeNotifierProvider> multiAppProviders = [
   
   ChangeNotifierProvider<ListPractice>(create: (_) => ListPractice()),
+  ///////////////////
   ChangeNotifierProvider<GenderProvider>(create: (_) => GenderProvider()),
+  //////////////////////
   ChangeNotifierProvider<ImagePickerController>(
       create: (_) => ImagePickerController()),
+      ////////////
   ChangeNotifierProvider<Providerc>(create: (_) => Providerc()),
+  ////////////////
+  ChangeNotifierProvider<SuffixIconController>(create: (_) => SuffixIconController()),
 ];
