@@ -11,18 +11,18 @@ import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 import 'package:qabil_app/view_model/providers/generalProvider.dart';
-
 import '../../../Navigation_screening/app_navigators.dart';
+import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController studenIDController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.read<GeneralProvider>();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -56,7 +56,6 @@ class LoginScreen extends StatelessWidget {
                   height: AppSizes.height01(context),
                 ),
                 AppTextFields.customTextField(
-
                   keyboardType: TextInputType.number,
                   validator: Validators.studentId,
                   prefixIcon: AppIcons.emailIcon,
@@ -70,25 +69,32 @@ class LoginScreen extends StatelessWidget {
                   text: AppStrings.passwordTitle,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                Consumer<GeneralProvider>(builder: (context, value, child) {
-                  return AppTextFields.customTextField(
-                    obscureText: value.isVisibleFirst,
-                    validator: Validators.passwordValidator,
-                    suffixIcon: IconButton(onPressed: (){
-                      print("object");
-                      value.iconToggleFirst();
-                    }, icon: value.isVisibleFirst ? AppIcons.suffixIconOnn : AppIcons.suffixIconOff),
-                    prefixIcon: AppIcons.emailIcon,
-                    hintText: AppStrings.passwordTitle,
-                    controller: passwordController,
-                  );
-                },),
+                Consumer<GeneralProvider>(
+                  builder: (context, value, child) {
+                    return AppTextFields.customTextField(
+                      obscureText: value.isVisibleFirst,
+                      validator: Validators.passwordValidator,
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          print("object");
+                          value.iconToggleFirst();
+                        },
+                        icon: value.isVisibleFirst
+                            ? AppIcons.suffixIconOnn
+                            : AppIcons.suffixIconOff,
+                      ),
+                      prefixIcon: AppIcons.emailIcon,
+                      hintText: AppStrings.passwordTitle,
+                      controller: passwordController,
+                    );
+                  },
+                ),
                 SizedBox(
                   height: AppSizes.height01(context),
                 ),
                 Row(
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     CustomText(
                       onTap: () {
                         AppNavigators.nextscreen(
@@ -97,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                       text: AppStrings.forgotPassword,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
-                    )
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -108,19 +114,26 @@ class LoginScreen extends StatelessWidget {
                   color: AppColors.blackTextClr,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: CustomText(text: 'Login Successful')),
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Login Successfully',
+                        Icons.verified,
+                        Colors.green,
                       );
-
-                      AppNavigators.changescreen(
-                          context, RouteNames.dashboard);
+                      Future.delayed(const Duration(milliseconds: 1700), () {
+                        AppNavigators.changescreen(
+                            context, RouteNames.registersMentorScreen);
+                      });
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Please correct the errors")),
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Please fill all fields',
+                        Icons.info,
+                        Colors.red,
                       );
                     }
-                  }
-                )
+                  },
+                ),
               ],
             ),
           ),

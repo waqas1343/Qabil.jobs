@@ -11,7 +11,6 @@ import '../../View/auth/forget_password_screens/reset_password_screen.dart';
 import '../../View/auth/login_screen/login_screen.dart';
 
 
-import '../../View/auth/profile_complete/profile_complete.dart';
 
 import '../routes_name/routes_names.dart';
 
@@ -31,7 +30,7 @@ class RouteScreens {
       RouteNames.login: (context) => LoginScreen(),
       RouteNames.registersStudentScreen: (context) => StudentRigisterScreen(),
 
-      RouteNames.completeProfile: (context) => ProfileComplete(),
+     
 
       //dashBoard
       RouteNames.dashboard: (context) => DashBoardScreen(),
