@@ -17,10 +17,15 @@ class RouteNames {
   static const String resend = "/";
   static const String verify = "";
   static const String save = "";
+  static const String completP = "/completeProfile";
 
   //dashboard
 
   static const String dashboard = "/DashboardScreen";
+
+  //profile mentor
+
+  static const String profileMentor = "/MentorProfile";
 
   //notification
 

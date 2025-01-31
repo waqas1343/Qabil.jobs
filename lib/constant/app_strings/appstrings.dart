@@ -37,6 +37,7 @@ class AppStrings {
   static const String haveAcount = "Already have an account?";
 
   static const String nameText = "Name";
+  static const String nHintText = "Waqas iLyas";
   static const String phone = "0XXX XXXXXXX";
 
   static const String regButton = "Register";
@@ -72,7 +73,12 @@ class AppStrings {
 
   //CustomAppBar
   static const String home = "Home";
-  static const String gender = "Gender";
+
+  static const String biO = "Headline";
+  static const String completP = "Complete your Profile";
+  static const String gender = "Select your Gender";
+  static const String course = "Select Course";
+  static const String genderr = "Gender";
   static const String headLine = "headLine";
   static const String genderdis = "male or female ";
   static const String bio = "bio";
@@ -82,14 +88,37 @@ class AppStrings {
   //complete profile
   static const String completeTitle = "Complete Profile";
 
-  // coursses
+
+  //logoNames
+
+
+  static const String dartLogo = "Dart";
+  static const String flutterLogo = "Flutter";
+  static const String htmlCssLogo = "HTML,CSS\n& JavaScript";
+  static const String figmaLogo = "Figma";
+
+  // courses
 
   static const String flutter = "Flutter mobile app development";
   static const String dataAnalytics = "Data Analytics";
   static const String amazonFBA = "Amazon FBA virtual Assistant";
-  static const String marketing = "Affliate Marketing";
+  static const String marketing = "Affiliate Marketing";
   static const String devOPS = "DevOPS Foundation";
   static const String sqa = "Driven SQA Automation";
   static const String hacking = "Ethical Hacking";
+
   static const String gameing = "Game Developments";
+
+  //query info
+  static const String addquery = "Add Query Detail";
+  static const String querydescription = "QueryDescription";
+  static const String addaphoto = "Add a Picture";
+  static const String postquery = "Post Query";
+
+  static const String takeaphoto = "Take a photo";
+  static const String insertgallery = "Insert a Gallery";
+
+
+  static const String gaming = "Game Developments";
+
 }
