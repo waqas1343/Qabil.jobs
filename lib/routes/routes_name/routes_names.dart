@@ -7,6 +7,7 @@ class RouteNames {
 
   static const String registersStudentScreen = "/registerAsStudent";
   static const String registersMentorScreen = "/registerAsMentor";
+  static const String bottomNavBar = "/bottomNavBar";
   static const String resetPassScreen = "/resetPassScreen";
   static const String login = "/LoginScreens";
   static const String completeProfile = "/CompleteProfile";

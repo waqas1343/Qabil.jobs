@@ -4,6 +4,7 @@ import 'package:qabil_app/View/auth/mentor_profile/profile_mentor.dart';
 import 'package:qabil_app/View/auth/signup_screen/mentor_register_screen.dart';
 import 'package:qabil_app/View/auth/signup_screen/student_rigister_screen.dart';
 import 'package:qabil_app/View/dashboard/dashboard_screen.dart';
+import 'package:qabil_app/widgets/CustombottomNavbar/customNavbar.dart';
 
 import '../../View/auth/forget_password_screens/enter_otp.dart';
 import '../../View/auth/forget_password_screens/forget_password_screen.dart';
@@ -23,6 +24,7 @@ class RouteScreens {
       //auth module screens
       RouteNames.forgotpassword: (context) => ForgetPasswordScreen(),
       RouteNames.resetPassScreen: (context) => ResetPasswordScreen(),
+      RouteNames.bottomNavBar: (context) => CustomNavbar(),
       RouteNames.enterotp: (context) => EnterOtp(),
       //RouteNames.notification: (context) => const LoginScreens(),
       // RouteNames.resend: (context) => const LoginScreens(),

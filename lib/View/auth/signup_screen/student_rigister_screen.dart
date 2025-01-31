@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 import 'package:qabil_app/widgets/customFlushbar/customFlushbar.dart';
-import '../../../Navigation_screening/app_navigators.dart';
+import '../../../navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';

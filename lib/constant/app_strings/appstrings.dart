@@ -23,6 +23,7 @@ class AppStrings {
   static const String forgetOTPTitle =
       "Enter the OTP code we have send you\n on your provided phone number";
   static const String vEnterName = "Enter Your Name!";
+  static const String studentID = "Enter Your given ID!";
   static const String vEmailRequired = "Email is required!";
   static const String validEmail = 'Enter a valid email';
   static const passwordRequired = 'Password is required';

@@ -10,7 +10,7 @@ class Validators {
 
   static String? studentId(String? value) {
     if (value == null || value.isEmpty) {
-      return AppStrings.vEnterName;
+      return AppStrings.studentID;
     }
 
     if (value.length < 6) {

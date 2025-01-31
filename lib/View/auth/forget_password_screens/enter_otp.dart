@@ -3,7 +3,7 @@ import 'package:pinput/pinput.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 
-import '../../../Navigation_screening/app_navigators.dart';
+import '../../../navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_images/app_images.dart';
 import '../../../constant/app_sizes/app_sizes.dart';
