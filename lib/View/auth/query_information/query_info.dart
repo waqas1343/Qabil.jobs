@@ -31,7 +31,8 @@ class QueryInfo extends StatelessWidget {
     }
 
     final TextEditingController nameController = TextEditingController();
-    final TextEditingController queryDescriptionController = TextEditingController();
+    final TextEditingController queryDescriptionController =
+        TextEditingController();
 
     void postQuery() {
       final name = nameController.text.trim();
@@ -40,7 +41,8 @@ class QueryInfo extends StatelessWidget {
 
       if (name.isEmpty || description.isEmpty) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Please enter your name and query description')),
+          const SnackBar(
+              content: Text('Please enter your name and query description')),
         );
         return;
       }
