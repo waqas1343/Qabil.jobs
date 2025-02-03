@@ -6,9 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_strings/appstrings.dart';
 import 'package:qabil_app/constant/custom_text/custom_text.dart';
-import 'package:qabil_app/constant/select_Imagesource/select_image_source.dart';
+
 import '../../../constant/custom_textfield/custom_textield.dart';
 import '../../../view_model/controller/image_post_controller/query_post_controller.dart';
+import '../../../widgets/select_Imagesource/select_image_source.dart';
 
 class QueryInfo extends StatelessWidget {
   const QueryInfo({super.key});

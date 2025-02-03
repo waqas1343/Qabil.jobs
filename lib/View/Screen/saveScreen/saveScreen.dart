@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/View/exploreScreen/post_card/post_card.dart';
 
-import '../../view_model/controller/post_card_screen/explore_cards_controller.dart';
+import '../../../view_model/controller/post_card_screen/explore_cards_controller.dart';
+
+import '../exploreScreen/post_card/post_card.dart';
 
 class SavedPostsScreen extends StatelessWidget {
   @override

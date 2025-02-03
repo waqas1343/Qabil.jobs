@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/View/exploreScreen/exploreScreen.dart';
-import 'package:qabil_app/View/profileScreen/profileScreen.dart';
-import 'package:qabil_app/View/saveScreen/saveScreen.dart';
+
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
+import '../../View/Screen/dashboard/dashboard_screen.dart';
+import '../../View/Screen/exploreScreen/exploreScreen.dart';
+import '../../View/Screen/profileScreen/profileScreen.dart';
+import '../../View/Screen/saveScreen/saveScreen.dart';
 import '../../View/auth/query_information/query_info.dart';
-import '../../View/dashboard/dashboard_screen.dart';
+
 import '../../view_model/controller/bottom_navbar_controller/bottom_navbar_controller.dart';
 
 class CustomNavbar extends StatelessWidget {
