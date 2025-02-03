@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:qabil_app/constant/app_button/app_button.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_icons/app_icons.dart';
@@ -8,9 +9,10 @@ import 'package:qabil_app/constant/app_strings/appstrings.dart';
 import 'package:qabil_app/constant/custom_text/custom_text.dart';
 import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
+import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 
-import '../../../Navigation_screening/app_navigators.dart';
+import '../../../navigation_screening/app_navigators.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   final TextEditingController _confirmPassController = TextEditingController();
@@ -20,6 +22,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<SuffixIconController>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -61,6 +64,16 @@ class ResetPasswordScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 AppTextFields.customTextField(
+                  obscureText: provider.isVisibleFirst,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      print("object");
+                      provider.iconToggleFirst();
+                    },
+                    icon: provider.isVisibleFirst
+                        ? AppIcons.suffixIconOnn
+                        : AppIcons.suffixIconOff,
+                  ),
                   validator: Validators.passwordValidator,
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
@@ -74,9 +87,18 @@ class ResetPasswordScreen extends StatelessWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 AppTextFields.customTextField(
+                  obscureText: provider.isVisibleSecond,
                   validator: (value) => Validators.confirmPasswordValidator(
                       value, _confirmPassController.text),
-                  suffixIcon: AppIcons.suffixIconOff,
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      print("object");
+                      provider.iconToggleSecond();
+                    },
+                    icon: provider.isVisibleSecond
+                        ? AppIcons.suffixIconOnn
+                        : AppIcons.suffixIconOff,
+                  ),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
                   controller: passwordController,

@@ -7,9 +7,8 @@ import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_strings/appstrings.dart';
 import 'package:qabil_app/constant/custom_text/custom_text.dart';
 import 'package:qabil_app/constant/select_Imagesource/select_image_source.dart';
-import 'package:qabil_app/view_model/providers/generalProvider.dart';
-
 import '../../../constant/custom_textfield/custom_textield.dart';
+import '../../../view_model/controller/image_post_controller/query_post_controller.dart';
 
 class QueryInfo extends StatelessWidget {
   const QueryInfo({super.key});
@@ -19,26 +18,58 @@ class QueryInfo extends StatelessWidget {
     final ImagePicker picker = ImagePicker();
 
     Future<void> pickImage(ImageSource source) async {
-      final XFile? pickedFile = await picker.pickImage(source: source);
-
-      if (pickedFile != null) {
-        context.read<GeneralProvider>().addImage(File(pickedFile.path));
+      try {
+        final XFile? pickedFile = await picker.pickImage(source: source);
+        if (pickedFile != null) {
+          context.read<QueryPostController>().addImage(File(pickedFile.path));
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to pick image: ${e.toString()}')),
+        );
       }
     }
 
-    final TextEditingController name = TextEditingController();
-    final TextEditingController querydes = TextEditingController();
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController queryDescriptionController =
+        TextEditingController();
+
+    void postQuery() {
+      final name = nameController.text.trim();
+      final description = queryDescriptionController.text.trim();
+      final images = context.read<QueryPostController>().images;
+
+      if (name.isEmpty || description.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Please enter your name and query description')),
+        );
+        return;
+      }
+      print('Name: $name');
+      print('Description: $description');
+      print('Images: $images');
+
+      // Clear the form after posting
+      nameController.clear();
+      queryDescriptionController.clear();
+      context.read<QueryPostController>().clearImages();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Query posted successfully!')),
+      );
+    }
 
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.green,
-          title: Text("Query Information"),
+          title: const Text("Query Information"),
           foregroundColor: Colors.white,
           actions: [
             IconButton(
               onPressed: () {},
-              icon: Icon(
+              icon: const Icon(
                 Icons.notifications,
                 color: Colors.white,
                 size: 40,
@@ -52,11 +83,10 @@ class QueryInfo extends StatelessWidget {
             ),
           ],
         ),
-        body: Consumer<GeneralProvider>(
+        body: Consumer<QueryPostController>(
           builder: (context, query, child) {
-            return Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 100, horizontal: 15),
+            return SingleChildScrollView(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -64,27 +94,23 @@ class QueryInfo extends StatelessWidget {
                     text: AppStrings.addquery,
                     style: Theme.of(context).textTheme.headlineSmall,
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
                   AppTextFields.customTextField(
-                      hintText: AppStrings.nameText, controller: name),
-                  SizedBox(
-                    height: 20,
+                    hintText: AppStrings.nameText,
+                    controller: nameController,
                   ),
+                  const SizedBox(height: 20),
                   TextField(
-                    controller: querydes,
+                    controller: queryDescriptionController,
                     maxLines: 5,
                     decoration: InputDecoration(
                       hintText: "Query Description",
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(0),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
+                  const SizedBox(height: 20),
                   GestureDetector(
                     onTap: () {
                       showModalBottomSheet(
@@ -106,9 +132,7 @@ class QueryInfo extends StatelessWidget {
                                     pickImage(ImageSource.camera);
                                   },
                                 ),
-                                SizedBox(
-                                  height: 20,
-                                ),
+                                const SizedBox(height: 20),
                                 SelectImageSource(
                                   icon: Icons.photo_library,
                                   title: AppStrings.insertgallery,
@@ -132,61 +156,56 @@ class QueryInfo extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: 120,
-                          ),
-                          Icon(
+                          const Icon(
                             Icons.add_a_photo,
                             color: Colors.grey,
                           ),
+                          const SizedBox(width: 10),
                           CustomText(
                             text: AppStrings.addaphoto,
                             color: Colors.grey,
-                          ),
-                          SizedBox(
-                            width: 100,
                           ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
+                  const SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.all(8),
                     child: Wrap(
                       spacing: 8,
-                      children:
-                        List.generate(
-                          query.images.length,
-                          (index) {
-                            return Chip(
-                              avatar: CircleAvatar(
-                                backgroundImage: FileImage(query.images[index]),
-                              ),
-                              label: Text("Image ${index + 1}"),
-                              deleteIcon: Icon(Icons.cancel),
-                              onDeleted: () => query.removeImage(index),
-                              backgroundColor: Colors.grey[300],
-                            );
-                          },
-                        ),
-
+                      children: List.generate(
+                        query.images.length,
+                        (index) {
+                          return Chip(
+                            avatar: CircleAvatar(
+                              backgroundImage: FileImage(query.images[index]),
+                            ),
+                            label: Text("Image ${index + 1}"),
+                            deleteIcon: const Icon(Icons.cancel),
+                            onDeleted: () => query.removeImage(index),
+                            backgroundColor: Colors.grey[300],
+                          );
+                        },
+                      ),
                     ),
                   ),
-                  Container(
-                    height: 50,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Center(
-                      child: CustomText(
-                        text: AppStrings.postquery,
-                        color: AppColors.appBackground,
-                        fontSize: 20,
+                  const SizedBox(height: 20),
+                  GestureDetector(
+                    onTap: postQuery,
+                    child: Container(
+                      height: 50,
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: CustomText(
+                          text: AppStrings.postquery,
+                          color: AppColors.appBackground,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ),

@@ -19,21 +19,7 @@ class CustomDropdown extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        DropdownButtonFormField<String>(
-          value: value,
-          decoration: InputDecoration(
-            hintText: hintText,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(1),
-            ),
-            errorText: errorText,
-          ),
-          items: items,
-          onChanged: onChanged,
-        ),
-      ],
+      children: [],
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../Navigation_screening/app_navigators.dart';
+import '../../../navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -61,9 +61,9 @@ class ForgetPasswordScreen extends StatelessWidget {
                 ),
                 AppTextFields.customTextField(
                   keyboardType: TextInputType.emailAddress,
-                  validator: Validators.studentId,
+                  validator: Validators.emailValidation,
                   prefixIcon: AppIcons.emailIcon,
-                  hintText: AppStrings.studentId,
+                  hintText: AppStrings.enteremail,
                   controller: emailController,
                 ),
                 SizedBox(
