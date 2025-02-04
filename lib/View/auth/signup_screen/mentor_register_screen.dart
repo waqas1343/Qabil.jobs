@@ -123,7 +123,7 @@ class MentorRegisterScreen extends StatelessWidget {
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
 
-                      Navigator.pushNamed(context, '/SignUpScreen');
+                      Navigator.pushNamed(context, "/CompleteProfile");
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Please correct the errors")),

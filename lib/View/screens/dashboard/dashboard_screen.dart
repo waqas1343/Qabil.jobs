@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import '../../Widgets/custom_Category_logo/categoryLogo.dart';
-import '../../view_model/selectors_logo/selector_model.dart';
+import 'package:qabil_app/view_model/selectors_logo/selector_model.dart';
+import 'package:qabil_app/widgets/custom_Category_logo/categoryLogo.dart';
+
 
 class DashBoardScreen extends StatelessWidget {
   const DashBoardScreen({super.key});
@@ -12,15 +13,15 @@ class DashBoardScreen extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-            _buildHeader(),
-            _buildCategoryList(),
+            buildHeader(),
+            buildCategoryList(),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildHeader() {
+  Widget buildHeader() {
     return Container(
       width: double.infinity,
       height: 130,
@@ -29,14 +30,14 @@ class DashBoardScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildUserGreeting(),
-          _buildActionIcons(),
+          buildUserGreeting(),
+          buildActionIcons(),
         ],
       ),
     );
   }
 
-  Widget _buildUserGreeting() {
+  Widget buildUserGreeting() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -61,7 +62,7 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionIcons() {
+  Widget buildActionIcons() {
     return Row(
       children: [
         Icon(
@@ -77,7 +78,7 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCategoryList() {
+  Widget buildCategoryList() {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: SizedBox(

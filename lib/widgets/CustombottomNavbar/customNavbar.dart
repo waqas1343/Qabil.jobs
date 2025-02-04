@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/View/exploreScreen/exploreScreen.dart';
-import 'package:qabil_app/View/profileScreen/profileScreen.dart';
-import 'package:qabil_app/View/saveScreen/saveScreen.dart';
+
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import '../../View/auth/query_information/query_info.dart';
-import '../../View/dashboard/dashboard_screen.dart';
+
+import '../../View/screens/dashboard/dashboard_screen.dart';
+import '../../View/screens/exploreScreen/exploreScreen.dart';
+import '../../View/screens/profile_screen/profile_screen.dart';
+import '../../View/screens/saveScreen/saveScreen.dart';
 import '../../view_model/controller/bottom_navbar_controller/bottom_navbar_controller.dart';
 
 class CustomNavbar extends StatelessWidget {
@@ -19,7 +21,7 @@ class CustomNavbar extends StatelessWidget {
       DashBoardScreen(),
       ExploreScreen(),
       SavedPostsScreen(),
-      Profilescreen(),
+      ProfileScreen(),
     ];
 
     return Consumer<BottomNavbarController>(
@@ -28,16 +30,16 @@ class CustomNavbar extends StatelessWidget {
           backgroundColor: AppColors.appBackground,
           body: pages[provider.pageIndex],
           floatingActionButton: Container(
-            width: 82,
-            height: 82,
+            width: 68,
+            height: 68,
             decoration: BoxDecoration(
               color: AppColors.appBackground,
               borderRadius: BorderRadius.circular(50),
             ),
             child: Center(
               child: Container(
-                width: 70,
-                height: 70,
+                width: 60,
+                height: 60,
                 decoration: BoxDecoration(
                   color: AppColors.textColor,
                   borderRadius: BorderRadius.circular(50),
@@ -55,7 +57,7 @@ class CustomNavbar extends StatelessWidget {
                     icon: Icon(
                       Icons.add,
                       color: AppColors.appBackground,
-                      size: 50,
+                      size: 45,
                     ),
                   ),
                 ),
@@ -66,7 +68,7 @@ class CustomNavbar extends StatelessWidget {
               FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: Container(
             width: double.infinity,
-            height: 80,
+            height: 70,
             decoration: BoxDecoration(
               color: AppColors.textColorGrey,
             ),
@@ -82,7 +84,7 @@ class CustomNavbar extends StatelessWidget {
                     color: provider.pageIndex == 0
                         ? AppColors.textColor
                         : AppColors.appBackground,
-                    size: 50,
+                    size: 45,
                   ),
                 ),
                 IconButton(
@@ -94,12 +96,12 @@ class CustomNavbar extends StatelessWidget {
                     color: provider.pageIndex == 1
                         ? AppColors.textColor
                         : AppColors.appBackground,
-                    size: 50,
+                    size: 45,
                   ),
                 ),
                 SizedBox(
-                  width: 70,
-                  height: 70,
+                  width: 60,
+                  height: 60,
                 ),
                 IconButton(
                   onPressed: () {
@@ -110,7 +112,7 @@ class CustomNavbar extends StatelessWidget {
                     color: provider.pageIndex == 2
                         ? AppColors.textColor
                         : AppColors.appBackground,
-                    size: 50,
+                    size: 45,
                   ),
                 ),
                 IconButton(
@@ -122,7 +124,7 @@ class CustomNavbar extends StatelessWidget {
                     color: provider.pageIndex == 3
                         ? AppColors.textColor
                         : AppColors.appBackground,
-                    size: 50,
+                    size: 45,
                   ),
                 ),
               ],

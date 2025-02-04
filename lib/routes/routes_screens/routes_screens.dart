@@ -1,17 +1,15 @@
-
 import 'package:flutter/material.dart';
+import 'package:qabil_app/View/auth/complete_profile/complete_profile.dart';
 import 'package:qabil_app/View/auth/mentor_profile/profile_mentor.dart';
 import 'package:qabil_app/View/auth/signup_screen/mentor_register_screen.dart';
 import 'package:qabil_app/View/auth/signup_screen/student_rigister_screen.dart';
-import 'package:qabil_app/View/dashboard/dashboard_screen.dart';
+import 'package:qabil_app/View/screens/dashboard/dashboard_screen.dart';
 import 'package:qabil_app/widgets/CustombottomNavbar/customNavbar.dart';
 
 import '../../View/auth/forget_password_screens/enter_otp.dart';
 import '../../View/auth/forget_password_screens/forget_password_screen.dart';
 import '../../View/auth/forget_password_screens/reset_password_screen.dart';
 import '../../View/auth/login_screen/login_screen.dart';
-
-
 
 import '../routes_name/routes_names.dart';
 
@@ -31,15 +29,13 @@ class RouteScreens {
       RouteNames.registersMentorScreen: (context) => MentorRegisterScreen(),
       RouteNames.login: (context) => LoginScreen(),
       RouteNames.registersStudentScreen: (context) => StudentRigisterScreen(),
-
-     
+      RouteNames.completeProfiler: (context) => CompleteProfile(),
 
       //dashBoard
       RouteNames.dashboard: (context) => DashBoardScreen(),
 
       //profile mentor
-      RouteNames.profileMentor : (context) => MentorProfile(),
-
+      RouteNames.profileMentor: (context) => MentorProfile(),
 
       //bottom navigation
 
@@ -50,4 +46,3 @@ class RouteScreens {
     };
   }
 }
-

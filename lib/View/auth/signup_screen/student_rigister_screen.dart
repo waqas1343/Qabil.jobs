@@ -133,7 +133,8 @@ class StudentRigisterScreen extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
-                      AppNavigators.changescreen(context, RouteNames.login);
+                      AppNavigators.changescreen(
+                          context, RouteNames.completeProfiler);
                     } else {
                       CustomFlushBar.customFlushBar(context,
                           'Please fill all fields', Icons.info, Colors.red);
@@ -174,7 +175,8 @@ class StudentRigisterScreen extends StatelessWidget {
                     ),
                     CustomText(
                       onTap: () {
-                        AppNavigators.changescreen(context, RouteNames.login);
+                        AppNavigators.changescreen(
+                            context, RouteNames.completeProfiler);
                       },
                       text: AppStrings.loginButton,
                       color: AppColors.cardsColor2,
