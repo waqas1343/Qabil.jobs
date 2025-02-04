@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/View/auth/complete_profile/complete_profile.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/routes/routes_screens/routes_screens.dart';
 import 'package:qabil_app/utils/text_theme/text_theme.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         initialRoute: RouteNames.splashscreen,
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
-        home: LoginScreen(),
+        home: CompleteProfile(),
       ),
     );
   }

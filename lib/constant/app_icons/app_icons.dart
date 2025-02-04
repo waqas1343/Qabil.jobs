@@ -10,6 +10,7 @@ class AppIcons {
   static const Icon gender = Icon(Icons.transgender_outlined);
   static const Icon domain = Icon(Icons.domain_add_outlined);
   static const Icon bio = Icon(Icons.description);
+  static const Icon person = Icon(Icons.person_2_outlined);
 
   static Icon customIcon(IconData iconData,
       {Color color = Colors.grey, double size = 24.0}) {

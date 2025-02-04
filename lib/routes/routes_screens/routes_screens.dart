@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:qabil_app/View/auth/mentor_profile/profile_mentor.dart';
 import 'package:qabil_app/View/auth/signup_screen/mentor_register_screen.dart';
 import 'package:qabil_app/View/auth/signup_screen/student_rigister_screen.dart';
-import 'package:qabil_app/View/dashboard/dashboard_screen.dart';
+import 'package:qabil_app/View/screens/dashboard/dashboard_screen.dart';
 import 'package:qabil_app/widgets/CustombottomNavbar/customNavbar.dart';
 
 import '../../View/auth/forget_password_screens/enter_otp.dart';

@@ -8,7 +8,7 @@ class ListPractice extends ChangeNotifier {
 
   void toggleCheckbox(String studentName) {
     studentChecked[studentName] = !(studentChecked[studentName] ?? false);
-    notifyListeners(); // UI ko update karne ke liye notify karein
+    notifyListeners();
   }
 
   void selectItem(String? value) {
@@ -19,12 +19,10 @@ class ListPractice extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Method to remove a selected item
   void removeSelectedItem(String item) {
     studentAdded.remove(item);
     notifyListeners();
   }
 
-  // Getter for selected items
   List<String> get selectedItems => studentAdded;
 }

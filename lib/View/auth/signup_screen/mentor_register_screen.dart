@@ -115,7 +115,7 @@ class MentorRegisterScreen extends StatelessWidget {
                   height: AppSizes.height04(context),
                 ),
                 CustomButton(
-                  btnText: AppStrings.loginButton,
+                  btnText: AppStrings.register,
                   color: AppColors.blackTextClr,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
@@ -123,7 +123,7 @@ class MentorRegisterScreen extends StatelessWidget {
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
 
-                      Navigator.pushNamed(context, '/SignUpScreen');
+                      Navigator.pushNamed(context, '/CompleteProfile');
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Please correct the errors")),

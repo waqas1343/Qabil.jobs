@@ -126,7 +126,7 @@ class StudentRigisterScreen extends StatelessWidget {
                   height: AppSizes.height04(context),
                 ),
                 CustomButton(
-                  btnText: AppStrings.loginButton,
+                  btnText: AppStrings.register,
                   color: AppColors.blackTextClr,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
