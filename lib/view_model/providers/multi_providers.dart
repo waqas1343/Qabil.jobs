@@ -8,6 +8,7 @@ import '../controller/icon_selecting/icon_selecting.dart';
 import '../controller/image_picker/image_picker_controller.dart';
 import '../controller/image_post_controller/query_post_controller.dart';
 import '../controller/post_card_screen/explore_cards_controller.dart';
+import '../controller/splash_provider/splash_screen_controller.dart';
 import '../controller/suffix_icon_controller/suffix_icon_controller.dart';
 
 final List<ChangeNotifierProvider> multiAppProviders = [
@@ -31,4 +32,6 @@ final List<ChangeNotifierProvider> multiAppProviders = [
   ChangeNotifierProvider<PostProvider>(create: (_) => PostProvider()),
   ///////////////////
   ChangeNotifierProvider<QueryPostController>(create: (_) => QueryPostController()),
+  //////////////////////////
+  ChangeNotifierProvider<SplashScreenController>(create: (_) => SplashScreenController()),
 ];

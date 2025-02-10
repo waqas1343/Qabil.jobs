@@ -6,11 +6,11 @@ class PostCard extends StatelessWidget {
   final VoidCallback onSave;
 
   const PostCard({
-    Key? key,
+    super.key,
     required this.post,
     required this.isSaved,
     required this.onSave,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
