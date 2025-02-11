@@ -27,7 +27,6 @@ class CustomNavbar extends StatelessWidget {
     return Consumer<BottomNavbarController>(
       builder: (context, provider, child) {
         return Scaffold(
-          backgroundColor: AppColors.appBackground,
           body: pages[provider.pageIndex],
           floatingActionButton: Container(
             width: 68,
@@ -68,64 +67,124 @@ class CustomNavbar extends StatelessWidget {
               FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: Container(
             width: double.infinity,
-            height: 70,
+            height: 55,
             decoration: BoxDecoration(
-              color: AppColors.textColorGrey,
+              color: AppColors.cardsColor2,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                IconButton(
-                  onPressed: () {
-                    provider.setBotttomNaviagtionIndex(0);
-                  },
-                  icon: Icon(
-                    Icons.home_outlined,
-                    color: provider.pageIndex == 0
-                        ? AppColors.textColor
-                        : AppColors.appBackground,
-                    size: 45,
-                  ),
+                Column(
+                  children: [
+                    Expanded(
+                      child: IconButton(
+                        onPressed: () {
+                          provider.setBotttomNaviagtionIndex(0);
+                        },
+                        icon: Icon(
+                          Icons.home_rounded,
+                          color: provider.pageIndex == 0
+                              ? AppColors.iconsColors
+                              : AppColors.blackTextClr,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Home',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: provider.pageIndex == 0
+                            ? AppColors.iconsColors
+                            : AppColors.blackTextClr,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {
-                    provider.setBotttomNaviagtionIndex(1);
-                  },
-                  icon: Icon(
-                    Icons.explore_outlined,
-                    color: provider.pageIndex == 1
-                        ? AppColors.textColor
-                        : AppColors.appBackground,
-                    size: 45,
-                  ),
+                Column(
+                  children: [
+                    Expanded(
+                      child: IconButton(
+                        onPressed: () {
+                          provider.setBotttomNaviagtionIndex(1);
+                        },
+                        icon: Icon(
+                          Icons.explore_outlined,
+                          color: provider.pageIndex == 1
+                              ? AppColors.iconsColors
+                              : AppColors.blackTextClr,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Explore',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: provider.pageIndex == 1
+                            ? AppColors.iconsColors
+                            : AppColors.blackTextClr,
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(
-                  width: 60,
+                  width: 50,
                   height: 60,
                 ),
-                IconButton(
-                  onPressed: () {
-                    provider.setBotttomNaviagtionIndex(2);
-                  },
-                  icon: Icon(
-                    Icons.bookmark_outline,
-                    color: provider.pageIndex == 2
-                        ? AppColors.textColor
-                        : AppColors.appBackground,
-                    size: 45,
-                  ),
+                Column(
+                  children: [
+                    Expanded(
+                      child: IconButton(
+                        onPressed: () {
+                          provider.setBotttomNaviagtionIndex(2);
+                        },
+                        icon: Icon(
+                          Icons.bookmark_outline,
+                          color: provider.pageIndex == 2
+                              ? AppColors.iconsColors
+                              : AppColors.blackTextClr,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Explore',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: provider.pageIndex == 2
+                            ? AppColors.iconsColors
+                            : AppColors.blackTextClr,
+                      ),
+                    ),
+                  ],
                 ),
-                IconButton(
-                  onPressed: () {
-                    provider.setBotttomNaviagtionIndex(3);
-                  },
-                  icon: Icon(
-                    Icons.person_outlined,
-                    color: provider.pageIndex == 3
-                        ? AppColors.textColor
-                        : AppColors.appBackground,
-                    size: 45,
-                  ),
+                Column(
+                  children: [
+                    Expanded(
+                      child: IconButton(
+                        onPressed: () {
+                          provider.setBotttomNaviagtionIndex(3);
+                        },
+                        icon: Icon(
+                          Icons.person_outlined,
+                          color: provider.pageIndex == 3
+                              ? AppColors.iconsColors
+                              : AppColors.blackTextClr,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      'Explore',
+                      style: TextStyle(
+                        fontSize: 10,
+                        color: provider.pageIndex == 3
+                            ? AppColors.iconsColors
+                            : AppColors.blackTextClr,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

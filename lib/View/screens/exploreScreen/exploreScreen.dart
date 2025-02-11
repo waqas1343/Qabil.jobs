@@ -9,6 +9,7 @@ class ExploreScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<PostProvider>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Explore'),
@@ -21,24 +22,20 @@ class ExploreScreen extends StatelessWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => SavedPostsScreen(),
-                ), 
+                ),
               );
             },
           ),
         ],
       ),
-      body: Consumer<PostProvider>(
-        builder: (context, postProvider, child) {
-          return ListView.builder(
-            itemCount: postProvider.posts.length,
-            itemBuilder: (context, index) {
-              final post = postProvider.posts[index];
-              return PostCard(
-                post: post,
-                isSaved: postProvider.isPostSaved(post),
-                onSave: () => postProvider.toggleSavePost(post),
-              );
-            },
+      body: ListView.builder(
+        itemCount: provider.posts.length,
+        itemBuilder: (context, index) {
+          final post = provider.posts[index];
+          return PostCard(
+            post: post,
+            isSaved: provider.isPostSaved(post),
+            onSave: () => provider .toggleSavePost(post),
           );
         },
       ),
