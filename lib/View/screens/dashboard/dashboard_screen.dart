@@ -12,15 +12,15 @@ class DashBoardScreen extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-            buildHeader(),
-            buildCategoryList(),
+            _buildHeader(),
+            _buildCategoryList(),
           ],
         ),
       ),
     );
   }
 
-  Widget buildHeader() {
+  Widget _buildHeader() {
     return Container(
       width: double.infinity,
       height: 100,
@@ -29,42 +29,38 @@ class DashBoardScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          buildUserGreeting(),
-          buildActionIcons(),
+          _buildActionIcons(),
         ],
       ),
     );
   }
 
   Widget buildUserGreeting() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            "Hi!",
-            style: TextStyle(
-              color: AppColors.appBackground,
-              fontWeight: FontWeight.bold,
-              fontSize: 18,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          "Hi!",
+          style: TextStyle(
+            color: AppColors.appBackground,
+            fontWeight: FontWeight.bold,
+            fontSize: 23,
           ),
-          Text(
-            "Saim!",
-            style: TextStyle(
-              color: AppColors.appBackground,
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-            ),
+        ),
+        Text(
+          "Saim!",
+          style: TextStyle(
+            color: AppColors.appBackground,
+            fontWeight: FontWeight.bold,
+            fontSize: 30,
           ),
-        ],
-      ),
+        )
+      ],
     );
   }
 
-  Widget buildActionIcons() {
+  Widget _buildActionIcons() {
     return Row(
       children: [
         CircleAvatar(
@@ -75,7 +71,7 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget buildCategoryList() {
+  Widget _buildCategoryList() {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: SizedBox(

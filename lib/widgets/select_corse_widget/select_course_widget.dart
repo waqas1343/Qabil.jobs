@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../constant/app_sizes/app_sizes.dart';
 import '../../constant/app_strings/appstrings.dart';
 import '../../constant/custom_text/custom_text.dart';
+import '../../view_model/controller/validation.dart';
 import '../../view_model/providers/corse_select_provider.dart';
 
 class SelectCourseWidget extends StatelessWidget {
@@ -23,23 +24,27 @@ class SelectCourseWidget extends StatelessWidget {
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
               borderSide: const BorderSide(
-                color: Colors.grey, 
+                color: Colors.grey,
                 width: 1.0,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
               borderSide: const BorderSide(
-                color: Colors.grey, 
+                color: Colors.grey,
                 width: 1.0,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8.0),
               borderSide: const BorderSide(
-                color: Colors.blue, 
+                color: Colors.blue,
                 width: 1.5,
               ),
+            ),
+            errorStyle: TextStyle(
+              color: const Color.fromARGB(255, 24, 206, 166),
+              fontSize: 14,
             ),
           ),
           dropdownColor: Colors.white,
@@ -50,32 +55,45 @@ class SelectCourseWidget extends StatelessWidget {
           items: proProvider.studentsName.map((student) {
             return DropdownMenuItem<String>(
               value: student,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    student,
-                    style: const TextStyle(color: Colors.black),
-                  ),
-                  Consumer<ListPractice>(
-                    builder: (context, value1, child) {
-                      return Checkbox(
-                        activeColor: Colors.blue,
-                        value: value1.studentChecked[student] ?? false,
-                        onChanged: (value) {
-                          value1.toggleCheckbox(student);
-                        },
-                      );
+              child: Consumer<ListPractice>(
+                builder: (context, value1, child) {
+                  return GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () {
+                      value1.toggleCheckbox(student);
                     },
-                  )
-                ],
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          student,
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                        Checkbox(
+                          activeColor: Colors.blue,
+                          value: value1.studentChecked[student] ?? false,
+                          onChanged: (value) {
+                            value1.toggleCheckbox(student);
+                          },
+                        ),
+                      ],
+                    ),
+                  );
+                },
               ),
             );
           }).toList(),
-          onChanged: (value) {},
+          onChanged: (_) {},
+          validator: (value) {
+            return Validators.courseValidator(proProvider.studentChecked.entries
+                .where((entry) => entry.value)
+                .map((entry) => entry.key)
+                .toList());
+          },
         ),
         SizedBox(height: AppSizes.height01(context)),
         Wrap(
+          spacing: 6.0,
           children: proProvider.studentChecked.entries
               .where((entry) => entry.value == true)
               .map((entry) {
@@ -93,7 +111,7 @@ class SelectCourseWidget extends StatelessWidget {
               onDeleted: () {
                 proProvider.toggleCheckbox(entry.key);
               },
-              backgroundColor: Colors.grey,
+              backgroundColor: Colors.grey.shade300,
             );
           }).toList(),
         ),

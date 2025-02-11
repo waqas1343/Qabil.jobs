@@ -14,7 +14,6 @@ class ExploreScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Explore'),
         centerTitle: true,
-        automaticallyImplyLeading: false,
         actions: [
           IconButton(
             icon: Icon(Icons.bookmark),

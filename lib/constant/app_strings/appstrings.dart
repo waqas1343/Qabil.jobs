@@ -30,6 +30,7 @@ class AppStrings {
   static const passwordmust = 'Password must be at least 6 characters';
   static const confirmPasswordR = 'Confirm password is required';
   static const passwordMatchE = 'Password not Match';
+  static const genderSelect = 'Please select your gender';
 
   //Sign up Screen
   static const String regTitle = "Register";

@@ -14,7 +14,7 @@ class Validators {
     }
 
     if (value.length < 6) {
-      return 'Enter Bano Qabil Givin ID';
+      return 'Enter Bano Qabil Given ID';
     }
     return null;
   }
@@ -38,12 +38,12 @@ class Validators {
       return 'Please enter a phone number';
     }
 
-    if (value.length < 11) {
-      return 'phone number is not valid';
+    if (value.length != 11) {
+      return 'Phone number must be 11 digits';
     }
 
     if (!RegExp(r'^[0-9]+$').hasMatch(value)) {
-      return 'Please enter a valid phone number ';
+      return 'Please enter a valid phone number';
     }
 
     return null;
@@ -79,10 +79,24 @@ class Validators {
       return 'Please enter the OTP';
     }
 
-    if (otp.length != 4) {
-      return 'OTP should be 4 digits';
+    if (otp.length != 4 || !RegExp(r'^\d{4}$').hasMatch(otp)) {
+      return 'OTP should be exactly 4 digits';
     }
 
+    return null;
+  }
+
+  static String? genderValidator(String? gender) {
+    if (gender == null || gender.isEmpty) {
+      return AppStrings.genderSelect;
+    }
+    return null;
+  }
+
+  static String? courseValidator(List<String> selectedCourses) {
+    if (selectedCourses.isEmpty) {
+      return 'Please select at least one course';
+    }
     return null;
   }
 }
