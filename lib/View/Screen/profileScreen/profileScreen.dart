@@ -3,9 +3,16 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/Navigation_screening/app_navigators.dart';
+import 'package:qabil_app/constant/app_button/app_button.dart';
+import 'package:qabil_app/constant/app_colours/appcolors.dart';
+import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
+import 'package:qabil_app/routes/routes_name/routes_names.dart';
 
 import '../../../constant/app_strings/appstrings.dart';
-import '../../../view_model/controller/image_post_controller/query_post_controller.dart';
+
+import '../../../view_model/controller/profile_controller/profile_controller.dart';
+import '../../../widgets/custom_dialogbox/custom_dialogbox.dart';
 import '../../../widgets/select_Imagesource/select_image_source.dart';
 
 class Profilescreen extends StatelessWidget {
@@ -13,26 +20,12 @@ class Profilescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ImagePicker picker = ImagePicker();
-
-    Future<void> pickImage(ImageSource source) async {
-      File? image;
-      final XFile? pickedFile = await picker.pickImage(source: source);
-
-      if (pickedFile != null) {
-        image = File(pickedFile.path);
-        // File newImage = File(pickedFile.path);
-        // // print("Image");
-        // context.read<QueryPostController>().addImage(newImage);
-      }
-    }
-
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
           title: Text("Profile"),
         ),
-        body: Consumer<QueryPostController>(
+        body: Consumer<ProfileController>(
           builder: (context, click, child) {
             return Padding(
               padding: const EdgeInsets.all(20),
@@ -44,27 +37,17 @@ class Profilescreen extends StatelessWidget {
                         CircleAvatar(
                           radius: 60,
                           backgroundColor: Colors.grey,
-                          backgroundImage:
-                              (click.images != null && click.images.isNotEmpty)
-                                  ? FileImage(click.images.last)
-                                  : null,
-                          child: (click.images == null || click.images.isEmpty)
-                              ? Icon(Icons.camera_alt,
-                                  size: 50, color: Colors.white)
+                          backgroundImage: click.image != null
+                              ? FileImage(click.image!)
+                              : null,
+                          child: click.image == null
+                              ? Icon(
+                                  Icons.person,
+                                  size: 50,
+                                  color: Colors.grey[700],
+                                )
                               : null,
                         ),
-
-                        // backgroundImage: click.images.isNotEmpty
-                        //     ? FileImage(click.images[0])
-                        //     : null,
-                        // child: click.images.isEmpty
-                        //     ? Icon(
-                        //   Icons.person,
-                        //   size: 50,
-                        //   color: Colors.white,
-                        // ),
-                        //     : null,
-                        // ),
                         Positioned(
                           bottom: -5,
                           right: -4,
@@ -86,20 +69,8 @@ class Profilescreen extends StatelessWidget {
                                           title: AppStrings.addaphoto,
                                           onTap: () {
                                             Navigator.pop(context);
-                                            picker.pickImage(
-                                                source: ImageSource.camera);
+                                            click.pickImage(ImageSource.camera);
                                           },
-                                          // onTap: () async {
-                                          //   Navigator.pop(context);
-                                          //   final XFile? pickedFile = await picker.pickImage(
-                                          //       source: ImageSource.camera);
-                                          //   if (pickedFile != null) {
-                                          //     File newImage = File(pickedFile.path);
-                                          //     // print("Image");
-                                          //     context.read<QueryPostController>().addImage(newImage);
-                                          //   }
-                                          //
-                                          // },
                                         ),
                                         SizedBox(
                                           height: 20,
@@ -109,8 +80,8 @@ class Profilescreen extends StatelessWidget {
                                           title: AppStrings.insertgallery,
                                           onTap: () {
                                             Navigator.pop(context);
-                                            picker.pickImage(
-                                                source: ImageSource.gallery);
+                                            click
+                                                .pickImage(ImageSource.gallery);
                                           },
                                         ),
                                       ],
@@ -127,6 +98,101 @@ class Profilescreen extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ),
+                  SizedBox(
+                    height: 120,
+                  ),
+                  AppTextFields.customTextField(
+                    hintText: AppStrings.nameText,
+                    controller: click.nameController,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: CustomDialogbox(
+                                controller: click.editnameController,
+                                onSave: () {
+                                  click.nameController.text =
+                                      click.editnameController.text;
+                                },
+                                hintname: AppStrings.savebutton, titlename: AppStrings.nameText,
+                              ),
+                            );
+                          },
+                        );
+                      },
+                      icon: Icon(Icons.edit_outlined),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  AppTextFields.customTextField(
+                    hintText: AppStrings.bio,
+                    controller: click.bioController,
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Padding(
+                              padding: const EdgeInsets.all(20),
+                              child: CustomDialogbox(
+                                controller: click.editbioController,
+                                onSave: () {
+                                  click.bioController.text =
+                                      click.editbioController.text;
+                                },
+                                hintname: AppStrings.cencalText, titlename: AppStrings.bio,
+                              ),
+                              // child: AlertDialog(
+                              //   title: Text(AppStrings.nameText),
+                              //   actions: [
+                              //     AppTextFields.customTextField(
+                              //         hintText: AppStrings.nameText,
+                              //         controller: click.editbioController),
+                              //     SizedBox(
+                              //       height: 20,
+                              //     ),
+                              //     CustomButton(
+                              //         btnText: "Save",
+                              //         color: AppColors.textColor,
+                              //         ontap: () {
+                              //           click.bioController.text =
+                              //               click.editbioController.text;
+                              //           Navigator.pop(context);
+                              //         }),
+                              //     SizedBox(
+                              //       height: 20,
+                              //     ),
+                              //     CustomButton(
+                              //         btnText: "cancel",
+                              //         color: AppColors.textColor,
+                              //         ontap: () {
+                              //           // AppNavigators.changescreen(context, RouteNames.profile);
+                              //           Navigator.pop(context);
+                              //         }),
+                              //   ],
+                              // ),
+                            );
+                          },
+                        );
+                      },
+                      icon: Icon(Icons.edit_outlined),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  CustomButton(
+                    btnText: AppStrings.logoutButton,
+                    color: AppColors.textColor,
+                    ontap: () {
+                      AppNavigators.outscreen(context, RouteNames.login);
+                    },
                   ),
                 ],
               ),

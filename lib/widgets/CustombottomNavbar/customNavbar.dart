@@ -47,11 +47,15 @@ class CustomNavbar extends StatelessWidget {
                 child: Center(
                   child: IconButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => QueryInfo(),
-                        ),
+                      showModalBottomSheet(
+                        scrollControlDisabledMaxHeightRatio: 0.8,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: QueryInfo(),
+                          );
+                        },
                       );
                     },
                     icon: Icon(
