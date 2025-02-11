@@ -13,24 +13,28 @@ import '../controller/splash_provider/splash_screen_controller.dart';
 import '../controller/suffix_icon_controller/suffix_icon_controller.dart';
 
 final List<ChangeNotifierProvider> multiAppProviders = [
-  
   ChangeNotifierProvider<ListPractice>(create: (_) => ListPractice()),
   ///////////////////
   ChangeNotifierProvider<GenderProvider>(create: (_) => GenderProvider()),
   //////////////////////
   ChangeNotifierProvider<ImagePickerController>(
       create: (_) => ImagePickerController()),
-      ////////////
+  ////////////
   ChangeNotifierProvider<Providerc>(create: (_) => Providerc()),
   ////////////////
-  ChangeNotifierProvider<SuffixIconController>(create: (_) => SuffixIconController()),
+  ChangeNotifierProvider<SuffixIconController>(
+      create: (_) => SuffixIconController()),
   ////////////////////
-  ChangeNotifierProvider<BottomNavbarController>(create: (_) => BottomNavbarController()),
+  ChangeNotifierProvider<BottomNavbarController>(
+      create: (_) => BottomNavbarController()),
   ////////////////////////
   ChangeNotifierProvider<IconSelecting>(create: (_) => IconSelecting()),
 
   /////////////////////
   ChangeNotifierProvider<PostProvider>(create: (_) => PostProvider()),
   ///////////////////
-  ChangeNotifierProvider<QueryPostController>(create: (_) => QueryPostController()),
+  ChangeNotifierProvider<QueryPostController>(
+      create: (_) => QueryPostController()),
+  ///////////////////////////
+  ChangeNotifierProvider<ProfileController>(create: (_) => ProfileController()),
 ];

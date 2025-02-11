@@ -20,7 +20,7 @@ class CustomNavbar extends StatelessWidget {
       DashBoardScreen(),
       ExploreScreen(),
       SavedPostsScreen(),
-      ProfileScreen(),
+      Profilescreen(),
     ];
 
     return Consumer<BottomNavbarController>(
