@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qabil_app/View/auth/login_screen/login_screen.dart';
 import 'package:qabil_app/navigation_screening/app_navigators.dart';
 
 class SplashScreenController extends ChangeNotifier {
