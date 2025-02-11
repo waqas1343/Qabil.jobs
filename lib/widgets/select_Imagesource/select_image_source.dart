@@ -1,4 +1,3 @@
-// Custom BottomSheetOption widget for reusability
 import 'package:flutter/material.dart';
 
 class SelectImageSource extends StatelessWidget {

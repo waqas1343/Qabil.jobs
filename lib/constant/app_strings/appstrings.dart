@@ -121,4 +121,7 @@ class AppStrings {
   static const String insertgallery = "Insert a Gallery";
 
   static const String gaming = "Game Developments";
+
+  static const String logoutButton = "logout";
+  static const String cencalText = "Cencel";
 }

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/View/screens/dashboard/dashboard_screen.dart';
+import 'package:qabil_app/View/screens/exploreScreen/exploreScreen.dart';
+import 'package:qabil_app/View/screens/profile_screen/profile_screen.dart';
+import 'package:qabil_app/View/screens/saveScreen/saveScreen.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import '../../View/screens/dashboard/dashboard_screen.dart';
-import '../../View/screens/exploreScreen/exploreScreen.dart';
-import '../../View/screens/profile_screen/profile_screen.dart';
+
 import '../../View/screens/query_information/query_info.dart';
-import '../../View/screens/saveScreen/saveScreen.dart';
 import '../../view_model/controller/bottom_navbar_controller/bottom_navbar_controller.dart';
 
 class CustomNavbar extends StatelessWidget {
@@ -44,11 +45,15 @@ class CustomNavbar extends StatelessWidget {
                 child: Center(
                   child: IconButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => QueryInfo(),
-                        ),
+                      showModalBottomSheet(
+                        scrollControlDisabledMaxHeightRatio: 0.8,
+                        context: context,
+                        builder: (context) {
+                          return Padding(
+                            padding: const EdgeInsets.all(20),
+                            child: QueryInfo(),
+                          );
+                        },
                       );
                     },
                     icon: Icon(

@@ -1,4 +1,5 @@
 import 'package:provider/provider.dart';
+import 'package:qabil_app/view_model/controller/profile_controller/profile_controller.dart';
 import 'package:qabil_app/view_model/providers/corse_select_provider.dart';
 import 'package:qabil_app/view_model/providers/select%20gender.dart';
 
@@ -32,6 +33,4 @@ final List<ChangeNotifierProvider> multiAppProviders = [
   ChangeNotifierProvider<PostProvider>(create: (_) => PostProvider()),
   ///////////////////
   ChangeNotifierProvider<QueryPostController>(create: (_) => QueryPostController()),
-  //////////////////////////
-  ChangeNotifierProvider<SplashScreenController>(create: (_) => SplashScreenController()),
 ];
