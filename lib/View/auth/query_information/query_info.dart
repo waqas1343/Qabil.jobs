@@ -6,10 +6,10 @@ import 'package:provider/provider.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_strings/appstrings.dart';
 import 'package:qabil_app/constant/custom_text/custom_text.dart';
-import 'package:qabil_app/constant/select_Imagesource/select_image_source.dart';
-import 'package:qabil_app/view_model/providers/generalProvider.dart';
 
 import '../../../constant/custom_textfield/custom_textield.dart';
+import '../../../view_model/controller/image_post_controller/query_post_controller.dart';
+import '../../../widgets/select_Imagesource/select_image_source.dart';
 
 class QueryInfo extends StatelessWidget {
   const QueryInfo({super.key});
@@ -19,163 +19,170 @@ class QueryInfo extends StatelessWidget {
     final ImagePicker picker = ImagePicker();
 
     Future<void> pickImage(ImageSource source) async {
-      final XFile? pickedFile = await picker.pickImage(source: source);
-
-      if (pickedFile != null) {
-        context.read<GeneralProvider>().addImage(File(pickedFile.path));
+      try {
+        final XFile? pickedFile = await picker.pickImage(source: source);
+        if (pickedFile != null) {
+          context.read<QueryPostController>().addImage(File(pickedFile.path));
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Failed to pick image: ${e.toString()}')),
+        );
       }
     }
 
-    final TextEditingController name = TextEditingController();
-    final TextEditingController querydes = TextEditingController();
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController queryDescriptionController =
+        TextEditingController();
 
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.green,
-          title: Text("Query Information"),
-          foregroundColor: Colors.white,
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.notifications,
-                color: Colors.white,
-                size: 40,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: CircleAvatar(
-                backgroundColor: Colors.grey[300],
-              ),
-            ),
-          ],
-        ),
-        body: Consumer<GeneralProvider>(
-          builder: (context, query, child) {
-            return Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 100, horizontal: 15),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CustomText(
-                    text: AppStrings.addquery,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  AppTextFields.customTextField(
-                      hintText: AppStrings.nameText, controller: name),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextField(
-                    controller: querydes,
-                    maxLines: 5,
-                    decoration: InputDecoration(
-                      hintText: "Query Description",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(0),
-                      ),
+    void postQuery() {
+      final name = nameController.text.trim();
+      final description = queryDescriptionController.text.trim();
+      final images = context.read<QueryPostController>().images;
+
+      if (name.isEmpty || description.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Please enter your name and query description')),
+        );
+        return;
+      }
+      print('Name: $name');
+      print('Description: $description');
+      print('Images: $images');
+
+      // Clear the form after posting
+      nameController.clear();
+      queryDescriptionController.clear();
+      context.read<QueryPostController>().clearImages();
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Query posted successfully!')),
+      );
+    }
+
+    return Scaffold(
+
+      body: Consumer<QueryPostController>(
+        builder: (context, query, child) {
+          return SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    CustomText(
+                      text: AppStrings.addquery,
+                      style: Theme.of(context).textTheme.headlineSmall,
+                    ),
+                    Spacer(),
+
+                    IconButton(onPressed: () {
+                      Navigator.pop(context);
+                    }, icon: Icon(Icons.close),)
+                  ],
+                ),
+                const SizedBox(height: 20),
+                AppTextFields.customTextField(
+                  hintText: AppStrings.nameText,
+                  controller: nameController,
+                ),
+                const SizedBox(height: 20),
+                TextField(
+                  controller: queryDescriptionController,
+                  maxLines: 5,
+                  decoration: InputDecoration(
+                    hintText: "Query Description",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      showModalBottomSheet(
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 30,
-                              vertical: 50,
-                            ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                SelectImageSource(
-                                  icon: Icons.camera_alt,
-                                  title: AppStrings.addaphoto,
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                    pickImage(ImageSource.camera);
-                                  },
-                                ),
-                                SizedBox(
-                                  height: 20,
-                                ),
-                                SelectImageSource(
-                                  icon: Icons.photo_library,
-                                  title: AppStrings.insertgallery,
-                                  onTap: () {
-                                    Navigator.pop(context);
-                                    pickImage(ImageSource.gallery);
-                                  },
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      );
-                    },
-                    child: Container(
-                      height: 70,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 120,
+                ),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 30,
+                            vertical: 50,
                           ),
-                          Icon(
-                            Icons.add_a_photo,
-                            color: Colors.grey,
-                          ),
-                          CustomText(
-                            text: AppStrings.addaphoto,
-                            color: Colors.grey,
-                          ),
-                          SizedBox(
-                            width: 100,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Wrap(
-                      spacing: 8,
-                      children:
-                        List.generate(
-                          query.images.length,
-                          (index) {
-                            return Chip(
-                              avatar: CircleAvatar(
-                                backgroundImage: FileImage(query.images[index]),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SelectImageSource(
+                                icon: Icons.camera_alt,
+                                title: AppStrings.addaphoto,
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  pickImage(ImageSource.camera);
+                                },
                               ),
-                              label: Text("Image ${index + 1}"),
-                              deleteIcon: Icon(Icons.cancel),
-                              onDeleted: () => query.removeImage(index),
-                              backgroundColor: Colors.grey[300],
-                            );
-                          },
+                              const SizedBox(height: 20),
+                              SelectImageSource(
+                                icon: Icons.photo_library,
+                                title: AppStrings.insertgallery,
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  pickImage(ImageSource.gallery);
+                                },
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  child: Container(
+                    height: 70,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.add_a_photo,
+                          color: Colors.grey,
                         ),
-
+                        const SizedBox(width: 10),
+                        CustomText(
+                          text: AppStrings.addaphoto,
+                          color: Colors.grey,
+                        ),
+                      ],
                     ),
                   ),
-                  Container(
+                ),
+                const SizedBox(height: 10),
+                Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Wrap(
+                    spacing: 8,
+                    children: List.generate(
+                      query.images.length,
+                      (index) {
+                        return Chip(
+                          avatar: CircleAvatar(
+                            backgroundImage: FileImage(query.images[index]),
+                          ),
+                          label: Text("Image ${index + 1}"),
+                          deleteIcon: const Icon(Icons.cancel),
+                          onDeleted: () => query.removeImage(index),
+                          backgroundColor: Colors.grey[300],
+                        );
+                      },
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                GestureDetector(
+                  onTap: postQuery,
+                  child: Container(
                     height: 50,
                     width: double.infinity,
                     decoration: BoxDecoration(
@@ -190,12 +197,16 @@ class QueryInfo extends StatelessWidget {
                       ),
                     ),
                   ),
-                ],
-              ),
-            );
-          },
-        ),
+                ),
+              ],
+            ),
+          );
+        },
       ),
+
     );
   }
 }
+
+
+

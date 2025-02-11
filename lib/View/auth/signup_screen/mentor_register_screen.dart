@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
-import 'package:qabil_app/view_model/providers/generalProvider.dart';
-
-import '../../../Navigation_screening/app_navigators.dart';
+import '../../../navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -25,7 +24,7 @@ class MentorRegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.read<GeneralProvider>();
+    final provider = Provider.of<SuffixIconController>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),

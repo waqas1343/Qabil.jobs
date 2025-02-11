@@ -8,20 +8,18 @@ class CustomDropdown extends StatelessWidget {
   final String? errorText;
 
   const CustomDropdown({
-    Key? key,
+    super.key,
     required this.items,
     this.hintText,
     this.value,
     this.onChanged,
     this.errorText,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: [
-        
-      ],
+      children: [],
     );
   }
 }

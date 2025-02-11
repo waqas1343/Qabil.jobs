@@ -1,4 +1,3 @@
-// Custom BottomSheetOption widget for reusability
 import 'package:flutter/material.dart';
 
 class SelectImageSource extends StatelessWidget {
@@ -7,11 +6,11 @@ class SelectImageSource extends StatelessWidget {
   final VoidCallback onTap;
 
   const SelectImageSource({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
