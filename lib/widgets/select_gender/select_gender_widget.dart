@@ -4,6 +4,7 @@ import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import '../../constant/app_strings/appstrings.dart';
 import '../../constant/custom_text/custom_text.dart';
 import '../../view_model/providers/select gender.dart';
+import '../../view_model/controller/validation.dart'; // Validators import kiya
 
 class SelectGenderWidget extends StatelessWidget {
   const SelectGenderWidget({super.key});
@@ -22,14 +23,14 @@ class SelectGenderWidget extends StatelessWidget {
             fillColor: Colors.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(2.0),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.grey,
                 width: 1.0,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(2.0),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.grey,
                 width: 1.0,
               ),
@@ -40,6 +41,10 @@ class SelectGenderWidget extends StatelessWidget {
                 color: AppColors.textColorGrey,
                 width: 1.5,
               ),
+            ),
+            errorStyle: TextStyle(
+              color: const Color.fromARGB(255, 24, 206, 166),
+              fontSize: 14,
             ),
           ),
           dropdownColor: Colors.white,
@@ -63,6 +68,9 @@ class SelectGenderWidget extends StatelessWidget {
             }
           },
           isExpanded: true,
+
+          /// **Validation Apply kiya**
+          validator: (value) => Validators.genderValidator(value),
         ),
       ],
     );

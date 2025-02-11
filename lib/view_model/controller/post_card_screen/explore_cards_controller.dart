@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PostProvider with ChangeNotifier {
-  final List<Map<String, String>> _posts = [
+  final List<Map<String, String>> posts = [
     {
       'name': 'Abdul Rehman Rashid',
       'time': '2 Hour ago',
@@ -31,21 +31,20 @@ class PostProvider with ChangeNotifier {
     },
   ];
 
-  final List<Map<String, String>> _savedPosts = [];
+  final List<Map<String, String>> savedPosts = [];
 
-  List<Map<String, String>> get posts => _posts;
-  List<Map<String, String>> get savedPosts => _savedPosts;
+
 
   void toggleSavePost(Map<String, String> post) {
-    if (_savedPosts.contains(post)) {
-      _savedPosts.remove(post);
+    if (savedPosts.contains(post)) {
+      savedPosts.remove(post);
     } else {
-      _savedPosts.add(post);
+      savedPosts.add(post);
     }
     notifyListeners(); 
   }
 
   bool isPostSaved(Map<String, String> post) {
-    return _savedPosts.contains(post);
+    return savedPosts.contains(post);
   }
 }

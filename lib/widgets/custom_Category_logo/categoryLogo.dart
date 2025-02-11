@@ -28,7 +28,7 @@ class CustomLogoCategory extends StatelessWidget {
                 provider.isSelected(index);
               },
               child: Padding(
-                padding: const EdgeInsets.all(9.8),
+                padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
                     Container(

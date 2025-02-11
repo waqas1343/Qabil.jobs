@@ -82,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                         ? AppIcons.suffixIconOnn
                         : AppIcons.suffixIconOff,
                   ),
-                  prefixIcon: AppIcons.emailIcon,
+                  prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
                   controller: passwordController,
                 ),

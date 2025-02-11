@@ -126,14 +126,15 @@ class StudentRigisterScreen extends StatelessWidget {
                   height: AppSizes.height04(context),
                 ),
                 CustomButton(
-                  btnText: AppStrings.loginButton,
+                  btnText: AppStrings.register,
                   color: AppColors.blackTextClr,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
-                      AppNavigators.changescreen(context, RouteNames.login);
+                      AppNavigators.changescreen(
+                          context, RouteNames.completeProfiler);
                     } else {
                       CustomFlushBar.customFlushBar(context,
                           'Please fill all fields', Icons.info, Colors.red);
@@ -174,7 +175,8 @@ class StudentRigisterScreen extends StatelessWidget {
                     ),
                     CustomText(
                       onTap: () {
-                        AppNavigators.changescreen(context, RouteNames.login);
+                        AppNavigators.changescreen(
+                            context, RouteNames.completeProfiler);
                       },
                       text: AppStrings.loginButton,
                       color: AppColors.cardsColor2,
