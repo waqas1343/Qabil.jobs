@@ -17,7 +17,7 @@ final List<ChangeNotifierProvider> multiAppProviders = [
   ///////////////////
   ChangeNotifierProvider<GenderProvider>(create: (_) => GenderProvider()),
   //////////////////////
-  ChangeNotifierProvider<ImagePickerController>(
+  ChangeNotifierProvider<ImagePickerController>( 
       create: (_) => ImagePickerController()),
   ////////////
   ChangeNotifierProvider<Providerc>(create: (_) => Providerc()),
@@ -37,4 +37,7 @@ final List<ChangeNotifierProvider> multiAppProviders = [
       create: (_) => QueryPostController()),
   ///////////////////////////
   ChangeNotifierProvider<ProfileController>(create: (_) => ProfileController()),
+
+  ChangeNotifierProvider<SplashScreenController>(
+      create: (_) => SplashScreenController()),
 ];

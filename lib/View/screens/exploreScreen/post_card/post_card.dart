@@ -5,12 +5,18 @@ class PostCard extends StatelessWidget {
   final bool isSaved;
   final VoidCallback onSave;
 
-  const PostCard({
+  PostCard({
     super.key,
     required this.post,
     required this.isSaved,
     required this.onSave,
   });
+
+  final List<String> images = [
+    'assets/images/profileimage.png',
+    'assets/images/profileimage.png',
+    'assets/images/profileimage.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +27,7 @@ class PostCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // Profile Row
             Row(
               children: [
                 CircleAvatar(
@@ -49,7 +56,10 @@ class PostCard extends StatelessWidget {
                 ),
               ],
             ),
+
             const SizedBox(height: 10),
+
+            // Title
             Text(
               post['title']!,
               style: const TextStyle(
@@ -57,17 +67,35 @@ class PostCard extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
+
             const SizedBox(height: 10),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: Image.asset(
-                post['postImage']!,
-                width: double.infinity,
-                height: 200,
-                fit: BoxFit.cover,
+
+            
+            SizedBox(
+              height: 200, 
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: images.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 10), 
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        images[index], 
+                        width: 250,
+                        height: 200,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  );
+                },
               ),
             ),
+
             const SizedBox(height: 10),
+
+            // Like, Comment, Save Row
             Row(
               children: [
                 const Icon(Icons.thumb_up, size: 16, color: Colors.grey),
@@ -83,7 +111,7 @@ class PostCard extends StatelessWidget {
                   post['comments']!,
                   style: const TextStyle(color: Colors.grey),
                 ),
-                Spacer(),
+                const Spacer(),
                 IconButton(
                   icon: Icon(
                     isSaved ? Icons.bookmark : Icons.bookmark_border,
