@@ -33,15 +33,13 @@ class PostProvider with ChangeNotifier {
 
   final List<Map<String, String>> savedPosts = [];
 
-
-
   void toggleSavePost(Map<String, String> post) {
     if (savedPosts.contains(post)) {
       savedPosts.remove(post);
     } else {
       savedPosts.add(post);
     }
-    notifyListeners(); 
+    notifyListeners();
   }
 
   bool isPostSaved(Map<String, String> post) {
