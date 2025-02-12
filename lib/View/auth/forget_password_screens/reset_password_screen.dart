@@ -93,7 +93,7 @@ class ResetPasswordScreen extends StatelessWidget {
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
 
-                      AppNavigators.changescreen(context, RouteNames.login);
+                      AppNavigators.nextscreen(context, RouteNames.login);
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Please correct the errors")),

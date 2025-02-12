@@ -4,8 +4,8 @@ import 'package:qabil_app/constant/custom_appbar/custom_appbar.dart';
 import '../../widgets/dashboard_widgets/dashboard_courses.dart';
 import '../../widgets/dashboard_widgets/post_cards.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+class Cards extends StatelessWidget {
+  const Cards({super.key});
 
   @override
   Widget build(BuildContext context) {

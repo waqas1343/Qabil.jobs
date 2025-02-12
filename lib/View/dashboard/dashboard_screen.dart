@@ -4,8 +4,8 @@ import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import '../../Widgets/custom_Category_logo/categoryLogo.dart';
 import '../../view_model/selectors_logo/selector_model.dart';
 
-class DashBoardScreen extends StatelessWidget {
-  const DashBoardScreen({super.key});
+class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

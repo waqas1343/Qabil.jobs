@@ -11,7 +11,6 @@ import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 import 'package:qabil_app/view_model/providers/generalProvider.dart';
-
 import '../../../Navigation_screening/app_navigators.dart';
 import '../../../widgets/customFlushbar/customFlushbar.dart';
 
@@ -118,7 +117,7 @@ class LoginScreen extends StatelessWidget {
                         CustomFlushBar.customFlushBar(context,
                             'Login Successfully', Icons.verified, Colors.green);
                         Future.delayed(Duration(milliseconds: 1700),(){
-                          AppNavigators.changescreen(
+                          AppNavigators.nextscreen(
                               context, RouteNames.registersMentorScreen);
                         });
                       } else {
@@ -127,8 +126,8 @@ class LoginScreen extends StatelessWidget {
                       }
                     }),
 
-                      AppNavigators.changescreen(
-                          context, RouteNames.dashboard)
+                      AppNavigators.nextscreen(
+                          context, RouteNames.dashboard),
                     //  else {
                     //   ScaffoldMessenger.of(context).showSnackBar(
                     //     SnackBar(content: Text("Please correct the errors")),

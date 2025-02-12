@@ -1,9 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
-
-import '../../constant/select_Imagesource/select_image_source.dart'; // Make sure this widget is defined
 
 
 class GeneralProvider extends ChangeNotifier {
@@ -20,7 +16,6 @@ class GeneralProvider extends ChangeNotifier {
     isVisibleSecond = !isVisibleSecond;
     notifyListeners();
   }
-
 
 
   int pageIndex = 0;
@@ -53,10 +48,47 @@ class GeneralProvider extends ChangeNotifier {
 
   int iconSelect = 0;
   double? iconSize;
+
   void isSelected(int index) {
     iconSelect = index;
     iconSelect == iconSize;
     notifyListeners();
   }
 
+ // saveSelects
+
+  final List<dynamic> save = [];
+
+  void saveSelected(int index) {
+
+    if(save.contains(index)) {
+      save.removeAt(index);
+    }
+    else{
+      save.add(index);
+    }
+    notifyListeners();
+  }
+  bool isSave(int index){
+    return save.contains(index);
+  }
+
+  //likeSelects
+
+  final List<dynamic> like = [];
+
+  void likeSelected(int index) {
+
+    if(like.contains(index)) {
+      like.removeAt(index);
+    }
+    else{
+      like.add(index);
+    }
+    notifyListeners();
+  }
+  bool isLike(int index){
+    return like.contains(index);
+  }
 }
+

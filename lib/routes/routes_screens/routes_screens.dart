@@ -1,18 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:qabil_app/View/auth/mentor_profile/profile_mentor.dart';
 import 'package:qabil_app/View/auth/signup_screen/mentor_register_screen.dart';
 import 'package:qabil_app/View/auth/signup_screen/student_rigister_screen.dart';
 import 'package:qabil_app/View/dashboard/dashboard_screen.dart';
-
+import 'package:qabil_app/View/savequery/savequeries.dart';
 import '../../View/auth/forget_password_screens/enter_otp.dart';
 import '../../View/auth/forget_password_screens/forget_password_screen.dart';
 import '../../View/auth/forget_password_screens/reset_password_screen.dart';
 import '../../View/auth/login_screen/login_screen.dart';
-
-
 import '../../View/auth/profile_complete/profile_complete.dart';
-
 import '../routes_name/routes_names.dart';
 
 class RouteScreens {
@@ -34,7 +30,7 @@ class RouteScreens {
       RouteNames.completeProfile: (context) => ProfileComplete(),
 
       //dashBoard
-      RouteNames.dashboard: (context) => DashBoardScreen(),
+      RouteNames.dashboard: (context) => DashboardScreen(),
 
       //profile mentor
       RouteNames.profileMentor : (context) => MentorProfile(),
@@ -43,7 +39,7 @@ class RouteScreens {
       //bottom navigation
 
       // RouteNames.profile: (context) => const LoginScreens(),
-      // RouteNames.savequires: (context) => const LoginScreens(),
+      RouteNames.savequires: (context) => const SaveQuery(),
       // RouteNames.expolre: (context) => const LoginScreens(),
       //RouteNames.home: (context) => const LoginScreens(),
     };

@@ -161,7 +161,7 @@ class ProfileComplete extends StatelessWidget {
                               CustomText(text: 'Profile Updated Successfully')),
                     );
 
-                    AppNavigators.changescreen(
+                    AppNavigators.nextscreen(
                         context, RouteNames.registersMentorScreen);
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(

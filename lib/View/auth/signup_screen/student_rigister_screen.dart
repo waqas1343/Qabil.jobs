@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 import 'package:qabil_app/view_model/providers/generalProvider.dart';
-import 'package:qabil_app/widgets/customFlushbar/customFlushbar.dart';
-
 import '../../../Navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
@@ -14,6 +12,7 @@ import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
 import '../../../routes/routes_name/routes_names.dart';
+import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class StudentRigisterScreen extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -137,7 +136,7 @@ class StudentRigisterScreen extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
-                      AppNavigators.changescreen(context, RouteNames.login);
+                      AppNavigators.nextscreen(context, RouteNames.login);
                     } else {
                       CustomFlushBar.customFlushBar(context,
                           'Please fill all fields', Icons.info, Colors.red);
@@ -156,7 +155,7 @@ class StudentRigisterScreen extends StatelessWidget {
                       ),
                       CustomText(
                         onTap: () {
-                          AppNavigators.changescreen(
+                          AppNavigators.nextscreen(
                               context, RouteNames.registersMentorScreen);
                         },
                         text: AppStrings.regAsMentor,
@@ -178,7 +177,7 @@ class StudentRigisterScreen extends StatelessWidget {
                     ),
                     CustomText(
                       onTap: () {
-                        AppNavigators.changescreen(context, RouteNames.login);
+                        AppNavigators.nextscreen(context, RouteNames.login);
                       },
                       text: AppStrings.loginButton,
                       color: AppColors.cardsColor2,

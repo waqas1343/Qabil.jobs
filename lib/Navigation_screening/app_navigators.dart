@@ -5,10 +5,6 @@ class AppNavigators {
     Navigator.pop(context);
   }
 
-  static changescreen(BuildContext context, String page) {
-    Navigator.pushReplacementNamed(context, page);
-  }
-
   static nextscreen(BuildContext context, String page) {
     Navigator.pushNamed(context, page);
   }
