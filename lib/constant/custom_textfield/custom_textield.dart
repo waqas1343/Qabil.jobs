@@ -13,7 +13,6 @@ class AppTextFields {
     double borderRadius = 1.0,
     EdgeInsetsGeometry? contentPadding,
     FormFieldValidator<String>? validator,
-
   }) {
     return TextFormField(
       controller: controller,

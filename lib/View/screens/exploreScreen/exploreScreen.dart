@@ -34,7 +34,7 @@ class ExploreScreen extends StatelessWidget {
           return PostCard(
             post: post,
             isSaved: provider.isPostSaved(post),
-            onSave: () => provider .toggleSavePost(post),
+            onSave: () => provider.toggleSavePost(post),
           );
         },
       ),
