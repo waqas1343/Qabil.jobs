@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qabil_app/view_model/controller/save_card_controller/saveCard.dart';
 
 class PostCard extends StatelessWidget {
   final Map<String, String> post;
@@ -20,6 +22,8 @@ class PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final savedPostsProvider = Provider.of<SavedCardProvider>(context);
+    bool isSaved = savedPostsProvider.isSaved(post);
     return Card(
       margin: const EdgeInsets.all(10),
       child: Padding(
@@ -70,19 +74,18 @@ class PostCard extends StatelessWidget {
 
             const SizedBox(height: 10),
 
-            
             SizedBox(
-              height: 200, 
+              height: 200,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: images.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.only(right: 10), 
+                    padding: const EdgeInsets.only(right: 10),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(10),
                       child: Image.asset(
-                        images[index], 
+                        images[index],
                         width: 250,
                         height: 200,
                         fit: BoxFit.cover,
@@ -117,7 +120,9 @@ class PostCard extends StatelessWidget {
                     isSaved ? Icons.bookmark : Icons.bookmark_border,
                     color: isSaved ? Colors.blue : Colors.grey,
                   ),
-                  onPressed: onSave,
+                  onPressed: () {
+                    savedPostsProvider.toggleSavePost(post);
+                  },
                 ),
               ],
             ),

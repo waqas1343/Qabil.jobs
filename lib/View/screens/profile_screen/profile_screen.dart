@@ -8,6 +8,7 @@ import 'package:qabil_app/constant/app_button/app_button.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
+import 'package:qabil_app/widgets/logout_dialog/logout_dialog.dart';
 
 import '../../../constant/app_strings/appstrings.dart';
 
@@ -118,7 +119,8 @@ class Profilescreen extends StatelessWidget {
                                   click.nameController.text =
                                       click.editnameController.text;
                                 },
-                                hintname: AppStrings.savebutton, titlename: AppStrings.nameText,
+                                hintname: AppStrings.savebutton,
+                                titlename: AppStrings.nameText,
                               ),
                             );
                           },
@@ -146,7 +148,8 @@ class Profilescreen extends StatelessWidget {
                                   click.bioController.text =
                                       click.editbioController.text;
                                 },
-                                hintname: AppStrings.cencalText, titlename: AppStrings.bio,
+                                hintname: AppStrings.cencalText,
+                                titlename: AppStrings.bio,
                               ),
                               // child: AlertDialog(
                               //   title: Text(AppStrings.nameText),
@@ -191,7 +194,18 @@ class Profilescreen extends StatelessWidget {
                     btnText: AppStrings.logoutButton,
                     color: AppColors.textColor,
                     ontap: () {
-                      AppNavigators.outscreen(context, RouteNames.login);
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return LogoutDialog(
+                            onConfirm: () {
+                              AppNavigators.outscreen(
+                                  context, RouteNames.login);
+                            },
+                          );
+                        },
+                      );
+                      // AppNavigators.outscreen(context, RouteNames.login);
                     },
                   ),
                 ],

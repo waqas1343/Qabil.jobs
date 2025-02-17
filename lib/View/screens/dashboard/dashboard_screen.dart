@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:qabil_app/Navigation_screening/app_navigators.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/view_model/selectors_logo/selector_model.dart';
 import 'package:qabil_app/widgets/custom_Category_logo/categoryLogo.dart';
 
@@ -14,7 +12,7 @@ class DashBoardScreen extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-            _buildHeader(context),
+            _buildHeader(),
             _buildCategoryList(),
           ],
         ),
@@ -22,7 +20,7 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
+  Widget _buildHeader() {
     return Container(
       width: double.infinity,
       height: 100,
@@ -31,8 +29,7 @@ class DashBoardScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-         // _buildActionIcons(),
-          _buildActionIcons(context),
+          _buildActionIcons(),
         ],
       ),
     );
@@ -62,23 +59,13 @@ class DashBoardScreen extends StatelessWidget {
       ],
     );
   }
-  Widget _buildActionIcons(BuildContext context) {
+
+  Widget _buildActionIcons() {
     return Row(
       children: [
         CircleAvatar(
           radius: 25,
           backgroundImage: AssetImage('assets/images/profileimage.png'),
-        ),
-
-        SizedBox(width: MediaQuery.of(context).size.width * 0.7 ,),
-
-        GestureDetector(
-          onTap: (){
-            AppNavigators.nextscreen(context, RouteNames.notification);
-          },
-          child: Icon(Icons.notifications_none_outlined,
-            color: AppColors.appBackground,
-          ),
         )
       ],
     );
