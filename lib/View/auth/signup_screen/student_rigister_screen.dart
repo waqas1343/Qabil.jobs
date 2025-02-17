@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
-import 'package:qabil_app/view_model/providers/generalProvider.dart';
-import '../../../Navigation_screening/app_navigators.dart';
+import 'package:qabil_app/widgets/customFlushbar/customFlushbar.dart';
+import '../../../navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -12,7 +13,6 @@ import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
 import '../../../routes/routes_name/routes_names.dart';
-import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class StudentRigisterScreen extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -25,7 +25,7 @@ class StudentRigisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.read<GeneralProvider>();
+    final provider = Provider.of<SuffixIconController>(context);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -58,11 +58,8 @@ class StudentRigisterScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     Spacer(),
-
                     CustomText(
-                      onTap: () {
-
-                      },
+                      onTap: () {},
                       text: AppStrings.studentId,
                       fontSize: 14,
                       fontWeight: FontWeight.w600,
@@ -129,14 +126,15 @@ class StudentRigisterScreen extends StatelessWidget {
                   height: AppSizes.height04(context),
                 ),
                 CustomButton(
-                  btnText: AppStrings.loginButton,
+                  btnText: AppStrings.register,
                   color: AppColors.blackTextClr,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
-                      AppNavigators.nextscreen(context, RouteNames.login);
+                      AppNavigators.nextscreen(
+                          context, RouteNames.completeProfiler);
                     } else {
                       CustomFlushBar.customFlushBar(context,
                           'Please fill all fields', Icons.info, Colors.red);
@@ -177,7 +175,8 @@ class StudentRigisterScreen extends StatelessWidget {
                     ),
                     CustomText(
                       onTap: () {
-                        AppNavigators.nextscreen(context, RouteNames.login);
+                        AppNavigators.nextscreen(
+                            context, RouteNames.completeProfiler);
                       },
                       text: AppStrings.loginButton,
                       color: AppColors.cardsColor2,

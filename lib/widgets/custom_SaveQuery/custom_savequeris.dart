@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qabil_app/constant/aap_Logo/logoPlace.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/view_model/providers/generalProvider.dart';
-import 'package:readmore/readmore.dart';
+//import 'package:qabil_app/view_model/providers/generalProvider.dart';
 
 class CustomSaveQuery extends StatelessWidget {
   const CustomSaveQuery({
@@ -17,7 +16,7 @@ class CustomSaveQuery extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-        child: Consumer<GeneralProvider>(
+        child: Consumer(
           builder: (context, value, child) {
             return Container(
              height: 170,
@@ -80,14 +79,14 @@ class CustomSaveQuery extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              value.likeSelected(index);
+                            //  value.likeSelected(index);
                               print("object");
                             },
                             child: Icon(
-                                value.isLike(index)
-                                    ? Icons.favorite_outline_outlined
-                                    : Icons.favorite_rounded,
-                                color: AppColors.textColor),
+                               // value.isLike(index)
+                                    Icons.favorite_outline_outlined
+                                    //: Icons.favorite_rounded,
+                                , color: AppColors.textColor),
                           ),
                           SizedBox(
                             width: 20,
@@ -98,14 +97,15 @@ class CustomSaveQuery extends StatelessWidget {
                           ),
                           GestureDetector(
                             onTap: () {
-                              value.saveSelected(index);
+                             // value.saveSelected(index);
                               print("object");
                             },
                             child: Icon(Icons.bookmark,
-                                color: value.isSave(index)
-                                    ? AppColors.textColor
-                                    : AppColors.textColorGrey),
-                          )
+                               // color: value.isSave(index)
+                                    color:AppColors.textColor
+                                    //: AppColors.textColorGrey),
+                          ),
+                          ),
                         ],
                       ),
                     ],

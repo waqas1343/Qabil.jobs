@@ -23,6 +23,6 @@ class CustomFlushBar {
       duration: Duration(seconds: 3),
       // flushbarPosition: FlushbarPosition.BOTTOM,
     ).show(context);
-
+    
   }
 }

@@ -3,6 +3,7 @@ class AppStrings {
   static const String loginTitle = "log In account";
   static const String loginSubtitle = "Please sign in to continue";
   static const String passwordTitle = "Password";
+  static const String phoneTitle = "03---------";
   static const String studentTab = "Student";
   static const String mentorTab = "Mentor";
   static const String loginButton = "Login";
@@ -22,12 +23,14 @@ class AppStrings {
   static const String forgetOTPTitle =
       "Enter the OTP code we have send you\n on your provided phone number";
   static const String vEnterName = "Enter Your Name!";
+  static const String studentID = "Enter Your given ID!";
   static const String vEmailRequired = "Email is required!";
   static const String validEmail = 'Enter a valid email';
   static const passwordRequired = 'Password is required';
   static const passwordmust = 'Password must be at least 6 characters';
   static const confirmPasswordR = 'Confirm password is required';
   static const passwordMatchE = 'Password not Match';
+  static const genderSelect = 'Please select your gender';
 
   //Sign up Screen
   static const String regTitle = "Register";
@@ -44,6 +47,7 @@ class AppStrings {
   static const String haveAccount = "You have an Account?";
   static const String contactNo = "Contact no";
   static const String email = "Email";
+  static const String enteremail = "Enter your Email";
   static const String emailEnter = "waqas5904@gmail.com";
 
   //forgot password
@@ -88,9 +92,7 @@ class AppStrings {
   //complete profile
   static const String completeTitle = "Complete Profile";
 
-
   //logoNames
-
 
   static const String dartLogo = "Dart";
   static const String flutterLogo = "Flutter";
@@ -118,7 +120,8 @@ class AppStrings {
   static const String takeaphoto = "Take a photo";
   static const String insertgallery = "Insert a Gallery";
 
-
   static const String gaming = "Game Developments";
 
+  static const String logoutButton = "logout";
+  static const String cencalText = "Cencel";
 }
