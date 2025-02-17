@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qabil_app/widgets/customFlushbar/customFlushbar.dart';
 
 import '../../../navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
@@ -70,22 +71,37 @@ class ForgetPasswordScreen extends StatelessWidget {
                   height: AppSizes.height08(context),
                 ),
                 CustomButton(
-                  btnText: AppStrings.loginButton,
-                  color: AppColors.blackTextClr,
-                  ontap: () {
-                    if (formKey.currentState?.validate() ?? false) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: CustomText(text: 'Login Successful')),
-                      );
+                    btnText: AppStrings.loginButton,
+                    color: AppColors.blackTextClr,
+                    ontap: () {
+                      if (formKey.currentState?.validate() ?? false) {
+                        CustomFlushBar.customFlushBar(
+                            context,
+                            AppStrings.emailSent,
+                            Icons.verified,
+                            AppColors.cardsColor2);
+                        Future.delayed(const Duration(milliseconds: 1700), () {
+                          AppNavigators.changescreen(
+                              context, RouteNames.enterotp);
+                        });
+                      } else {
+                        CustomFlushBar.customFlushBar(
+                          context,
+                          'Please Enter your Email!',
+                          Icons.info,
+                          Colors.red,
+                        );
+                      }
+                      //   ScaffoldMessenger.of(context).showSnackBar(
+                      //     SnackBar(content: CustomText(text: 'Login Successful')),
+                      //   );
 
-                      AppNavigators.nextscreen(context, RouteNames.enterotp);
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Please correct the errors")),
-                      );
-                    }
-                  },
-                ),
+                      //   AppNavigators.nextscreen(context, RouteNames.enterotp);
+                      // } else {
+                      //   ScaffoldMessenger.of(context).showSnackBar(
+                      //     SnackBar(content: Text("Please correct the errors")),
+                      //   );
+                    }),
               ],
             ),
           ),

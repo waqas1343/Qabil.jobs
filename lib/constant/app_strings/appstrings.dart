@@ -14,6 +14,7 @@ class AppStrings {
   static const String register = "Register";
   static const String headingPhoneNum = "Phone No";
   static const String regSlogan = "Don’t Miss Out – Register in Seconds!";
+  static const String emailSent = "Email sent successfully";
   //validation strings
 
   static const String forgetTitle =
@@ -124,4 +125,5 @@ class AppStrings {
 
   static const String logoutButton = "logout";
   static const String cencalText = "Cencel";
+  static const String confirm = "Confirm";
 }

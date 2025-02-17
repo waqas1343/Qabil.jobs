@@ -131,6 +131,28 @@ class LoginScreen extends StatelessWidget {
                     }
                   },
                 ),
+                SizedBox(
+                  height: AppSizes.height02(context),
+                ),
+                Center(
+                  child: Column(
+                    children: [
+                      CustomText(text: AppStrings.oR),
+                      SizedBox(
+                        height: AppSizes.height01(context),
+                      ),
+                      CustomText(
+                        onTap: () {
+                          AppNavigators.changescreen(
+                              context, RouteNames.registersStudentScreen);
+                        },
+                        text: AppStrings.regAsStudent,
+                        color: AppColors.textColor,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

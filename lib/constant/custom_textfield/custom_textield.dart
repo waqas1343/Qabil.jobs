@@ -13,7 +13,6 @@ class AppTextFields {
     double borderRadius = 1.0,
     EdgeInsetsGeometry? contentPadding,
     FormFieldValidator<String>? validator,
-
   }) {
     return TextFormField(
       controller: controller,
@@ -22,14 +21,15 @@ class AppTextFields {
       decoration: InputDecoration(
         errorStyle: TextStyle(
           color: const Color.fromARGB(255, 24, 206, 166),
-          fontSize: 14,
+          fontSize: 9,
         ),
         hintText: hintText,
+        maintainHintHeight: true,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: fillColor ?? Colors.white,
-        hintStyle: TextStyle(color: Colors.grey),
+        hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         border: OutlineInputBorder(

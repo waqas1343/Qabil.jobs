@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import '../../../view_model/controller/post_card_screen/explore_cards_controller.dart';
 import '../saveScreen/saveScreen.dart';
 import 'post_card/post_card.dart';
@@ -12,6 +13,7 @@ class ExploreScreen extends StatelessWidget {
     final provider = Provider.of<PostProvider>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: AppColors.appBackground,
         title: const Text('Explore'),
         centerTitle: true,
         actions: [
@@ -34,7 +36,7 @@ class ExploreScreen extends StatelessWidget {
           return PostCard(
             post: post,
             isSaved: provider.isPostSaved(post),
-            onSave: () => provider .toggleSavePost(post),
+            onSave: () => provider.toggleSavePost(post),
           );
         },
       ),
