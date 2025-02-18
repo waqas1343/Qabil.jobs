@@ -13,6 +13,7 @@ import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_ic
 import 'package:qabil_app/view_model/controller/validation.dart';
 
 import '../../../navigation_screening/app_navigators.dart';
+import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   final TextEditingController _confirmPassController = TextEditingController();
@@ -96,8 +97,8 @@ class ResetPasswordScreen extends StatelessWidget {
                       provider.iconToggleSecond();
                     },
                     icon: provider.isVisibleSecond
-                        ? AppIcons.suffixIconOnn
-                        : AppIcons.suffixIconOff,
+                        ? AppIcons.suffixIconOff
+                        : AppIcons.suffixIconOnn,
                   ),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
@@ -108,17 +109,24 @@ class ResetPasswordScreen extends StatelessWidget {
                 ),
                 CustomButton(
                   btnText: AppStrings.loginButton,
-                  color: AppColors.blackTextClr,
+                  color: AppColors.cardsColor2,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: CustomText(text: 'Login Successful')),
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Your password is changed',
+                        Icons.verified,
+                        Colors.green,
                       );
-
-                      AppNavigators.nextscreen(context, RouteNames.login);
+                      Future.delayed(const Duration(milliseconds: 1700), () {
+                        AppNavigators.nextscreen(context, RouteNames.login);
+                      });
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Please correct the errors")),
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Wrong Password',
+                        Icons.info,
+                        Colors.red,
                       );
                     }
                   },

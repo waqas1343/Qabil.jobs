@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppIcons {
   static const Icon emailIcon = Icon(Icons.email_sharp);
+  static const Icon idIcon = Icon(Icons.school_sharp);
   static const Icon nameIcon = Icon(Icons.person_3_sharp);
   static const Icon passwordIcon = Icon(Icons.lock);
   static const Icon phoneIcon = Icon(Icons.phone);

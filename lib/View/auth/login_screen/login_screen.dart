@@ -60,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                 AppTextFields.customTextField(
                   keyboardType: TextInputType.number,
                   validator: Validators.studentId,
-                  prefixIcon: AppIcons.emailIcon,
+                  prefixIcon: AppIcons.idIcon,
                   hintText: AppStrings.studentId,
                   controller: studenIDController,
                 ),
@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 CustomButton(
                   btnText: AppStrings.loginButton,
-                  color: AppColors.blackTextClr,
+                  color: AppColors.cardsColor2,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
                       CustomFlushBar.customFlushBar(
@@ -131,6 +131,28 @@ class LoginScreen extends StatelessWidget {
                       );
                     }
                   },
+                ),
+                SizedBox(
+                  height: AppSizes.height02(context),
+                ),
+                Center(
+                  child: Column(
+                    children: [
+                      CustomText(text: AppStrings.oR),
+                      SizedBox(
+                        height: AppSizes.height01(context),
+                      ),
+                      CustomText(
+                        onTap: () {
+                          AppNavigators.nextscreen(
+                              context, RouteNames.registersStudentScreen);
+                        },
+                        text: AppStrings.regAsStudent,
+                        color: AppColors.textColor,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),

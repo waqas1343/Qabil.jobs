@@ -20,7 +20,7 @@ class RouteScreens {
       // RouteNames.splashscreen: (context) => const LoginScreens(),
 
       //auth module screens
-      RouteNames.forgotpassword: (context) =>  ForgetPasswordScreen(),
+      RouteNames.forgotpassword: (context) => ForgetPasswordScreen(),
       RouteNames.resetPassScreen: (context) => ResetPasswordScreen(),
       RouteNames.bottomNavBar: (context) => CustomNavbar(),
       RouteNames.enterotp: (context) => EnterOtp(),
@@ -28,17 +28,16 @@ class RouteScreens {
       RouteNames.registersMentorScreen: (context) => MentorRegisterScreen(),
       RouteNames.login: (context) => LoginScreen(),
       RouteNames.registersStudentScreen: (context) => StudentRigisterScreen(),
-      RouteNames.completeProfiler: (context) => CompleteProfile(),
+      RouteNames.completeProfile: (context) => CompleteProfile(),
       // RouteNames.completeProfiler: (context) => CompleteProfile(),
 
       //dashBoard
       RouteNames.dashboard: (context) => const DashBoardScreen(),
       RouteNames.notification: (context) => const NotificationScreen(),
-      RouteNames.notificationEmpty : (context) => const NotificationEmpty(),
+      RouteNames.notificationEmpty: (context) => const NotificationEmpty(),
 
       //profile mentor
       // RouteNames.profileMentor : (context) => MentorProfile(),
-
 
       //bottom navigation
 

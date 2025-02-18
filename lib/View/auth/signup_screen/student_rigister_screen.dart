@@ -80,7 +80,7 @@ class StudentRigisterScreen extends StatelessWidget {
                 AppTextFields.customTextField(
                   keyboardType: TextInputType.number,
                   validator: Validators.studentId,
-                  prefixIcon: AppIcons.emailIcon,
+                  prefixIcon: AppIcons.idIcon,
                   hintText: AppStrings.studentId,
                   controller: studentIDController,
                 ),
@@ -117,9 +117,9 @@ class StudentRigisterScreen extends StatelessWidget {
                         provider.iconToggleSecond();
                       },
                       icon: provider.isVisibleSecond
-                          ? AppIcons.suffixIconOff
-                          : AppIcons.suffixIconOnn),
-                  prefixIcon: AppIcons.emailIcon,
+                          ? AppIcons.suffixIconOnn
+                          : AppIcons.suffixIconOff),
+                  prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
                   controller: confiremPassController,
                 ),
@@ -128,17 +128,26 @@ class StudentRigisterScreen extends StatelessWidget {
                 ),
                 CustomButton(
                   btnText: AppStrings.register,
-                  color: AppColors.blackTextClr,
+                  color: AppColors.cardsColor2,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: CustomText(text: 'Login Successful')),
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Complete your profile',
+                        Icons.verified,
+                        Colors.green,
                       );
-                      AppNavigators.nextscreen(
-                          context, RouteNames.completeProfiler);
+                      Future.delayed(const Duration(milliseconds: 1700), () {
+                        AppNavigators.nextscreen(
+                            context, RouteNames.completeProfile);
+                      });
                     } else {
-                      CustomFlushBar.customFlushBar(context,
-                          'Please fill all fields', Icons.info, Colors.red);
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Please fill all fields',
+                        Icons.info,
+                        Colors.red,
+                      );
                     }
                   },
                 ),
@@ -177,7 +186,7 @@ class StudentRigisterScreen extends StatelessWidget {
                     CustomText(
                       onTap: () {
                         AppNavigators.nextscreen(
-                            context, RouteNames.completeProfiler);
+                            context, RouteNames.completeProfile);
                       },
                       text: AppStrings.loginButton,
                       color: AppColors.cardsColor2,
