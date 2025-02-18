@@ -8,10 +8,10 @@ class CustomFlushBar {
     return Flushbar(
       messageText: Text(
         title,
-        style: TextStyle(fontSize: 14, color: AppColors.appBackground),
+        style: TextStyle(fontSize: 20, color: AppColors.appBackground),
       ),
-      padding: EdgeInsets.all(14),
-      margin: EdgeInsets.all(18),
+      padding: EdgeInsets.all(18),
+      margin: EdgeInsets.all(30),
       backgroundColor: AppColors.blackTextClr,
       icon: Icon(
         icon,
@@ -23,5 +23,6 @@ class CustomFlushBar {
       duration: Duration(seconds: 3),
       // flushbarPosition: FlushbarPosition.BOTTOM,
     ).show(context);
+    
   }
 }

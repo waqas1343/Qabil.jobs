@@ -23,12 +23,12 @@ class AppTheme {
           color: AppColors.textColor,
         ),
         titleLarge: TextStyle(
-          fontSize: 20.0,
+          fontSize: 22.0,
           fontWeight: FontWeight.w600,
           color: AppColors.blackTextClr,
         ),
         titleMedium: TextStyle(
-          fontSize: 14.0,
+          fontSize: 18.0,
           fontWeight: FontWeight.w700,
           color: AppColors.blackTextClr,
         ),

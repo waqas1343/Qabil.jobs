@@ -44,7 +44,7 @@ class SelectGenderWidget extends StatelessWidget {
             ),
             errorStyle: TextStyle(
               color: const Color.fromARGB(255, 24, 206, 166),
-              fontSize: 9,
+              fontSize: 14,
             ),
           ),
           dropdownColor: Colors.white,
@@ -68,6 +68,8 @@ class SelectGenderWidget extends StatelessWidget {
             }
           },
           isExpanded: true,
+
+          /// **Validation Apply kiya**
           validator: (value) => Validators.genderValidator(value),
         ),
       ],

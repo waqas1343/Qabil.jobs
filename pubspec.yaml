@@ -41,11 +41,7 @@ dependencies:
   another_flushbar: ^1.12.30
 
   image_picker: ^1.1.2
-
-  carousel_slider: ^5.0.0
-
   readmore: ^3.0.0
-
 
 
 dev_dependencies:

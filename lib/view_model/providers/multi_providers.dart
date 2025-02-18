@@ -6,7 +6,6 @@ import 'package:qabil_app/view_model/providers/select%20gender.dart';
 
 import '../controller/bottom_navbar_controller/bottom_navbar_controller.dart';
 import '../controller/course_select_controller/course_select_scontroller.dart';
-import '../controller/curser_slider/curser_slider.dart';
 import '../controller/icon_selecting/icon_selecting.dart';
 import '../controller/image_picker/image_picker_controller.dart';
 import '../controller/image_post_controller/query_post_controller.dart';
@@ -42,12 +41,6 @@ final List<ChangeNotifierProvider> multiAppProviders = [
 
   ChangeNotifierProvider<SplashScreenController>(
       create: (_) => SplashScreenController()),
-
-      ///////////////////////
-  ChangeNotifierProvider<CurserSlider>(
-      create: (_) => CurserSlider()),
-
   ///////////////////////////
   ChangeNotifierProvider<SavedCardProvider>(create: (_) => SavedCardProvider()),
-
 ];
