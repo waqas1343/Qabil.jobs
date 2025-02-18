@@ -143,7 +143,7 @@ class MentorRegisterScreen extends StatelessWidget {
                       ),
                       CustomText(
                         onTap: () {
-                          AppNavigators.changescreen(
+                          AppNavigators.nextscreen(
                               context, RouteNames.registersStudentScreen);
                         },
                         text: AppStrings.regAsStudent,
@@ -165,7 +165,7 @@ class MentorRegisterScreen extends StatelessWidget {
                     ),
                     CustomText(
                       onTap: () {
-                        AppNavigators.changescreen(context, RouteNames.login);
+                        AppNavigators.nextscreen(context, RouteNames.login);
                       },
                       text: AppStrings.loginButton,
                       color: AppColors.cardsColor2,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Providerc with ChangeNotifier {
+class Providerc extends ChangeNotifier {
   int? selectedIndex;
 
  

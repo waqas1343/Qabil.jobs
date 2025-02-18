@@ -10,6 +10,9 @@ import 'package:qabil_app/constant/custom_text/custom_text.dart';
 import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
+
+
+
 import '../../../navigation_screening/app_navigators.dart';
 import '../../../view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
 import '../../../widgets/customFlushbar/customFlushbar.dart';
@@ -118,7 +121,11 @@ class LoginScreen extends StatelessWidget {
                         Colors.green,
                       );
                       Future.delayed(const Duration(milliseconds: 1700), () {
+
+                        AppNavigators.nextscreen(
+
                         AppNavigators.changescreen(
+
                             context, RouteNames.bottomNavBar);
                       });
                     } else {

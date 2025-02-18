@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color appBackground = Color(0xFFFFFFFF);
   static const Color indicatorColor = Color(0xFF808080);
+  static const Color tileColor = Color(0xffF4F4F4);
   static const Color textColor = Color(0xff2D8E84);
   static const Color textColorGrey = Color(0xFF999DA3);
   static const Color blackTextClr = Color(0xFF191D23);
