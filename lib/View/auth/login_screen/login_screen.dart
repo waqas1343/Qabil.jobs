@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/Navigation_screening/app_navigators.dart';
 import 'package:qabil_app/constant/app_button/app_button.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_icons/app_icons.dart';
@@ -11,9 +12,6 @@ import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 
-
-
-import '../../../navigation_screening/app_navigators.dart';
 import '../../../view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
 import '../../../widgets/customFlushbar/customFlushbar.dart';
 
@@ -27,6 +25,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<SuffixIconController>(context);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -36,9 +35,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: AppSizes.height08(context),
-                ),
+                SizedBox(height: AppSizes.height08(context)),
                 Center(
                   child: Image.asset(
                     AppImages.forumLogo,
@@ -49,16 +46,12 @@ class LoginScreen extends StatelessWidget {
                 Center(
                   child: CustomText(text: AppStrings.loginSubtitle),
                 ),
-                SizedBox(
-                  height: AppSizes.height10(context),
-                ),
+                SizedBox(height: AppSizes.height10(context)),
                 CustomText(
                   text: AppStrings.studentId,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                SizedBox(
-                  height: AppSizes.height01(context),
-                ),
+                SizedBox(height: AppSizes.height01(context)),
                 AppTextFields.customTextField(
                   keyboardType: TextInputType.number,
                   validator: Validators.studentId,
@@ -66,9 +59,7 @@ class LoginScreen extends StatelessWidget {
                   hintText: AppStrings.studentId,
                   controller: studenIDController,
                 ),
-                SizedBox(
-                  height: AppSizes.height01(context),
-                ),
+                SizedBox(height: AppSizes.height01(context)),
                 CustomText(
                   text: AppStrings.passwordTitle,
                   style: Theme.of(context).textTheme.titleMedium,
@@ -78,7 +69,6 @@ class LoginScreen extends StatelessWidget {
                   validator: Validators.passwordValidator,
                   suffixIcon: IconButton(
                     onPressed: () {
-                      print("object");
                       provider.iconToggleFirst();
                     },
                     icon: provider.isVisibleFirst
@@ -89,9 +79,7 @@ class LoginScreen extends StatelessWidget {
                   hintText: AppStrings.passwordTitle,
                   controller: passwordController,
                 ),
-                SizedBox(
-                  height: AppSizes.height01(context),
-                ),
+                SizedBox(height: AppSizes.height01(context)),
                 Row(
                   children: [
                     const Spacer(),
@@ -106,9 +94,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: AppSizes.height04(context),
-                ),
+                SizedBox(height: AppSizes.height04(context)),
                 CustomButton(
                   btnText: AppStrings.loginButton,
                   color: AppColors.blackTextClr,
@@ -121,11 +107,7 @@ class LoginScreen extends StatelessWidget {
                         Colors.green,
                       );
                       Future.delayed(const Duration(milliseconds: 1700), () {
-
-                        AppNavigators.nextscreen(
-
                         AppNavigators.changescreen(
-
                             context, RouteNames.bottomNavBar);
                       });
                     } else {
@@ -138,16 +120,12 @@ class LoginScreen extends StatelessWidget {
                     }
                   },
                 ),
-                SizedBox(
-                  height: AppSizes.height02(context),
-                ),
+                SizedBox(height: AppSizes.height02(context)),
                 Center(
                   child: Column(
                     children: [
                       CustomText(text: AppStrings.oR),
-                      SizedBox(
-                        height: AppSizes.height01(context),
-                      ),
+                      SizedBox(height: AppSizes.height01(context)),
                       CustomText(
                         onTap: () {
                           AppNavigators.changescreen(

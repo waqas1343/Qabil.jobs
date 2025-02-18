@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/Navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -7,7 +8,7 @@ import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
-import '../../../navigation_screening/app_navigators.dart';
+// import '../../../navigation_screening/app_navigators.dart';
 import '../../../routes/routes_name/routes_names.dart';
 import '../../../view_model/controller/image_picker/image_picker_controller.dart';
 import '../../../view_model/controller/validation.dart';
@@ -105,11 +106,9 @@ class CompleteProfile extends StatelessWidget {
                         Colors.green,
                       );
                       Future.delayed(const Duration(milliseconds: 1700), () {
-
                         AppNavigators.nextscreen(context, RouteNames.login);
 
                         AppNavigators.changescreen(context, RouteNames.login);
-
                       });
                     } else {
                       CustomFlushBar.customFlushBar(
