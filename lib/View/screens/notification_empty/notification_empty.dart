@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qabil_app/constant/aap_Logo/logoPlace.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_images/app_images.dart';
 
@@ -10,6 +9,7 @@ class NotificationEmpty extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 2,
         backgroundColor: AppColors.textColor,
         title: Text("Notification",
           style: TextStyle(
@@ -21,8 +21,8 @@ class NotificationEmpty extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
-              radius: 15,
-              child: Image.asset(AppLogo.dart),
+              radius: 20,
+              backgroundImage: AssetImage(AppImages.profileImage),
             ),
           )
         ],
