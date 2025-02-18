@@ -105,7 +105,11 @@ class CompleteProfile extends StatelessWidget {
                         Colors.green,
                       );
                       Future.delayed(const Duration(milliseconds: 1700), () {
+
+                        AppNavigators.nextscreen(context, RouteNames.login);
+
                         AppNavigators.changescreen(context, RouteNames.login);
+
                       });
                     } else {
                       CustomFlushBar.customFlushBar(

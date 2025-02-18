@@ -1,10 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 
 import '../../../../view_model/controller/curser_slider/curser_slider.dart';
 import '../tab_card/tab_card_screen.dart';
+
+import 'package:qabil_app/view_model/controller/save_card_controller/saveCard.dart';
+
 
 class PostCard extends StatelessWidget {
   final Map<String, String> post;
@@ -26,7 +30,12 @@ class PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final provider = Provider.of<CurserSlider>(context);
+
+    final savedPostsProvider = Provider.of<SavedCardProvider>(context);
+    bool isSaved = savedPostsProvider.isSaved(post);
+
     return Card(
       color: AppColors.appBackground,
       child: Padding(
@@ -83,6 +92,7 @@ class PostCard extends StatelessWidget {
                   fontSize: 14,
                 ),
               ),
+
               const SizedBox(height: 10),
               SizedBox(
                 height: 200,
@@ -93,6 +103,25 @@ class PostCard extends StatelessWidget {
                       child: Image.asset(
                         imagePath,
                         width: double.infinity,
+
+            ),
+
+            const SizedBox(height: 10),
+
+            SizedBox(
+              height: 200,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: images.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: Image.asset(
+                        images[index],
+                        width: 250,
+
                         height: 200,
                         fit: BoxFit.cover,
                       ),
@@ -136,6 +165,7 @@ class PostCard extends StatelessWidget {
                     post['likes']!,
                     style: const TextStyle(color: Colors.grey),
                   ),
+
                   const SizedBox(width: 20),
                   const Icon(Icons.comment, size: 16, color: Colors.grey),
                   const SizedBox(width: 5),
@@ -155,6 +185,15 @@ class PostCard extends StatelessWidget {
               ),
             ],
           ),
+
+                  onPressed: () {
+                    savedPostsProvider.toggleSavePost(post);
+                  },
+                ),
+              ],
+            ),
+          ],
+
         ),
       ),
     );

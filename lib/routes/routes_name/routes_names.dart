@@ -29,7 +29,8 @@ class RouteNames {
 
   //notification
 
-  static const String notification = "/";
+  static const String notification = "/NotificationScreen";
+  static const String notificationEmpty = "/NotificationEmpty";
 
   //bottom navigator taps
 

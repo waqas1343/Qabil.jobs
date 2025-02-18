@@ -108,6 +108,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   height: AppSizes.height06(context),
                 ),
                 CustomButton(
+
                     btnText: AppStrings.confirm,
                     color: AppColors.blackTextClr,
                     ontap: () {
@@ -129,6 +130,21 @@ class ResetPasswordScreen extends StatelessWidget {
                           Colors.red,
                         );
                       }
+
+                  btnText: AppStrings.loginButton,
+                  color: AppColors.blackTextClr,
+                  ontap: () {
+                    if (formKey.currentState?.validate() ?? false) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: CustomText(text: 'Login Successful')),
+                      );
+
+                      AppNavigators.nextscreen(context, RouteNames.login);
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Please correct the errors")),
+                      );
+
                     }
                     // {
                     //   if (formKey.currentState?.validate() ?? false) {

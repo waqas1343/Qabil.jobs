@@ -3,7 +3,11 @@ import 'package:provider/provider.dart';
 import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 import 'package:qabil_app/widgets/customFlushbar/customFlushbar.dart';
+
+
+
 import '../../../navigation_screening/app_navigators.dart';
+
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -12,6 +16,7 @@ import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
+import '../../../navigation_screening/app_navigators.dart';
 import '../../../routes/routes_name/routes_names.dart';
 
 class StudentRigisterScreen extends StatelessWidget {
@@ -133,7 +138,11 @@ class StudentRigisterScreen extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
+
+                      AppNavigators.nextscreen(
+
                       AppNavigators.changescreen(
+
                           context, RouteNames.completeProfiler);
                     } else {
                       CustomFlushBar.customFlushBar(context,
@@ -153,7 +162,7 @@ class StudentRigisterScreen extends StatelessWidget {
                       ),
                       CustomText(
                         onTap: () {
-                          AppNavigators.changescreen(
+                          AppNavigators.nextscreen(
                               context, RouteNames.registersMentorScreen);
                         },
                         text: AppStrings.regAsMentor,
@@ -175,7 +184,11 @@ class StudentRigisterScreen extends StatelessWidget {
                     ),
                     CustomText(
                       onTap: () {
+
+                        AppNavigators.nextscreen(
+
                         AppNavigators.changescreen(
+
                             context, RouteNames.completeProfiler);
                       },
                       text: AppStrings.loginButton,
