@@ -13,6 +13,7 @@ import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_ic
 import 'package:qabil_app/view_model/controller/validation.dart';
 
 import '../../../navigation_screening/app_navigators.dart';
+import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   final TextEditingController _confirmPassController = TextEditingController();
@@ -100,13 +101,36 @@ class ResetPasswordScreen extends StatelessWidget {
                         : AppIcons.suffixIconOff,
                   ),
                   prefixIcon: AppIcons.passwordIcon,
-                  hintText: AppStrings.passwordTitle,
+                  hintText: AppStrings.confirmPassword,
                   controller: passwordController,
                 ),
                 SizedBox(
                   height: AppSizes.height06(context),
                 ),
                 CustomButton(
+
+                    btnText: AppStrings.confirm,
+                    color: AppColors.blackTextClr,
+                    ontap: () {
+                      if (formKey.currentState?.validate() ?? false) {
+                        CustomFlushBar.customFlushBar(
+                            context,
+                            AppStrings.emailSent,
+                            Icons.verified,
+                            AppColors.cardsColor2);
+                        Future.delayed(const Duration(milliseconds: 1700), () {
+                          AppNavigators.changescreen(
+                              context, RouteNames.completeProfiler);
+                        });
+                      } else {
+                        CustomFlushBar.customFlushBar(
+                          context,
+                          'Please Enter your password',
+                          Icons.info,
+                          Colors.red,
+                        );
+                      }
+
                   btnText: AppStrings.loginButton,
                   color: AppColors.blackTextClr,
                   ontap: () {
@@ -120,9 +144,22 @@ class ResetPasswordScreen extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Please correct the errors")),
                       );
+
                     }
-                  },
-                ),
+                    // {
+                    //   if (formKey.currentState?.validate() ?? false) {
+                    //     ScaffoldMessenger.of(context).showSnackBar(
+                    //       SnackBar(content: CustomText(text: 'Login Successful')),
+                    //     );
+
+                    //     AppNavigators.changescreen(context, RouteNames.login);
+                    //   } else {
+                    //     ScaffoldMessenger.of(context).showSnackBar(
+                    //       SnackBar(content: Text("Please correct the errors")),
+                    //     );
+                    //   }
+                    // },
+                    ),
               ],
             ),
           ),
