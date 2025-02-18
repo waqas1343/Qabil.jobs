@@ -12,18 +12,20 @@ import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 
-import '../../../navigation_screening/app_navigators.dart';
+import '../../../Navigation_screening/app_navigators.dart';
 import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   final TextEditingController _confirmPassController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   ResetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<SuffixIconController>(context);
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -33,9 +35,7 @@ class ResetPasswordScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: AppSizes.height04(context),
-                ),
+                SizedBox(height: AppSizes.height04(context)),
                 Center(
                   child: Image.asset(
                     AppImages.forumLogo,
@@ -43,23 +43,17 @@ class ResetPasswordScreen extends StatelessWidget {
                     height: 169,
                   ),
                 ),
-                SizedBox(
-                  height: AppSizes.height03(context),
-                ),
+                SizedBox(height: AppSizes.height03(context)),
                 CustomText(
                   text: AppStrings.resetPassword,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
-                SizedBox(
-                  height: AppSizes.height02(context),
-                ),
+                SizedBox(height: AppSizes.height02(context)),
                 CustomText(
                   text: AppStrings.resetTitle,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
-                SizedBox(
-                  height: AppSizes.height04(context),
-                ),
+                SizedBox(height: AppSizes.height04(context)),
                 CustomText(
                   text: AppStrings.passwordTitle,
                   style: Theme.of(context).textTheme.titleMedium,
@@ -68,7 +62,6 @@ class ResetPasswordScreen extends StatelessWidget {
                   obscureText: provider.isVisibleFirst,
                   suffixIcon: IconButton(
                     onPressed: () {
-                      print("object");
                       provider.iconToggleFirst();
                     },
                     icon: provider.isVisibleFirst
@@ -80,9 +73,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   hintText: AppStrings.passwordTitle,
                   controller: _confirmPassController,
                 ),
-                SizedBox(
-                  height: AppSizes.height01(context),
-                ),
+                SizedBox(height: AppSizes.height01(context)),
                 CustomText(
                   text: AppStrings.confirmPassword,
                   style: Theme.of(context).textTheme.titleMedium,
@@ -93,7 +84,6 @@ class ResetPasswordScreen extends StatelessWidget {
                       value, _confirmPassController.text),
                   suffixIcon: IconButton(
                     onPressed: () {
-                      print("object");
                       provider.iconToggleSecond();
                     },
                     icon: provider.isVisibleSecond
@@ -104,33 +94,33 @@ class ResetPasswordScreen extends StatelessWidget {
                   hintText: AppStrings.confirmPassword,
                   controller: passwordController,
                 ),
-                SizedBox(
-                  height: AppSizes.height06(context),
-                ),
+                SizedBox(height: AppSizes.height06(context)),
                 CustomButton(
-
-                    btnText: AppStrings.confirm,
-                    color: AppColors.blackTextClr,
-                    ontap: () {
-                      if (formKey.currentState?.validate() ?? false) {
-                        CustomFlushBar.customFlushBar(
-                            context,
-                            AppStrings.emailSent,
-                            Icons.verified,
-                            AppColors.cardsColor2);
-                        Future.delayed(const Duration(milliseconds: 1700), () {
-                          AppNavigators.changescreen(
-                              context, RouteNames.completeProfiler);
-                        });
-                      } else {
-                        CustomFlushBar.customFlushBar(
+                  btnText: AppStrings.confirm,
+                  color: AppColors.blackTextClr,
+                  ontap: () {
+                    if (formKey.currentState?.validate() ?? false) {
+                      CustomFlushBar.customFlushBar(
                           context,
-                          'Please Enter your password',
-                          Icons.info,
-                          Colors.red,
-                        );
-                      }
-
+                          AppStrings.emailSent,
+                          Icons.verified,
+                          AppColors.cardsColor2);
+                      Future.delayed(const Duration(milliseconds: 1700), () {
+                        AppNavigators.changescreen(
+                            context, RouteNames.completeProfiler);
+                      });
+                    } else {
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Please Enter your password',
+                        Icons.info,
+                        Colors.red,
+                      );
+                    }
+                  },
+                ),
+                SizedBox(height: AppSizes.height04(context)),
+                CustomButton(
                   btnText: AppStrings.loginButton,
                   color: AppColors.blackTextClr,
                   ontap: () {
@@ -138,28 +128,14 @@ class ResetPasswordScreen extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
-
                       AppNavigators.nextscreen(context, RouteNames.login);
                     } else {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Please correct the errors")),
                       );
-
                     }
-                    // {
-                    //   if (formKey.currentState?.validate() ?? false) {
-                    //     ScaffoldMessenger.of(context).showSnackBar(
-                    //       SnackBar(content: CustomText(text: 'Login Successful')),
-                    //     );
-
-                    //     AppNavigators.changescreen(context, RouteNames.login);
-                    //   } else {
-                    //     ScaffoldMessenger.of(context).showSnackBar(
-                    //       SnackBar(content: Text("Please correct the errors")),
-                    //     );
-                    //   }
-                    // },
-                    ),
+                  },
+                ),
               ],
             ),
           ),
