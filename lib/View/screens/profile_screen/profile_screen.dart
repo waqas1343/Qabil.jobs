@@ -10,8 +10,10 @@ import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/widgets/logout_dialog/logout_dialog.dart';
 
+import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../constant/app_strings/appstrings.dart';
 
+import '../../../constant/custom_text/custom_text.dart';
 import '../../../view_model/controller/profile_controller/profile_controller.dart';
 import '../../../widgets/custom_dialogbox/custom_dialogbox.dart';
 import '../../../widgets/select_Imagesource/select_image_source.dart';
@@ -25,12 +27,16 @@ class Profilescreen extends StatelessWidget {
       child: Scaffold(
         appBar: AppBar(
           title: Text("Profile"),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.transparent,
         ),
         body: Consumer<ProfileController>(
           builder: (context, click, child) {
             return Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Center(
                     child: Stack(
@@ -103,7 +109,13 @@ class Profilescreen extends StatelessWidget {
                   SizedBox(
                     height: 120,
                   ),
+
+                  CustomText(text: 'Name',style: Theme.of(context).textTheme.titleMedium,),
+                  SizedBox(
+                    height: AppSizes.height01(context),
+                  ),
                   AppTextFields.customTextField(
+                    readOnly: true,
                     hintText: AppStrings.nameText,
                     controller: click.nameController,
                     suffixIcon: IconButton(
@@ -111,17 +123,14 @@ class Profilescreen extends StatelessWidget {
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: CustomDialogbox(
-                                controller: click.editnameController,
-                                onSave: () {
-                                  click.nameController.text =
-                                      click.editnameController.text;
-                                },
-                                hintname: AppStrings.savebutton,
-                                titlename: AppStrings.nameText,
-                              ),
+                            return CustomDialogbox(
+                              controller: click.editnameController,
+                              onSave: () {
+                                click.nameController.text =
+                                    click.editnameController.text;
+                              },
+                              hintname: AppStrings.savebutton,
+                              titlename: AppStrings.nameText,
                             );
                           },
                         );
@@ -130,9 +139,14 @@ class Profilescreen extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: AppSizes.height01(context),
+                  ),
+                  CustomText(text: 'Bio',style: Theme.of(context).textTheme.titleMedium,),
+                  SizedBox(
+                    height: AppSizes.height01(context),
                   ),
                   AppTextFields.customTextField(
+                    readOnly: true,
                     hintText: AppStrings.bio,
                     controller: click.bioController,
                     suffixIcon: IconButton(
@@ -140,46 +154,14 @@ class Profilescreen extends StatelessWidget {
                         showDialog(
                           context: context,
                           builder: (context) {
-                            return Padding(
-                              padding: const EdgeInsets.all(20),
-                              child: CustomDialogbox(
-                                controller: click.editbioController,
-                                onSave: () {
-                                  click.bioController.text =
-                                      click.editbioController.text;
-                                },
-                                hintname: AppStrings.cencalText,
-                                titlename: AppStrings.bio,
-                              ),
-                              // child: AlertDialog(
-                              //   title: Text(AppStrings.nameText),
-                              //   actions: [
-                              //     AppTextFields.customTextField(
-                              //         hintText: AppStrings.nameText,
-                              //         controller: click.editbioController),
-                              //     SizedBox(
-                              //       height: 20,
-                              //     ),
-                              //     CustomButton(
-                              //         btnText: "Save",
-                              //         color: AppColors.textColor,
-                              //         ontap: () {
-                              //           click.bioController.text =
-                              //               click.editbioController.text;
-                              //           Navigator.pop(context);
-                              //         }),
-                              //     SizedBox(
-                              //       height: 20,
-                              //     ),
-                              //     CustomButton(
-                              //         btnText: "cancel",
-                              //         color: AppColors.textColor,
-                              //         ontap: () {
-                              //           // AppNavigators.changescreen(context, RouteNames.profile);
-                              //           Navigator.pop(context);
-                              //         }),
-                              //   ],
-                              // ),
+                            return CustomDialogbox(
+                              controller: click.editbioController,
+                              onSave: () {
+                                click.bioController.text =
+                                    click.editbioController.text;
+                              },
+                              hintname: AppStrings.cencalText,
+                              titlename: AppStrings.bio,
                             );
                           },
                         );
@@ -190,23 +172,32 @@ class Profilescreen extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  CustomButton(
-                    btnText: AppStrings.logoutButton,
-                    color: AppColors.textColor,
-                    ontap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return LogoutDialog(
-                            onConfirm: () {
-                              AppNavigators.outscreen(
-                                  context, RouteNames.login);
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomButton(
+                        icon: Icons.logout_outlined,
+                        seperationContent: 15,
+                        iconColor: AppColors.appBackground,
+                        btnWidth: 150,
+                        btnText: AppStrings.logoutButton,
+                        color: AppColors.textColor,
+                        ontap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return LogoutDialog(
+                                onConfirm: () {
+                                  AppNavigators.outscreen(
+                                      context, RouteNames.login);
+                                },
+                              );
                             },
                           );
+                          // AppNavigators.outscreen(context, RouteNames.login);
                         },
-                      );
-                      // AppNavigators.outscreen(context, RouteNames.login);
-                    },
+                      ),
+                    ],
                   ),
                 ],
               ),

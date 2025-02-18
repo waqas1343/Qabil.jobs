@@ -14,18 +14,8 @@ class ExploreScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Explore'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.bookmark),
-            onPressed: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => SavedPostsScreen(),
-                ),
-              );
-            },
-          ),
-        ],
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
       ),
       body: ListView.builder(
         itemCount: provider.posts.length,

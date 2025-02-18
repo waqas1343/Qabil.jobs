@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/constant/custom_text/custom_text.dart';
 import 'package:qabil_app/view_model/controller/save_card_controller/saveCard.dart';
 import 'package:qabil_app/widgets/customSaveCard/custom_save_card.dart';
 
@@ -14,14 +15,16 @@ class SavedPostsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Saved Posts'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
+        backgroundColor: Colors.transparent,
       ),
       body: savedPosts.isEmpty
           ? Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.bookmark, size: 50, color: Colors.grey),
-                  const Text("No saved posts yet!"),
+                  Icon(Icons.bookmark_outline, size: 120, color: Colors.grey),
+                  CustomText(text: 'No saved posts yet!'),
                 ],
               ),
             )

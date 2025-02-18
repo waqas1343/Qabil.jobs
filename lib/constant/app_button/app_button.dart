@@ -7,6 +7,11 @@ class CustomButton extends StatelessWidget {
   final Color? splashColor;
   final VoidCallback ontap;
   final EdgeInsets padding;
+  final double? btnWidth;
+  final IconData? icon;
+  final double? iconSize;
+  final Color? iconColor;
+  final double? seperationContent;
 
   const CustomButton({
     super.key,
@@ -15,6 +20,11 @@ class CustomButton extends StatelessWidget {
     this.splashColor,
     required this.ontap,
     this.padding = const EdgeInsets.all(0),
+    this.btnWidth,
+    this.icon,
+    this.iconSize,
+    this.iconColor,
+    this.seperationContent,
   });
 
   @override
@@ -24,7 +34,7 @@ class CustomButton extends StatelessWidget {
     return Padding(
       padding: padding,
       child: Container(
-        width: double.infinity,
+        width: btnWidth,
         height: 50.0,
         decoration: BoxDecoration(
           color: color,
@@ -37,18 +47,35 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(9.8),
             onTap: ontap,
             child: Center(
-              child: CustomText(
-                text: btnText,
-                style: textTheme.titleLarge?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500,
-                    ) ??
-                    TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w500,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CustomText(
+                    text: btnText,
+                    style: textTheme.titleLarge?.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500,
+                        ) ??
+                        TextStyle(
+                          color: Colors.white,
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                  Visibility(
+                      visible: icon != null,
+                      child: SizedBox(width: seperationContent)),
+                  Visibility(
+                    visible: icon != null,
+                    child: Icon(
+                      icon,
+                      size: iconSize,
+                      color: iconColor,
                     ),
+                  )
+                ],
               ),
+
             ),
           ),
         ),
