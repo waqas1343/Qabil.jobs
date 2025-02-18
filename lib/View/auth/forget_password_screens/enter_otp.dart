@@ -3,15 +3,13 @@ import 'package:pinput/pinput.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/view_model/controller/validation.dart';
 
-// import '../../../navigation_screening/app_navigators.dart';
-import '../../../Navigation_screening/app_navigators.dart';
+import '../../../navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_images/app_images.dart';
 import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../routes/routes_name/routes_names.dart';
-import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class EnterOtp extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -77,43 +75,23 @@ class EnterOtp extends StatelessWidget {
                   height: AppSizes.height06(context),
                 ),
                 CustomButton(
-                    btnText: AppStrings.loginButton,
-                    color: AppColors.blackTextClr,
-                    ontap: () {
-                      if (formKey.currentState?.validate() ?? false) {
-                        CustomFlushBar.customFlushBar(
-                            context,
-                            AppStrings.emailSent,
-                            Icons.verified,
-                            AppColors.cardsColor2);
-                        Future.delayed(const Duration(milliseconds: 1700), () {
-                          AppNavigators.changescreen(
-                              context, RouteNames.resetPassScreen);
-                        });
-                      } else {
-                        CustomFlushBar.customFlushBar(
-                          context,
-                          'Please Enter your OTP!',
-                          Icons.info,
-                          Colors.red,
-                        );
-                      }
-                    }
-                    // {
-                    //   if (formKey.currentState?.validate() ?? false) {
-                    //     ScaffoldMessenger.of(context).showSnackBar(
-                    //       SnackBar(content: CustomText(text: 'Login Successful')),
-                    //     );
+                  btnText: AppStrings.loginButton,
+                  color: AppColors.blackTextClr,
+                  ontap: () {
+                    if (formKey.currentState?.validate() ?? false) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: CustomText(text: 'Login Successful')),
+                      );
 
-                    //     AppNavigators.nextscreen(
-                    //         context, RouteNames.resetPassScreen);
-                    //   } else {
-                    //     ScaffoldMessenger.of(context).showSnackBar(
-                    //       SnackBar(content: Text("Please correct the errors")),
-                    //     );
-                    //   }
-                    // },
-                    ),
+                      AppNavigators.nextscreen(
+                          context, RouteNames.resetPassScreen);
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Please correct the errors")),
+                      );
+                    }
+                  },
+                ),
               ],
             ),
           ),

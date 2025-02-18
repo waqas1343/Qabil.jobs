@@ -21,15 +21,14 @@ class AppTextFields {
       decoration: InputDecoration(
         errorStyle: TextStyle(
           color: const Color.fromARGB(255, 24, 206, 166),
-          fontSize: 9,
+          fontSize: 14,
         ),
         hintText: hintText,
-        maintainHintHeight: true,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: fillColor ?? Colors.white,
-        hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
+        hintStyle: TextStyle(color: Colors.grey),
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         border: OutlineInputBorder(

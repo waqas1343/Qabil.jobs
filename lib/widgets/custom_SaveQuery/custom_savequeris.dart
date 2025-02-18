@@ -30,7 +30,7 @@ class CustomSaveQuery extends StatelessWidget {
                     blurRadius: 4,
                     spreadRadius: 1,
                     offset: Offset(2, 4),
-                    color: AppColors.textColorGrey,
+                    color: AppColors.textColorGrey.withOpacity(0.7),
                   ),
                 ],
               ),

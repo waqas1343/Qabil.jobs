@@ -54,9 +54,10 @@ class NotificationScreen extends StatelessWidget {
               )
             ],
           ),
-          CustomNotifications(),
-          CustomNotifications(),
-          CustomNotifications(),
+         Expanded(child:  ListView.builder(itemBuilder:(BuildContext context , int index){
+           return CustomNotifications();
+         }, itemCount: 3
+         ),),
           SizedBox(height: 20,),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,9 +85,15 @@ class NotificationScreen extends StatelessWidget {
               )
             ],
           ),
-          CustomNotifications(),
-          CustomNotifications(),
-          CustomNotifications(),
+         Expanded(
+           child: ListView.builder(
+              itemCount: 8,
+               itemBuilder: (BuildContext context , int index)
+           {
+             return CustomNotifications();
+           }),
+         ),
+
           SizedBox(height: 20,),
           Center(
             child: GestureDetector(

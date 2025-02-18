@@ -38,8 +38,8 @@ class CustomLogoCategory extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                             border: Border.all(
                                 color: provider.iconSelect == index
-                                    ? Colors.green
-                                    : Colors.blueGrey,
+                                    ? AppColors.textColor
+                                    : AppColors.textColorGrey,
                                 width: provider.iconSelect == index ? 3 : 1.3),
                             boxShadow: [
                               BoxShadow(
@@ -47,9 +47,9 @@ class CustomLogoCategory extends StatelessWidget {
                                     ? Offset(0.0, 0.0)
                                     : Offset(0.0, 5.0),
                                 blurRadius:
-                                    provider.iconSelect == index ? 0 : 2,
+                                    provider.iconSelect == index ? 0 : 5,
                                 spreadRadius:
-                                    provider.iconSelect == index ? 0 : 2,
+                                    provider.iconSelect == index ? 0 : 3,
                                 color: AppColors.indicatorColor,
                               ),
                             ]),

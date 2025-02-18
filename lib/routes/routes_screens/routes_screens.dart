@@ -5,6 +5,7 @@ import 'package:qabil_app/View/auth/signup_screen/student_rigister_screen.dart';
 import 'package:qabil_app/View/screens/notification/notifications.dart';
 import 'package:qabil_app/View/screens/notification_empty/notification_empty.dart';
 import 'package:qabil_app/widgets/CustombottomNavbar/customNavbar.dart';
+
 import '../../View/auth/forget_password_screens/enter_otp.dart';
 import '../../View/auth/forget_password_screens/forget_password_screen.dart';
 import '../../View/auth/forget_password_screens/reset_password_screen.dart';
@@ -17,8 +18,9 @@ class RouteScreens {
     return {
       //splashscreen
       // RouteNames.splashscreen: (context) => const LoginScreens(),
+
       //auth module screens
-      RouteNames.forgotpassword: (context) => ForgetPasswordScreen(),
+      RouteNames.forgotpassword: (context) =>  ForgetPasswordScreen(),
       RouteNames.resetPassScreen: (context) => ResetPasswordScreen(),
       RouteNames.bottomNavBar: (context) => CustomNavbar(),
       RouteNames.enterotp: (context) => EnterOtp(),
@@ -28,13 +30,18 @@ class RouteScreens {
       RouteNames.registersStudentScreen: (context) => StudentRigisterScreen(),
       RouteNames.completeProfiler: (context) => CompleteProfile(),
       // RouteNames.completeProfiler: (context) => CompleteProfile(),
+
       //dashBoard
       RouteNames.dashboard: (context) => const DashBoardScreen(),
       RouteNames.notification: (context) => const NotificationScreen(),
-      RouteNames.notificationEmpty: (context) => const NotificationEmpty(),
+      RouteNames.notificationEmpty : (context) => const NotificationEmpty(),
+
       //profile mentor
       // RouteNames.profileMentor : (context) => MentorProfile(),
+
+
       //bottom navigation
+
       // RouteNames.profile: (context) => const LoginScreens(),
       // RouteNames.savequires: (context) => const LoginScreens(),
       // RouteNames.expolre: (context) => const LoginScreens(),

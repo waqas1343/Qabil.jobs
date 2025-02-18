@@ -8,8 +8,4 @@ class AppNavigators {
   static nextscreen(BuildContext context, String page) {
     Navigator.pushNamed(context, page);
   }
-
-  static changescreen(BuildContext context, String page) {
-    Navigator.pushReplacementNamed(context, page);
-  }
 }
