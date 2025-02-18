@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -106,7 +105,11 @@ class CompleteProfile extends StatelessWidget {
                         Colors.green,
                       );
                       Future.delayed(const Duration(milliseconds: 1700), () {
+
                         AppNavigators.nextscreen(context, RouteNames.login);
+
+                        AppNavigators.changescreen(context, RouteNames.login);
+
                       });
                     } else {
                       CustomFlushBar.customFlushBar(

@@ -4,6 +4,10 @@ import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_ic
 import 'package:qabil_app/view_model/controller/validation.dart';
 import 'package:qabil_app/widgets/customFlushbar/customFlushbar.dart';
 
+
+
+import '../../../navigation_screening/app_navigators.dart';
+
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -134,7 +138,11 @@ class StudentRigisterScreen extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: CustomText(text: 'Login Successful')),
                       );
+
                       AppNavigators.nextscreen(
+
+                      AppNavigators.changescreen(
+
                           context, RouteNames.completeProfiler);
                     } else {
                       CustomFlushBar.customFlushBar(context,
@@ -176,7 +184,11 @@ class StudentRigisterScreen extends StatelessWidget {
                     ),
                     CustomText(
                       onTap: () {
+
                         AppNavigators.nextscreen(
+
+                        AppNavigators.changescreen(
+
                             context, RouteNames.completeProfiler);
                       },
                       text: AppStrings.loginButton,
