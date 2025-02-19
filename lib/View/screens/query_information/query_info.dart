@@ -12,7 +12,10 @@ import '../../../view_model/controller/image_post_controller/query_post_controll
 import '../../../widgets/select_Imagesource/select_image_source.dart';
 
 class QueryInfo extends StatelessWidget {
-  const QueryInfo({super.key});
+   QueryInfo({super.key});
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController queryDescriptionController =
+  TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,25 +34,11 @@ class QueryInfo extends StatelessWidget {
       }
     }
 
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController queryDescriptionController =
-        TextEditingController();
+
 
     void postQuery() {
-      final name = nameController.text.trim();
-      final description = queryDescriptionController.text.trim();
-      final images = context.read<QueryPostController>().images;
 
-      if (name.isEmpty || description.isEmpty) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text('Please enter your name and query description')),
-        );
-        return;
-      }
-      print('Name: $name');
-      print('Description: $description');
-      print('Images: $images');
+
 
       // Clear the form after posting
       nameController.clear();
