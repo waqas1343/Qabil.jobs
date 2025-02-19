@@ -88,7 +88,7 @@ class CustomNavbar extends StatelessWidget {
                           Icons.home_rounded,
                           color: provider.pageIndex == 0
                               ? AppColors.iconsColors
-                              : AppColors.blackTextClr,
+                              : AppColors.appBackground,
                           size: 30,
                         ),
                       ),
@@ -98,8 +98,8 @@ class CustomNavbar extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 10,
                         color: provider.pageIndex == 0
-                            ? AppColors.iconsColors
-                            : AppColors.blackTextClr,
+                            ?  AppColors.iconsColors
+                            : AppColors.appBackground,
                       ),
                     ),
                   ],
@@ -115,7 +115,7 @@ class CustomNavbar extends StatelessWidget {
                           Icons.explore_outlined,
                           color: provider.pageIndex == 1
                               ? AppColors.iconsColors
-                              : AppColors.blackTextClr,
+                              : AppColors.appBackground,
                           size: 30,
                         ),
                       ),
@@ -125,8 +125,8 @@ class CustomNavbar extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 10,
                         color: provider.pageIndex == 1
-                            ? AppColors.iconsColors
-                            : AppColors.blackTextClr,
+                            ?  AppColors.iconsColors
+                            : AppColors.appBackground,
                       ),
                     ),
                   ],
@@ -145,8 +145,8 @@ class CustomNavbar extends StatelessWidget {
                         icon: Icon(
                           Icons.bookmark_outline,
                           color: provider.pageIndex == 2
-                              ? AppColors.iconsColors
-                              : AppColors.blackTextClr,
+                              ?  AppColors.iconsColors
+                              : AppColors.appBackground,
                           size: 30,
                         ),
                       ),
@@ -157,7 +157,7 @@ class CustomNavbar extends StatelessWidget {
                         fontSize: 10,
                         color: provider.pageIndex == 2
                             ? AppColors.iconsColors
-                            : AppColors.blackTextClr,
+                            : AppColors.appBackground,
                       ),
                     ),
                   ],
@@ -173,7 +173,7 @@ class CustomNavbar extends StatelessWidget {
                           Icons.person_outlined,
                           color: provider.pageIndex == 3
                               ? AppColors.iconsColors
-                              : AppColors.blackTextClr,
+                              : AppColors.appBackground,
                           size: 30,
                         ),
                       ),
@@ -183,8 +183,8 @@ class CustomNavbar extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 10,
                         color: provider.pageIndex == 3
-                            ? AppColors.iconsColors
-                            : AppColors.blackTextClr,
+                            ?  AppColors.iconsColors
+                            : AppColors.appBackground,
                       ),
                     ),
                   ],
