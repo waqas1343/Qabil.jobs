@@ -46,22 +46,31 @@ class CompleteProfile extends StatelessWidget {
                     onTap: () {
                       provider.getImages();
                     },
-                    child: CircleAvatar(
-                      radius: 60,
-                      child: provider.images1 == null
-                          ? Icon(
-                              Icons.person,
-                              size: 60,
-                              color: Colors.white,
-                            )
-                          : ClipOval(
-                              child: Image.file(
-                                provider.images1!,
-                                width: 120,
-                                height: 120,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                    child: Stack(
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: AppColors.cardsColor2,
+                          radius: 60,
+                          child: provider.images1 == null
+                              ? Icon(
+                                  Icons.person,
+                                  size: 60,
+                                  color: Colors.white,
+                                )
+                              : ClipOval(
+                                  child: Image.file(
+                                    provider.images1!,
+                                    width: 120,
+                                    height: 120,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                        ),
+                        Positioned(
+                            bottom: 12,
+                            right: 2,
+                            child: Icon(Icons.camera_alt_rounded))
+                      ],
                     ),
                   ),
                 ),
@@ -96,22 +105,23 @@ class CompleteProfile extends StatelessWidget {
                 SizedBox(height: AppSizes.height07(context)),
                 CustomButton(
                   btnText: AppStrings.savebutton,
-                  color: AppColors.blackTextClr,
+                  color: AppColors.cardsColor2,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
                       CustomFlushBar.customFlushBar(
                         context,
-                        'Login Successfully',
+                        'Your password is Created',
                         Icons.verified,
                         Colors.green,
                       );
                       Future.delayed(const Duration(milliseconds: 1700), () {
-                        AppNavigators.nextscreen(context, RouteNames.login);
+                        AppNavigators.nextscreen(
+                            context, RouteNames.bottomNavBar);
                       });
                     } else {
                       CustomFlushBar.customFlushBar(
                         context,
-                        'Please fill all fields',
+                        'Please complete your Profile',
                         Icons.info,
                         Colors.red,
                       );

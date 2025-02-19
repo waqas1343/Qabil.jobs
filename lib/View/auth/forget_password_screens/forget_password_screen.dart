@@ -11,6 +11,7 @@ import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
 import '../../../routes/routes_name/routes_names.dart';
 import '../../../view_model/controller/validation.dart';
+import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -70,18 +71,25 @@ class ForgetPasswordScreen extends StatelessWidget {
                   height: AppSizes.height08(context),
                 ),
                 CustomButton(
-                  btnText: AppStrings.loginButton,
-                  color: AppColors.blackTextClr,
+                  btnText: AppStrings.forgotSendbutton,
+                  color: AppColors.cardsColor2,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: CustomText(text: 'Login Successful')),
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Email sent successfully',
+                        Icons.verified,
+                        Colors.green,
                       );
-
-                      AppNavigators.nextscreen(context, RouteNames.enterotp);
+                      Future.delayed(const Duration(milliseconds: 1700), () {
+                        AppNavigators.nextscreen(context, RouteNames.enterotp);
+                      });
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Please correct the errors")),
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Email is required',
+                        Icons.info,
+                        Colors.red,
                       );
                     }
                   },
