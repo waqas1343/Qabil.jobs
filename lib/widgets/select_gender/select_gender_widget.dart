@@ -44,7 +44,7 @@ class SelectGenderWidget extends StatelessWidget {
             ),
             errorStyle: TextStyle(
               color: const Color.fromARGB(255, 24, 206, 166),
-              fontSize: 14,
+              fontSize: 10,
             ),
           ),
           dropdownColor: Colors.white,

@@ -10,7 +10,7 @@ class RouteNames {
   static const String bottomNavBar = "/bottomNavBar";
   static const String resetPassScreen = "/resetPassScreen";
   static const String login = "/LoginScreens";
-  static const String completeProfiler = "/CompleteProfile";
+  static const String completeProfile = "/CompleteProfile";
   static const String signout = "/";
   static const String forgotpassword = "/ForgetPassword";
   static const String resetpassword = "/ResetPassword";
