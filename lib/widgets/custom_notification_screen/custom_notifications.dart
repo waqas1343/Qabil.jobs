@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qabil_app/constant/aap_Logo/logoPlace.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
+import 'package:qabil_app/constant/app_images/app_images.dart';
 
 class CustomNotifications extends StatelessWidget {
   const CustomNotifications({super.key});
@@ -10,8 +11,7 @@ class CustomNotifications extends StatelessWidget {
       return Padding(
         padding: const EdgeInsets.all(10),
         child: Container(
-        height: MediaQuery.of(context).size.height * 0.09,
-        width: MediaQuery.of(context).size.width * 1.00,
+          height: 90,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
@@ -30,15 +30,15 @@ class CustomNotifications extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 23,top: 9),
               child: CircleAvatar(
-                radius: 15,
-                child :Image.asset(AppLogo.flutter),
+                radius: 16,
+                backgroundImage: AssetImage(AppImages.profileImage),
               ),
             ),
-            SizedBox(width: MediaQuery.of(context).size.width * 0.020,),
+            SizedBox(width: 12,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.012,),
+                SizedBox(height : 12,),
                 Text("Tehami Khan",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
@@ -46,18 +46,21 @@ class CustomNotifications extends StatelessWidget {
                     color: AppColors.blackTextClr,
                   ),
                 ),
-                Text('Lorem ipsum dolor sit amet, consectetu adipiscing,'
-                    ,style: TextStyle(
-                    color: AppColors.blackTextClr,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600
-                  ),),
+                Flexible(
+                  child: Text('Lorem ipsum dolor sit amet, consectetu adipiscing,'
+                      ,style: TextStyle(
+                      color: AppColors.blackTextClr,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w600
+                    ),),
+                ),
               ],
             ),
-
-            SizedBox(width: MediaQuery.of(context).size.width * 0.15,),
+            Expanded(
+                child: SizedBox(width: 70,)
+            ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(top: 10,right: 3),
               child: Text("Nov 24 , 2022",
               style: TextStyle(
                 color: AppColors.blackTextClr,

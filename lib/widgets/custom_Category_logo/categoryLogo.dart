@@ -45,11 +45,11 @@ class CustomLogoCategory extends StatelessWidget {
                               BoxShadow(
                                 offset: provider.iconSelect == index
                                     ? Offset(0.0, 0.0)
-                                    : Offset(0.0, 5.0),
+                                    : Offset(0.0, 0.5),
                                 blurRadius:
-                                    provider.iconSelect == index ? 0 : 5,
-                                spreadRadius:
-                                    provider.iconSelect == index ? 0 : 3,
+                                    provider.iconSelect == index ? 0 : 2,
+                                // spreadRadius:
+                                //     provider.iconSelect == index ? 0 : 3,
                                 color: AppColors.indicatorColor,
                               ),
                             ]),

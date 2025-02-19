@@ -3,6 +3,7 @@ class AppStrings {
   static const String loginTitle = "log In account";
   static const String loginSubtitle = "Please sign in to continue";
   static const String passwordTitle = "Password";
+  static const String confirim = "Confirm";
   static const String phoneTitle = "03---------";
   static const String studentTab = "Student";
   static const String mentorTab = "Mentor";
@@ -21,7 +22,7 @@ class AppStrings {
   static const String resetTitle =
       "Your new password must be different from\n previous used password";
   static const String forgetOTPTitle =
-      "Enter the OTP code we have send you\n on your provided phone number";
+      "Enter the OTP code we have send you\n on your provided Email ";
   static const String vEnterName = "Enter Your Name!";
   static const String studentID = "Enter Your given ID!";
   static const String vEmailRequired = "Email is required!";

@@ -47,6 +47,7 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(9.8),
             onTap: ontap,
             child: Center(
+
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -71,6 +72,19 @@ class CustomButton extends StatelessWidget {
                       icon,
                       size: iconSize,
                       color: iconColor,
+
+              child: CustomText(
+                text: btnText,
+                style: textTheme.titleLarge?.copyWith(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ) ??
+                    TextStyle(
+                      color: Colors.white,
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.w500,
+
                     ),
                   )
                 ],

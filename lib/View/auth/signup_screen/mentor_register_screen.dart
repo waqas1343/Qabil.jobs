@@ -12,6 +12,7 @@ import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
 import '../../../routes/routes_name/routes_names.dart';
+import '../../../widgets/customFlushbar/customFlushbar.dart';
 
 class MentorRegisterScreen extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -116,17 +117,25 @@ class MentorRegisterScreen extends StatelessWidget {
                 ),
                 CustomButton(
                   btnText: AppStrings.register,
-                  color: AppColors.blackTextClr,
+                  color: AppColors.cardsColor2,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: CustomText(text: 'Login Successful')),
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Complete your profile',
+                        Icons.verified,
+                        Colors.green,
                       );
-
-                      Navigator.pushNamed(context, '/SignUpScreen');
+                      Future.delayed(const Duration(milliseconds: 1700), () {
+                        AppNavigators.nextscreen(
+                            context, RouteNames.completeProfile);
+                      });
                     } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Please correct the errors")),
+                      CustomFlushBar.customFlushBar(
+                        context,
+                        'Please fill all fields',
+                        Icons.info,
+                        Colors.red,
                       );
                     }
                   },

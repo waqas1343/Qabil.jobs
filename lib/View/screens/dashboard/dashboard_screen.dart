@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:qabil_app/Navigation_screening/app_navigators.dart';
+import 'package:qabil_app/View/screens/notification/notifications.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
+import 'package:qabil_app/constant/app_images/app_images.dart';
+import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/view_model/selectors_logo/selector_model.dart';
 import 'package:qabil_app/widgets/custom_Category_logo/categoryLogo.dart';
 
@@ -12,7 +16,7 @@ class DashBoardScreen extends StatelessWidget {
       child: Scaffold(
         body: Column(
           children: [
-            _buildHeader(),
+            _buildHeader(context),
             _buildCategoryList(),
           ],
         ),
@@ -20,7 +24,7 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return Container(
       width: double.infinity,
       height: 100,
@@ -29,7 +33,7 @@ class DashBoardScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildActionIcons(),
+          _buildActionIcons(context),
         ],
       ),
     );
@@ -60,12 +64,30 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildActionIcons() {
+  Widget _buildActionIcons(BuildContext context) {
     return Row(
       children: [
+
+        Text("Hi \n Waqas",
+        style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: AppColors.appBackground,
+        ),),
+        SizedBox(width: 210,),
+        GestureDetector(
+          onTap: (){
+            AppNavigators.nextscreen(context, RouteNames.notification);
+          },
+          child: Icon(Icons.notifications_none_outlined,
+          size: 35,
+          color: AppColors.appBackground,),
+        ),
+
+        SizedBox(width: 15,),
         CircleAvatar(
-          radius: 25,
-          backgroundImage: AssetImage('assets/images/profileimage.png'),
+          radius: 20,
+          backgroundImage: AssetImage(AppImages.profileImage),
         )
       ],
     );

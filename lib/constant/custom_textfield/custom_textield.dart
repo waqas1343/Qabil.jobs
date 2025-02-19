@@ -20,17 +20,18 @@ class AppTextFields {
       controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
+      style: TextStyle(fontSize: 14),
       decoration: InputDecoration(
         errorStyle: TextStyle(
           color: const Color.fromARGB(255, 24, 206, 166),
-          fontSize: 14,
+          fontSize: 10,
         ),
         hintText: hintText,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: fillColor ?? Colors.white,
-        hintStyle: TextStyle(color: Colors.grey),
+        hintStyle: TextStyle(color: Colors.grey, fontSize: 12),
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         border: OutlineInputBorder(
