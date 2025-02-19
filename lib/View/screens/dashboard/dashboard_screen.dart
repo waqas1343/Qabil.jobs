@@ -39,42 +39,42 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget buildUserGreeting() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(
-          "Hi!",
-          style: TextStyle(
-            color: AppColors.appBackground,
-            fontWeight: FontWeight.bold,
-            fontSize: 23,
-          ),
-        ),
-        Text(
-          "Saim!",
-          style: TextStyle(
-            color: AppColors.appBackground,
-            fontWeight: FontWeight.bold,
-            fontSize: 30,
-          ),
-        )
-      ],
-    );
-  }
+  // Widget buildUserGreeting() {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: [
+  //       Text(
+  //         "Hi!",
+  //         style: TextStyle(
+  //           color: AppColors.appBackground,
+  //           fontWeight: FontWeight.bold,
+  //           fontSize: 23,
+  //         ),
+  //       ),
+  //       Text(
+  //         "Saim!",
+  //         style: TextStyle(
+  //           color: AppColors.appBackground,
+  //           fontWeight: FontWeight.bold,
+  //           fontSize: 30,
+  //         ),
+  //       )
+  //     ],
+  //   );
+  // }
 
   Widget _buildActionIcons(BuildContext context) {
     return Row(
       children: [
-
         Text("Hi \n Waqas",
         style: TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
           color: AppColors.appBackground,
         ),),
-        SizedBox(width: 210,),
+
+        SizedBox(width: 120,),
         GestureDetector(
           onTap: (){
             AppNavigators.nextscreen(context, RouteNames.notification);

@@ -25,7 +25,7 @@ class AppTheme {
         titleLarge: TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
-          color: AppColors.blackTextClr,
+          color: AppColors.appBackground,
         ),
         titleMedium: TextStyle(
           fontSize: 14.0,
