@@ -12,6 +12,21 @@ class SavedCardProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool thumbsUp = false;
+
+  void ClickedThumbsUp(post){
+    thumbsUp = !thumbsUp;
+    savedPosts.contains(post);
+  }
+
+  bool comment = false;
+
+  void ClickedComment(post){
+    comment = !comment;
+    savedPosts.contains(post);
+
+  }
+
   bool isSaved(post) {
     return savedPosts.contains(post);
   }

@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../save_card_controller/saveCard.dart';
 
 class PostProvider with ChangeNotifier {
+
+  int count = 0;
+
   final List<Map<String, String>> posts = [
     {
       'name': 'Abdul Rehman Rashid',
@@ -9,7 +15,7 @@ class PostProvider with ChangeNotifier {
 
       'title2': 'Custom widgets are user-defined components that can be used to display data, information, or features.',
 
-      'likes': '42K',
+      'likes': '${0}',
       'comments': '52K',
       'image': 'assets/images/profileimage.png',
       'postImage': 'assets/images/profileimage.png',

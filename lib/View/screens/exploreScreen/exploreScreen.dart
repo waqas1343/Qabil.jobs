@@ -27,6 +27,7 @@ class ExploreScreen extends StatelessWidget {
             post: post,
             isSaved: provider.isPostSaved(post),
             onSave: () => provider.toggleSavePost(post),
+
           );
         },
       ),

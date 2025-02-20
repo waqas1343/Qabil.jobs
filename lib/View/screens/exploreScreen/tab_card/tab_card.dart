@@ -12,6 +12,7 @@ class PostDetailScreen extends StatelessWidget {
   final bool isSaved;
   final List<String> images;
 
+
   const PostDetailScreen({
     super.key,
     required this.post,
@@ -24,6 +25,7 @@ class PostDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final savedPostsProvider = Provider.of<SavedCardProvider>(context);
     final provider = Provider.of<CurserPostSlider>(context);
+    bool isSaved = savedPostsProvider.isSaved(post);
     return Scaffold(
       appBar: AppBar(title: Text(post['name'] ?? "Unknown User")),
       body: Padding(
@@ -36,7 +38,7 @@ class PostDetailScreen extends StatelessWidget {
               children: [
                 CircleAvatar(
                   backgroundImage:
-                  post['image'] != null ? AssetImage(post['image']!) : null,
+                      post['image'] != null ? AssetImage(post['image']!) : null,
                   radius: 20,
                   child: post['image'] == null
                       ? const Icon(Icons.person, size: 20)
@@ -119,28 +121,52 @@ class PostDetailScreen extends StatelessWidget {
             const SizedBox(height: 10),
             Row(
               children: [
-                const Icon(Icons.thumb_up, size: 28, color: AppColors.textColorGrey),
+                GestureDetector(
+                  onTap: () {
+                    savedPostsProvider.ClickedThumbsUp(post);
+                    savedPostsProvider.thumbsUp;
+                  },
+                  child: Icon(savedPostsProvider.thumbsUp ? Icons.thumb_up : Icons.thumb_up_outlined,
+                      size: 28,
+                      color: savedPostsProvider.thumbsUp
+                          ? AppColors.textColor
+                          : AppColors.textColorGrey),
+                ),
                 const SizedBox(width: 5),
                 Text(
                   post['likes'] ?? '0',
-                  style: const TextStyle(color: AppColors.textColorGrey, fontSize: 16),
+                  style: const TextStyle(
+                      color: AppColors.textColorGrey, fontSize: 16),
                 ),
                 const SizedBox(width: 20),
-                const Icon(Icons.comment, size: 28, color: AppColors.textColorGrey),
+                GestureDetector(
+                  onTap: () {
+                    savedPostsProvider.ClickedComment(post);
+                    savedPostsProvider.comment;
+                  },
+                  child: Icon(savedPostsProvider.comment ? Icons.comment : Icons.comment_outlined,
+                      size: 28,
+                      color: savedPostsProvider.comment
+                          ? AppColors.textColor
+                          : AppColors.textColorGrey),
+                ),
                 const SizedBox(width: 5),
                 Text(
                   post['comments'] ?? '0',
-                  style: const TextStyle(color: AppColors.textColorGrey, fontSize: 16),
+                  style: const TextStyle(
+                      color: AppColors.textColorGrey, fontSize: 16),
                 ),
                 const Spacer(),
                 IconButton(
                   icon: Icon(
-                    isSaved ? Icons.bookmark : Icons.bookmark_border,
-                    color: isSaved ? AppColors.textColor : AppColors.blackTextClr,
+                    isSaved ? Icons.bookmark : Icons.bookmark_outline,
+                    color:
+                        isSaved ? AppColors.textColor : AppColors.textColorGrey,
                     size: 33,
                   ),
                   onPressed: () {
-                    savedPostsProvider.toggleSavePost(post);
+                    isSaved;
+                   savedPostsProvider.toggleSavePost(post);
                   },
                 ),
               ],
