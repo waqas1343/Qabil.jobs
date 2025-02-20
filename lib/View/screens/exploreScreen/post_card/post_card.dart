@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/view_model/controller/save_card_controller/saveCard.dart';
 
 class PostCard extends StatelessWidget {
@@ -25,6 +26,7 @@ class PostCard extends StatelessWidget {
     final savedPostsProvider = Provider.of<SavedCardProvider>(context);
     bool isSaved = savedPostsProvider.isSaved(post);
     return Card(
+      color: AppColors.appBackground,
       margin: const EdgeInsets.all(10),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -101,24 +103,25 @@ class PostCard extends StatelessWidget {
             // Like, Comment, Save Row
             Row(
               children: [
-                const Icon(Icons.thumb_up, size: 16, color: Colors.grey),
+                const Icon(Icons.thumb_up, size: 28, color: AppColors.textColorGrey),
                 const SizedBox(width: 5),
                 Text(
                   post['likes']!,
-                  style: const TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: AppColors.textColorGrey,fontSize: 16),
                 ),
                 const SizedBox(width: 20),
-                const Icon(Icons.comment, size: 16, color: Colors.grey),
+                const Icon(Icons.comment, size: 28, color: AppColors.textColorGrey),
                 const SizedBox(width: 5),
                 Text(
                   post['comments']!,
-                  style: const TextStyle(color: Colors.grey),
+                  style: const TextStyle(color: AppColors.textColorGrey,fontSize: 16),
                 ),
                 const Spacer(),
                 IconButton(
                   icon: Icon(
                     isSaved ? Icons.bookmark : Icons.bookmark_border,
-                    color: isSaved ? Colors.blue : Colors.grey,
+                    color: isSaved ? Colors.blue : AppColors.textColorGrey,
+                    size: 33,
                   ),
                   onPressed: () {
                     savedPostsProvider.toggleSavePost(post);

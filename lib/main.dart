@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+
+import 'package:qabil_app/View/screens/exploreScreen/exploreScreen.dart';
+
 import 'package:qabil_app/View/screens/profile_screen/profile_screen.dart';
 import 'package:qabil_app/View/screens/student_profile/student_profile.dart';
+
 
 import 'package:qabil_app/View/splash_screen/splash_screen.dart';
 
@@ -42,7 +46,10 @@ class MyApp extends StatelessWidget {
         initialRoute: RouteNames.profileStudent,
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
-        home: ProfileStudent(),
+
+        home: ExploreScreen(),
+
+
       ),
     );
   }
