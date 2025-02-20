@@ -4,6 +4,7 @@ import 'package:qabil_app/View/screens/dashboard/dashboard_screen.dart';
 import 'package:qabil_app/View/screens/exploreScreen/exploreScreen.dart';
 import 'package:qabil_app/View/screens/profile_screen/profile_screen.dart';
 import 'package:qabil_app/View/screens/saveScreen/saveScreen.dart';
+import 'package:qabil_app/View/screens/student_profile/student_profile.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/widgets/CustombottomNavbar/custom_icon_button/customIconButton.dart';
 
@@ -21,7 +22,7 @@ class CustomNavbar extends StatelessWidget {
       DashBoardScreen(),
       ExploreScreen(),
       SavedPostsScreen(),
-      Profilescreen(),
+      ProfileStudent(),
     ];
 
     return Consumer<BottomNavbarController>(

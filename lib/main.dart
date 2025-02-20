@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
 
-        home: SplashScreen(),
+        home: ProfileStudent(),
 
 
 

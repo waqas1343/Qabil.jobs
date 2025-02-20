@@ -30,7 +30,7 @@ class CustomNotifications extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 23,top: 9),
               child: CircleAvatar(
-                radius: 16,
+                radius: 20,
                 backgroundImage: AssetImage(AppImages.profileImage),
               ),
             ),
@@ -42,12 +42,14 @@ class CustomNotifications extends StatelessWidget {
                 Text("Tehami Khan",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 15,
+                    fontSize: 17,
                     color: AppColors.blackTextClr,
                   ),
                 ),
                 Flexible(
-                  child: Text('Lorem ipsum dolor sit amet, consectetu adipiscing,'
+                  child: Text('Lorem ipsum dolor sit amet, consectetu adipiscing,\n'
+                      'vsghdsgfsfdjhgsfdjhfdbjhfdbjfhbfdshbsdffdbjfdbj\n'
+                      'fskfsjndjfgdjfgdnbjbfghjfbh'
                       ,style: TextStyle(
                       color: AppColors.blackTextClr,
                       fontSize: 10,
