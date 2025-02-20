@@ -5,7 +5,10 @@ class PostProvider with ChangeNotifier {
     {
       'name': 'Abdul Rehman Rashid',
       'time': '2 Hour ago',
-      'title': 'How to change background ...Read More',
+      'title': 'Flutter Custom Widget',
+
+      'title2': 'Custom widgets are user-defined components that can be used to display data, information, or features.',
+
       'likes': '42K',
       'comments': '52K',
       'image': 'assets/images/profileimage.png',

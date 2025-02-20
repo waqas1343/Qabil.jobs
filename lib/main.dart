@@ -43,11 +43,10 @@ class MyApp extends StatelessWidget {
       providers: multiAppProviders,
       child: MaterialApp( 
         debugShowCheckedModeBanner: false,
-        initialRoute: RouteNames.profileStudent,
+        initialRoute: RouteNames.splashscreen,
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
-
-        home: ExploreScreen(),
+        home: SplashScreen(),
 
 
       ),
