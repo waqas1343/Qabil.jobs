@@ -53,15 +53,8 @@ class CustomButton extends StatelessWidget {
                 children: [
                   CustomText(
                     text: btnText,
-                    style: textTheme.titleLarge?.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                        ) ??
-                        TextStyle(
-                          color: Colors.white,
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w500,
-                        ),
+                    style: textTheme.titleLarge
+
                   ),
                   Visibility(
                       visible: icon != null,
@@ -71,22 +64,7 @@ class CustomButton extends StatelessWidget {
                     child: Icon(
                       icon,
                       size: iconSize,
-                      color: iconColor,
-
-              child: CustomText(
-                text: btnText,
-                style: textTheme.titleLarge?.copyWith(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                    ) ??
-                    TextStyle(
-                      color: Colors.white,
-                      fontSize: 12.0,
-                      fontWeight: FontWeight.w500,
-
-                    ),
-                  )
+                      color: iconColor,)),
                 ],
               ),
 
