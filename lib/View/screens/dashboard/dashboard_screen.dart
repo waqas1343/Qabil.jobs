@@ -14,6 +14,23 @@ class DashBoardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        // appBar: AppBar(
+        //   title: Text("Hi",
+        //     style: TextStyle(
+        //       color: AppColors.appBackground,
+        //       fontSize: 25,
+        //     ),
+        //   ),
+        //   actions: [
+        //     Icon(Icons.notifications_none_rounded,
+        //       color: AppColors.appBackground,),
+        //     SizedBox(width: 10,),
+        //
+        //     CircleAvatar(
+        //       backgroundImage: AssetImage(AppImages.profileImage),
+        //     )
+        //   ],
+        // ),
         body: Column(
           children: [
             _buildHeader(context),
@@ -39,6 +56,30 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
+  Widget buildUserGreeting() {
+    return Column(
+      // crossAxisAlignment: CrossAxisAlignment.start,
+      // mainAxisAlignment: MainAxisAlignment.center,
+      // children: [
+      //   Text(
+      //     "Hi!",
+      //     style: TextStyle(
+      //       color: AppColors.appBackground,
+      //       fontWeight: FontWeight.bold,
+      //       fontSize: 23,
+      //     ),
+      //   ),
+      //   Text(
+      //     "Saim!",
+      //     style: TextStyle(
+      //       color: AppColors.appBackground,
+      //       fontWeight: FontWeight.bold,
+      //       fontSize: 30,
+      //     ),
+      //   )
+      // ],
+    );
+  }
   // Widget buildUserGreeting() {
   //   return Column(
   //     crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,6 +118,7 @@ class DashBoardScreen extends StatelessWidget {
         SizedBox(width: 120,),
         GestureDetector(
           onTap: (){
+
             AppNavigators.nextscreen(context, RouteNames.notification);
           },
           child: Icon(Icons.notifications_none_outlined,
