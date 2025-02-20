@@ -47,4 +47,7 @@ final List<ChangeNotifierProvider> multiAppProviders = [
 
   ///////////////////////////
   ChangeNotifierProvider<CurserPostSlider>(create: (_) => CurserPostSlider()),
+
+  ChangeNotifierProvider<QueryPostController>(create: (_) => QueryPostController()),
+
 ];

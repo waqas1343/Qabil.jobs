@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_app/View/auth/login_screen/login_screen.dart';
 
 import 'package:qabil_app/View/screens/exploreScreen/exploreScreen.dart';
 
@@ -46,7 +47,9 @@ class MyApp extends StatelessWidget {
         initialRoute: RouteNames.splashscreen,
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
+
         home: SplashScreen(),
+
 
 
       ),
