@@ -6,6 +6,7 @@ import 'package:qabil_app/View/screens/profile_screen/profile_screen.dart';
 import 'package:qabil_app/View/screens/saveScreen/saveScreen.dart';
 import 'package:qabil_app/View/screens/student_profile/student_profile.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
+import 'package:qabil_app/widgets/CustombottomNavbar/custom_icon_button/customIconButton.dart';
 
 import '../../View/screens/query_information/query_info.dart';
 import '../../view_model/controller/bottom_navbar_controller/bottom_navbar_controller.dart';
@@ -29,40 +30,37 @@ class CustomNavbar extends StatelessWidget {
         return Scaffold(
           body: pages[provider.pageIndex],
           floatingActionButton: Container(
-            width: 68,
-            height: 68,
+            width: 60,
+            height: 60,
             decoration: BoxDecoration(
-              color: AppColors.appBackground,
-              borderRadius: BorderRadius.circular(50),
-            ),
+                color: AppColors.appBackground,
+                borderRadius: BorderRadius.circular(50),
+                boxShadow: [
+                  BoxShadow(
+                    color: AppColors.indicatorColor,
+                    blurRadius: 5,
+                    spreadRadius: 2,
+                    offset: Offset(0, 0),
+                  )
+                ]),
             child: Center(
-              child: Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: AppColors.textColor,
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                child: Center(
-                  child: IconButton(
-                    onPressed: () {
-                      showModalBottomSheet(
-                        scrollControlDisabledMaxHeightRatio: 0.8,
-                        context: context,
-                        builder: (context) {
-                          return Padding(
-                            padding: const EdgeInsets.all(20),
-                            child: QueryInfo(),
-                          );
-                        },
+              child: IconButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    scrollControlDisabledMaxHeightRatio: 0.8,
+                    context: context,
+                    builder: (context) {
+                      return Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: QueryInfo(),
                       );
                     },
-                    icon: Icon(
-                      Icons.add,
-                      color: AppColors.appBackground,
-                      size: 45,
-                    ),
-                  ),
+                  );
+                },
+                icon: Icon(
+                  Icons.add,
+                  color: AppColors.cardsColor2,
+                  size: 45,
                 ),
               ),
             ),
@@ -71,124 +69,80 @@ class CustomNavbar extends StatelessWidget {
               FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: Container(
             width: double.infinity,
-            height: 55,
+            height: 70,
             decoration: BoxDecoration(
-              color: AppColors.cardsColor2,
+              boxShadow: [
+                BoxShadow(
+                  color: AppColors.iconColorGrey,
+                  blurRadius: 10,
+                  spreadRadius: 2,
+                  offset: Offset(0, 5),
+                )
+              ],
+              color: AppColors.appBackground,
             ),
-            child: Row(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Column(
-                  children: [
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {
-                          provider.setBotttomNaviagtionIndex(0);
-                        },
-                        icon: Icon(
-                          Icons.home_rounded,
-                          color: provider.pageIndex == 0
-                              ? AppColors.iconsColors
-                              : AppColors.appBackground,
-                          size: 30,
-                        ),
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CustomIconButton(
+                        icon: Icons.home_outlined,
+                        iconColor: provider.pageIndex == 0
+                            ? AppColors.cardsColor2
+                            : AppColors.iconColorGrey,
+                        iconSize: 35,
+                        iconText: 'Home',
+                        iconTextColor: provider.pageIndex == 0
+                            ? AppColors.cardsColor2
+                            : AppColors.textColorGrey,
+                        onTap: () => provider.setBotttomNaviagtionIndex(0),
+                        gap: 2,
                       ),
-                    ),
-                    Text(
-                      'Home',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: provider.pageIndex == 0
-                            ?  AppColors.iconsColors
-                            : AppColors.appBackground,
+                      CustomIconButton(
+                        icon: Icons.explore_outlined,
+                        iconColor: provider.pageIndex == 1
+                            ? AppColors.cardsColor2
+                            : AppColors.iconColorGrey,
+                        iconSize: 35,
+                        iconText: 'Explore',
+                        iconTextColor: provider.pageIndex == 1
+                            ? AppColors.cardsColor2
+                            : AppColors.textColorGrey,
+                        onTap: () => provider.setBotttomNaviagtionIndex(1),
+                        gap: 2,
                       ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {
-                          provider.setBotttomNaviagtionIndex(1);
-                        },
-                        icon: Icon(
-                          Icons.explore_outlined,
-                          color: provider.pageIndex == 1
-                              ? AppColors.iconsColors
-                              : AppColors.appBackground,
-                          size: 30,
-                        ),
+                      SizedBox(width: 50,),
+                      CustomIconButton(
+                        icon: Icons.bookmark_outline,
+                        iconColor: provider.pageIndex == 2
+                            ? AppColors.cardsColor2
+                            : AppColors.iconColorGrey,
+                        iconSize: 35,
+                        iconText: 'Save',
+                        iconTextColor: provider.pageIndex == 2
+                            ? AppColors.cardsColor2
+                            : AppColors.textColorGrey,
+                        onTap: () => provider.setBotttomNaviagtionIndex(2),
+                        gap: 2,
                       ),
-                    ),
-                    Text(
-                      'Explore',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: provider.pageIndex == 1
-                            ?  AppColors.iconsColors
-                            : AppColors.appBackground,
+                      CustomIconButton(
+                        icon: Icons.person_outlined,
+                        iconColor: provider.pageIndex == 3
+                            ? AppColors.cardsColor2
+                            : AppColors.iconColorGrey,
+                        iconSize: 35,
+                        iconText: 'Profile',
+                        iconTextColor: provider.pageIndex == 3
+                            ? AppColors.cardsColor2
+                            : AppColors.textColorGrey,
+                        onTap: () => provider.setBotttomNaviagtionIndex(3),
+                        gap: 2,
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 50,
-                  height: 60,
-                ),
-                Column(
-                  children: [
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {
-                          provider.setBotttomNaviagtionIndex(2);
-                        },
-                        icon: Icon(
-                          Icons.bookmark_outline,
-                          color: provider.pageIndex == 2
-                              ?  AppColors.iconsColors
-                              : AppColors.appBackground,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      'Explore',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: provider.pageIndex == 2
-                            ? AppColors.iconsColors
-                            : AppColors.appBackground,
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Expanded(
-                      child: IconButton(
-                        onPressed: () {
-                          provider.setBotttomNaviagtionIndex(3);
-                        },
-                        icon: Icon(
-                          Icons.person_outlined,
-                          color: provider.pageIndex == 3
-                              ? AppColors.iconsColors
-                              : AppColors.appBackground,
-                          size: 30,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      'Explore',
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: provider.pageIndex == 3
-                            ?  AppColors.iconsColors
-                            : AppColors.appBackground,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
