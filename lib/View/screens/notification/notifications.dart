@@ -86,7 +86,7 @@ class NotificationScreen extends StatelessWidget {
           Expanded(child: ListView.builder(
               itemBuilder: (BuildContext context, int index) {
                 return CustomNotifications();
-              }, itemCount: 3
+              }, itemCount: 6
           ),),
           SizedBox(height: 2,),
           Row(

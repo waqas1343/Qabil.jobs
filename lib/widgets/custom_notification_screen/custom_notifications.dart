@@ -60,7 +60,7 @@ class CustomNotifications extends StatelessWidget {
                 child: SizedBox(width: 70,)
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 10,right: 3),
+              padding: const EdgeInsets.only(top: 10,right: 15),
               child: Text("Nov 24 , 2022",
               style: TextStyle(
                 color: AppColors.blackTextClr,
