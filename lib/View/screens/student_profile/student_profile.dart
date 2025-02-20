@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:qabil_app/Navigation_screening/app_navigators.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_images/app_images.dart';
+import 'package:qabil_app/routes/routes_name/routes_names.dart';
 
 class ProfileStudent extends StatelessWidget {
   const ProfileStudent({super.key});
@@ -17,9 +19,14 @@ class ProfileStudent extends StatelessWidget {
             color: AppColors.appBackground,
           ) ,),
         actions: [
-          Icon(Icons.notifications_none_rounded,
-            size: 30,
-            color: AppColors.appBackground,
+          GestureDetector(
+            onTap: (){
+              AppNavigators.nextscreen(context, RouteNames.notification);
+            },
+            child: Icon(Icons.notifications_none_rounded,
+              size: 30,
+              color: AppColors.appBackground,
+            ),
           ),
           SizedBox(width: 20,),
           Icon(Icons.logout_rounded,
