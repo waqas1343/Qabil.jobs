@@ -14,26 +14,40 @@ class DashBoardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Text("Hi",
-        //     style: TextStyle(
-        //       color: AppColors.appBackground,
-        //       fontSize: 25,
-        //     ),
-        //   ),
-        //   actions: [
-        //     Icon(Icons.notifications_none_rounded,
-        //       color: AppColors.appBackground,),
-        //     SizedBox(width: 10,),
-        //
-        //     CircleAvatar(
-        //       backgroundImage: AssetImage(AppImages.profileImage),
-        //     )
-        //   ],
-        // ),
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          elevation: 5,
+          backgroundColor: AppColors.textColor,
+          title: Text("Hi Waqas",
+            style: TextStyle(
+              color: AppColors.appBackground,
+              fontSize: 25,
+            ),
+          ),
+          actions: [
+            IconButton(onPressed: (){
+              AppNavigators.nextscreen(context, RouteNames.notification);
+            }, icon: Icon(Icons.notifications_none_rounded,
+            color: AppColors.appBackground,
+            size: 25,)),
+            
+            SizedBox(width: 10,),
+            GestureDetector(
+              onTap: (){
+                AppNavigators.nextscreen(context, RouteNames.profileStudent);
+              },
+              child: CircleAvatar(
+                backgroundImage: AssetImage(AppImages.profileImage),
+                radius: 17,
+              ),
+            )
+
+
+          ],
+        ),
         body: Column(
           children: [
-            _buildHeader(context),
+           // _buildHeader(context),
             _buildCategoryList(),
           ],
         ),
@@ -41,20 +55,20 @@ class DashBoardScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 100,
-      decoration: BoxDecoration(color: AppColors.textColor),
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildActionIcons(context),
-        ],
-      ),
-    );
-  }
+  // Widget _buildHeader(BuildContext context) {
+  //   return Container(
+  //     width: double.infinity,
+  //     height: 80,
+  //     decoration: BoxDecoration(color: AppColors.textColor),
+  //     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //       children: [
+  //         _buildActionIcons(context),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   Widget buildUserGreeting() {
     return Column(
@@ -107,32 +121,34 @@ class DashBoardScreen extends StatelessWidget {
 
   Widget _buildActionIcons(BuildContext context) {
     return Row(
-      children: [
-        Text("Hi \n Waqas",
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: AppColors.appBackground,
-        ),),
-
-        SizedBox(width: 120,),
-        GestureDetector(
-          onTap: (){
-
-            AppNavigators.nextscreen(context, RouteNames.notification);
-          },
-          child: Icon(Icons.notifications_none_outlined,
-          size: 35,
-          color: AppColors.appBackground,),
-        ),
-
-        SizedBox(width: 15,),
-        CircleAvatar(
-          radius: 20,
-          backgroundImage: AssetImage(AppImages.profileImage),
-        )
-      ],
+    children: []
     );
+    //   children: [
+    //     Text("Hi \n Waqas",
+    //     style: TextStyle(
+    //       fontSize: 24,
+    //       fontWeight: FontWeight.bold,
+    //       color: AppColors.appBackground,
+    //     ),),
+    //
+    //     SizedBox(width: 120,),
+    //     GestureDetector(
+    //       onTap: (){
+    //
+    //         AppNavigators.nextscreen(context, RouteNames.notification);
+    //       },
+    //       child: Icon(Icons.notifications_none_outlined,
+    //       size: 35,
+    //       color: AppColors.appBackground,),
+    //     ),
+    //
+    //     SizedBox(width: 15,),
+    //     CircleAvatar(
+    //       radius: 20,
+    //       backgroundImage: AssetImage(AppImages.profileImage),
+    //     )
+    //   ],
+    // );
   }
 
   Widget _buildCategoryList() {

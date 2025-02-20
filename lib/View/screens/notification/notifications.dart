@@ -14,7 +14,8 @@ class NotificationScreen extends StatelessWidget {
     final savedPosts = Provider.of<SavedCardProvider>(context).savedPosts;
     return Scaffold(
       appBar: AppBar(
-        elevation: 2,
+        automaticallyImplyLeading: false,
+        elevation: 5,
         backgroundColor: AppColors.textColor,
         title: Text("Notification",
           style: TextStyle(

@@ -1,31 +1,28 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/constant/app_strings/appstrings.dart';
-import 'package:qabil_app/constant/custom_text/custom_text.dart';
-
+import '../../../constant/app_colours/appcolors.dart';
+import '../../../constant/app_strings/appstrings.dart';
+import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
 import '../../../view_model/controller/image_post_controller/query_post_controller.dart';
 import '../../../widgets/select_Imagesource/select_image_source.dart';
 
+
 class QueryInfo extends StatelessWidget {
-   QueryInfo({super.key});
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController queryDescriptionController =
-  TextEditingController();
+  QueryInfo({super.key});
 
   @override
   Widget build(BuildContext context) {
     final ImagePicker picker = ImagePicker();
+    final queryController = context.read<QueryPostController>();
 
     Future<void> pickImage(ImageSource source) async {
       try {
         final XFile? pickedFile = await picker.pickImage(source: source);
         if (pickedFile != null) {
-          context.read<QueryPostController>().addImage(File(pickedFile.path));
+          queryController.addImage(File(pickedFile.path));
         }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -34,16 +31,8 @@ class QueryInfo extends StatelessWidget {
       }
     }
 
-
-
     void postQuery() {
-
-
-
-      // Clear the form after posting
-      nameController.clear();
-      queryDescriptionController.clear();
-      context.read<QueryPostController>().clearImages();
+      queryController.clearData();
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Query posted successfully!')),
@@ -51,7 +40,6 @@ class QueryInfo extends StatelessWidget {
     }
 
     return Scaffold(
-
       body: Consumer<QueryPostController>(
         builder: (context, query, child) {
           return SingleChildScrollView(
@@ -66,23 +54,27 @@ class QueryInfo extends StatelessWidget {
                       style: Theme.of(context).textTheme.headlineSmall,
                     ),
                     Spacer(),
-
-                    IconButton(onPressed: () {
-                      Navigator.pop(context);
-                    }, icon: Icon(Icons.close),)
+                    IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: Icon(Icons.close),
+                    ),
                   ],
                 ),
                 const SizedBox(height: 20),
                 AppTextFields.customTextField(
                   hintText: AppStrings.nameText,
-                  controller: nameController,
+                  controller: query.nameController,
+                  hintTextSize: 16,
                 ),
                 const SizedBox(height: 20),
                 TextField(
-                  controller: queryDescriptionController,
+                  controller: query.queryDescriptionController,
                   maxLines: 5,
                   decoration: InputDecoration(
                     hintText: "Query Description",
+                    hintStyle: TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -154,7 +146,7 @@ class QueryInfo extends StatelessWidget {
                     spacing: 8,
                     children: List.generate(
                       query.images.length,
-                      (index) {
+                          (index) {
                         return Chip(
                           avatar: CircleAvatar(
                             backgroundImage: FileImage(query.images[index]),
@@ -170,7 +162,13 @@ class QueryInfo extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 GestureDetector(
-                  onTap: postQuery,
+                  onTap: () {
+                    postQuery;
+                    print(query.nameController.value);
+                    print(query.queryDescriptionController.value);
+                    print(query.images.isNotEmpty?'image is done':'image is not taken');
+
+                  },
                   child: Container(
                     height: 50,
                     width: double.infinity,
@@ -192,10 +190,6 @@ class QueryInfo extends StatelessWidget {
           );
         },
       ),
-
     );
   }
 }
-
-
-
