@@ -11,7 +11,6 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    var screenSize = MediaQuery.of(context).size;
     final savedPosts = Provider.of<SavedCardProvider>(context).savedPosts;
     return Scaffold(
       appBar: AppBar(
@@ -61,7 +60,7 @@ class NotificationScreen extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(width: screenSize.width * 0.01,),
+              SizedBox(width: 15,),
               Text("New",
                 style: TextStyle(
                   color: AppColors.textColor,
@@ -72,7 +71,8 @@ class NotificationScreen extends StatelessWidget {
               SizedBox(width: 6,),
               Flexible(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 11),
+                  padding: const EdgeInsets.only(top: 10,
+                  right: 10),
                   child: Divider(
                     color: AppColors.textColor,
                     thickness: 1.0,
@@ -103,7 +103,8 @@ class NotificationScreen extends StatelessWidget {
               SizedBox(width: 5,),
               Flexible(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 11),
+                  padding: const EdgeInsets.only(top: 10,
+                  right: 10),
                   child: Divider(
                     color: AppColors.textColor,
                     thickness: 1.0,

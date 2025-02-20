@@ -109,21 +109,23 @@ class ProfileStudent extends StatelessWidget {
 
           SizedBox(height: 20,),
 
-          Column(
-
-            children: [
-              Container(
-                height: 600,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(30),
-                    topLeft: Radius.circular(30),
-                  ),
-                color: AppColors.tileColor,
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30),
+                  topLeft: Radius.circular(30),
                 ),
-                
-              )
-            ],
+              color: AppColors.tileColor,
+              ),
+
+              // child: Text(
+              //   "My Quires",
+              //   style: TextStyle(
+              //     color: AppColors.textColor
+              //   ),
+              // ),
+            ),
           )
 
         ],

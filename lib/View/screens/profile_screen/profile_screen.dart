@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:qabil_app/Navigation_screening/app_navigators.dart';
 import 'package:qabil_app/constant/app_button/app_button.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
+import 'package:qabil_app/constant/app_images/app_images.dart';
 import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/widgets/logout_dialog/logout_dialog.dart';
@@ -43,16 +44,18 @@ class Profilescreen extends StatelessWidget {
                         CircleAvatar(
                           radius: 60,
                           backgroundColor: Colors.grey,
-                          backgroundImage: click.image != null
-                              ? FileImage(click.image!)
-                              : null,
-                          child: click.image == null
-                              ? Icon(
-                                  Icons.person,
-                                  size: 50,
-                                  color: Colors.grey[700],
-                                )
-                              : null,
+                          backgroundImage: AssetImage(
+                              AppImages.profileImage),
+                          // click.image != null
+                          //     ? FileImage(click.image!)
+                          //     : null,
+                          // child: click.image == null
+                          //     ? Icon(
+                          //         Icons.person,
+                          //         size: 50,
+                          //         color: Colors.grey[700],
+                          //       )
+                          //     : null,
                         ),
                         Positioned(
                           bottom: -5,

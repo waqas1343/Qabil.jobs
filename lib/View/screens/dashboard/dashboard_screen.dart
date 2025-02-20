@@ -14,23 +14,35 @@ class DashBoardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //   title: Text("Hi",
-        //     style: TextStyle(
-        //       color: AppColors.appBackground,
-        //       fontSize: 25,
-        //     ),
-        //   ),
-        //   actions: [
-        //     Icon(Icons.notifications_none_rounded,
-        //       color: AppColors.appBackground,),
-        //     SizedBox(width: 10,),
-        //
-        //     CircleAvatar(
-        //       backgroundImage: AssetImage(AppImages.profileImage),
-        //     )
-        //   ],
-        // ),
+        appBar: AppBar(
+          backgroundColor: AppColors.textColor,
+          title: const Text('Hi \n Waqas',
+            style: TextStyle(
+              color: AppColors.appBackground,
+            ),),
+          actions: [
+          GestureDetector(
+            onTap: (){
+              AppNavigators.nextscreen(context, RouteNames.notification);
+            },
+            child: GestureDetector(
+              onTap: (){
+                AppNavigators.nextscreen(context, RouteNames.profileMentor);
+              },
+              child: Icon(Icons.notifications_none_rounded,
+              color: AppColors.appBackground ,
+              size: 25,
+                      ),
+            ),
+          ),
+          SizedBox(width: 8,),
+
+          CircleAvatar(
+            radius: 15,
+            backgroundImage: AssetImage(AppImages.profileImage),
+          ),
+        ]
+        ),
         body: Column(
           children: [
             _buildHeader(context),
@@ -43,16 +55,16 @@ class DashBoardScreen extends StatelessWidget {
 
   Widget _buildHeader(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 100,
-      decoration: BoxDecoration(color: AppColors.textColor),
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildActionIcons(context),
-        ],
-      ),
+      // width: double.infinity,
+      // height: 100,
+      // decoration: BoxDecoration(color: AppColors.textColor),
+      // padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+      // child: Row(
+      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //   children: [
+      //     _buildActionIcons(context),
+      //   ],
+      // ),
     );
   }
 
@@ -85,28 +97,28 @@ class DashBoardScreen extends StatelessWidget {
     return Row(
       children: [
 
-        Text("Hi \n Waqas",
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: AppColors.appBackground,
-        ),),
-        SizedBox(width: 210,),
-        GestureDetector(
-          onTap: (){
-
-            AppNavigators.nextscreen(context, RouteNames.notification);
-          },
-          child: Icon(Icons.notifications_none_outlined,
-          size: 35,
-          color: AppColors.appBackground,),
-        ),
-
-        SizedBox(width: 15,),
-        CircleAvatar(
-          radius: 20,
-          backgroundImage: AssetImage(AppImages.profileImage),
-        )
+        // Text("Hi \n Waqas",
+        // style: TextStyle(
+        //   fontSize: 24,
+        //   fontWeight: FontWeight.bold,
+        //   color: AppColors.appBackground,
+        // ),),
+        // SizedBox(width: 210,),
+        // GestureDetector(
+        //   onTap: (){
+        //
+        //     AppNavigators.nextscreen(context, RouteNames.notification);
+        //   },
+        //   child: Icon(Icons.notifications_none_outlined,
+        //   size: 35,
+        //   color: AppColors.appBackground,),
+        // ),
+        //
+        // SizedBox(width: 15,),
+        // CircleAvatar(
+        //   radius: 20,
+        //   backgroundImage: AssetImage(AppImages.profileImage),
+        // )
       ],
     );
   }
