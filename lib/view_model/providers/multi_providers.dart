@@ -43,4 +43,5 @@ final List<ChangeNotifierProvider> multiAppProviders = [
       create: (_) => SplashScreenController()),
   ///////////////////////////
   ChangeNotifierProvider<SavedCardProvider>(create: (_) => SavedCardProvider()),
+  ChangeNotifierProvider<QueryPostController>(create: (_) => QueryPostController()),
 ];

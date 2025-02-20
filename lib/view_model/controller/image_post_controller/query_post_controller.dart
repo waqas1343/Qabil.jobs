@@ -3,19 +3,33 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 
 class QueryPostController extends ChangeNotifier{
-    final List<File> images = [];
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController queryDescriptionController = TextEditingController();
+  final List<File> _images = [];
+
+  List<File> get images => _images;
 
   void addImage(File image) {
-    images.add(image);
+    _images.add(image);
     notifyListeners();
   }
 
   void removeImage(int index) {
-    images.removeAt(index);
+    _images.removeAt(index);
     notifyListeners();
   }
-    void clearImages() {
-    images.clear();
+
+  void clearData() {
+    nameController.clear();
+    queryDescriptionController.clear();
+    _images.clear();
     notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    queryDescriptionController.dispose();
+    super.dispose();
   }
 }
