@@ -47,7 +47,9 @@ class MyApp extends StatelessWidget {
         initialRoute: RouteNames.splashscreen,
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
-        home: LoginScreen(),
+
+        home: SplashScreen(),
+
 
 
       ),
