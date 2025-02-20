@@ -72,8 +72,9 @@ class CustomButton extends StatelessWidget {
                       icon,
                       size: iconSize,
                       color: iconColor,
-
-              child: CustomText(
+                    ),
+                  ),
+               CustomText(
                 text: btnText,
                 style: textTheme.titleLarge?.copyWith(
                       color: Colors.white,
