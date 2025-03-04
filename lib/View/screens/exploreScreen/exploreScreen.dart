@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../view_model/controller/post_card_screen/explore_cards_controller.dart';
-import '../saveScreen/saveScreen.dart';
 import 'post_card/post_card.dart';
 
 class ExploreScreen extends StatelessWidget {

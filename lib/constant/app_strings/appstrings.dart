@@ -41,6 +41,7 @@ class AppStrings {
   static const String haveAcount = "Already have an account?";
 
   static const String nameText = "Name";
+  static const String querryDescriptionText = "Query Description";
   static const String nHintText = "Waqas iLyas";
   static const String phone = "0XXX XXXXXXX";
 

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:qabil_app/constant/aap_Logo/logoPlace.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_images/app_images.dart';
 

@@ -76,6 +76,8 @@ class QueryInfo extends StatelessWidget {
                 AppTextFields.customTextField(
                   hintText: AppStrings.nameText,
                   controller: nameController,
+                  borderRadius: 10,
+                  hintTextSize: 16,
                 ),
                 const SizedBox(height: 20),
                 TextField(
@@ -83,6 +85,7 @@ class QueryInfo extends StatelessWidget {
                   maxLines: 5,
                   decoration: InputDecoration(
                     hintText: "Query Description",
+                    hintStyle: TextStyle(color: Colors.grey),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),

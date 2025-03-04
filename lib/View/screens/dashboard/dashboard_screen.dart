@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:qabil_app/Navigation_screening/app_navigators.dart';
-import 'package:qabil_app/View/screens/notification/notifications.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_images/app_images.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
@@ -67,24 +66,28 @@ class DashBoardScreen extends StatelessWidget {
   Widget _buildActionIcons(BuildContext context) {
     return Row(
       children: [
-
-        Text("Hi \n Waqas",
-        style: TextStyle(
-          fontSize: 24,
-          fontWeight: FontWeight.bold,
-          color: AppColors.appBackground,
-        ),),
-        SizedBox(width: 210,),
+        Text(
+          "Hi \n Waqas",
+          style: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+            color: AppColors.appBackground,
+          ),
+        ),
+        Spacer(),
         GestureDetector(
-          onTap: (){
+          onTap: () {
             AppNavigators.nextscreen(context, RouteNames.notification);
           },
-          child: Icon(Icons.notifications_none_outlined,
-          size: 35,
-          color: AppColors.appBackground,),
+          child: Icon(
+            Icons.notifications_none_outlined,
+            size: 35,
+            color: AppColors.appBackground,
+          ),
         ),
-
-        SizedBox(width: 15,),
+        SizedBox(
+          width: 15,
+        ),
         CircleAvatar(
           radius: 20,
           backgroundImage: AssetImage(AppImages.profileImage),
