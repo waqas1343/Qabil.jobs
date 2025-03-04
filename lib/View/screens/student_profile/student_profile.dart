@@ -4,6 +4,7 @@ import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_images/app_images.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/widgets/custom_notification_screen/custom_notifications.dart';
+import 'package:qabil_app/widgets/logout_dialog/logout_dialog.dart';
 
 class ProfileStudent extends StatelessWidget {
   const ProfileStudent({super.key});
@@ -34,7 +35,9 @@ class ProfileStudent extends StatelessWidget {
             width: 10,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+
+            },
             icon: Icon(Icons.logout_rounded,
                 size: 30, color: AppColors.appBackground),
           )

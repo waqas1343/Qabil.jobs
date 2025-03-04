@@ -173,7 +173,7 @@ class QueryInfo extends StatelessWidget {
                     height: 50,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      color: Colors.green,
+                      color: AppColors.textColor,
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: Center(

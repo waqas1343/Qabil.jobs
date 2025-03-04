@@ -32,8 +32,8 @@ class CustomLogoCategory extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                        height: provider.iconSelect == index ? 80 : 65,
-                        width: provider.iconSelect == index ? 80 : 65,
+                        height: provider.iconSelect == index ? 80 : 70,
+                        width: provider.iconSelect == index ? 80 : 70,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             border: Border.all(
@@ -50,7 +50,7 @@ class CustomLogoCategory extends StatelessWidget {
                                     provider.iconSelect == index ? 0 : 2,
                                 // spreadRadius:
                                 //     provider.iconSelect == index ? 0 : 3,
-                                color: AppColors.indicatorColor,
+                                color: Colors.grey.withOpacity(0.3),
                               ),
                             ]),
                         child: Center(
@@ -58,7 +58,7 @@ class CustomLogoCategory extends StatelessWidget {
                             image,
                             height: provider.iconSelect == index ? 70 : 60,
                             width: provider.iconSelect == index ? 70 : 60,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.contain,
                           ),
                         )),
                     const SizedBox(

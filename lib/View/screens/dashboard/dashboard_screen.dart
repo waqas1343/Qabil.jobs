@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:qabil_app/Navigation_screening/app_navigators.dart';
+import 'package:qabil_app/View/savequery/savequeries.dart';
+import 'package:qabil_app/View/screens/exploreScreen/post_card/post_card.dart';
+import 'package:qabil_app/View/screens/exploreScreen/tab_card/tab_card.dart';
 import 'package:qabil_app/View/screens/notification/notifications.dart';
 import 'package:qabil_app/constant/app_colours/appcolors.dart';
 import 'package:qabil_app/constant/app_images/app_images.dart';
+import 'package:qabil_app/constant/app_strings/appstrings.dart';
 import 'package:qabil_app/routes/routes_name/routes_names.dart';
 import 'package:qabil_app/view_model/selectors_logo/selector_model.dart';
 import 'package:qabil_app/widgets/custom_Category_logo/categoryLogo.dart';
@@ -12,150 +16,42 @@ class DashBoardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          automaticallyImplyLeading: false,
-          elevation: 5,
-          backgroundColor: AppColors.textColor,
-          title: Text("Hi Waqas",
-            style: TextStyle(
-              color: AppColors.appBackground,
-              fontSize: 25,
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        elevation: 5,
+        backgroundColor: AppColors.textColor,
+        title: Text("Hi Waqas",
+          style: TextStyle(
+            color: AppColors.appBackground,
+            fontSize: 25,
+          ),
+        ),
+        actions: [
+          IconButton(onPressed: (){
+            AppNavigators.nextscreen(context, RouteNames.notification);
+          }, icon: Icon(Icons.notifications_none_rounded,
+          color: AppColors.appBackground,
+          size: 25,)),
+          SizedBox(width: 10,),
+          GestureDetector(
+            onTap: (){
+              AppNavigators.nextscreen(context, RouteNames.profileStudent);
+            },
+            child: CircleAvatar(
+              backgroundImage: AssetImage(AppImages.profileImage),
+              radius: 17,
             ),
           ),
-          actions: [
-            IconButton(onPressed: (){
-              AppNavigators.nextscreen(context, RouteNames.notification);
-            }, icon: Icon(Icons.notifications_none_rounded,
-            color: AppColors.appBackground,
-            size: 25,)),
-            
-            SizedBox(width: 10,),
-            GestureDetector(
-              onTap: (){
-                AppNavigators.nextscreen(context, RouteNames.profileStudent);
-              },
-              child: CircleAvatar(
-                backgroundImage: AssetImage(AppImages.profileImage),
-                radius: 17,
-              ),
-            )
-
-
-          ],
-        ),
-        body: Column(
-          children: [
-           // _buildHeader(context),
-            _buildCategoryList(),
-          ],
-        ),
+        ],
       ),
-    );
-  }
-
-  // Widget _buildHeader(BuildContext context) {
-  //   return Container(
-  //     width: double.infinity,
-  //     height: 80,
-  //     decoration: BoxDecoration(color: AppColors.textColor),
-  //     padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-  //       children: [
-  //         _buildActionIcons(context),
-  //       ],
-  //     ),
-  //   );
-  // }
-
-  Widget buildUserGreeting() {
-    return Column(
-      // crossAxisAlignment: CrossAxisAlignment.start,
-      // mainAxisAlignment: MainAxisAlignment.center,
-      // children: [
-      //   Text(
-      //     "Hi!",
-      //     style: TextStyle(
-      //       color: AppColors.appBackground,
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 23,
-      //     ),
-      //   ),
-      //   Text(
-      //     "Saim!",
-      //     style: TextStyle(
-      //       color: AppColors.appBackground,
-      //       fontWeight: FontWeight.bold,
-      //       fontSize: 30,
-      //     ),
-      //   )
-      // ],
-    );
-  }
-  // Widget buildUserGreeting() {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     mainAxisAlignment: MainAxisAlignment.center,
-  //     children: [
-  //       Text(
-  //         "Hi!",
-  //         style: TextStyle(
-  //           color: AppColors.appBackground,
-  //           fontWeight: FontWeight.bold,
-  //           fontSize: 23,
-  //         ),
-  //       ),
-  //       Text(
-  //         "Saim!",
-  //         style: TextStyle(
-  //           color: AppColors.appBackground,
-  //           fontWeight: FontWeight.bold,
-  //           fontSize: 30,
-  //         ),
-  //       )
-  //     ],
-  //   );
-  // }
-
-  Widget _buildActionIcons(BuildContext context) {
-    return Row(
-    children: []
-    );
-    //   children: [
-    //     Text("Hi \n Waqas",
-    //     style: TextStyle(
-    //       fontSize: 24,
-    //       fontWeight: FontWeight.bold,
-    //       color: AppColors.appBackground,
-    //     ),),
-    //
-    //     SizedBox(width: 120,),
-    //     GestureDetector(
-    //       onTap: (){
-    //
-    //         AppNavigators.nextscreen(context, RouteNames.notification);
-    //       },
-    //       child: Icon(Icons.notifications_none_outlined,
-    //       size: 35,
-    //       color: AppColors.appBackground,),
-    //     ),
-    //
-    //     SizedBox(width: 15,),
-    //     CircleAvatar(
-    //       radius: 20,
-    //       backgroundImage: AssetImage(AppImages.profileImage),
-    //     )
-    //   ],
-    // );
-  }
-
-  Widget _buildCategoryList() {
-    return Padding(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+      Padding(
       padding: const EdgeInsets.all(10.0),
       child: SizedBox(
-        height: 150,
+        height: 130,
         width: double.infinity,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -169,6 +65,35 @@ class DashBoardScreen extends StatelessWidget {
             );
           },
         ),
+      ),
+    ),
+          Padding(
+            padding: const EdgeInsets.only(left: 10),
+            child: Text(AppStrings.query,
+            style: TextStyle(
+              color: AppColors.textColor,
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+            ),),
+          ),
+          Divider(
+          color: AppColors.textColor,
+          endIndent: 10,
+          indent: 12,
+            thickness: 1.7,
+          ),
+
+          Flexible(
+            child: ListView.builder(
+              scrollDirection: Axis.vertical,
+              itemCount: 2,
+              itemBuilder: (context, index) {
+                final repoList = listRepo[index];
+                return PostCard(post: Map(), isSaved: true, onSave: (){});
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
