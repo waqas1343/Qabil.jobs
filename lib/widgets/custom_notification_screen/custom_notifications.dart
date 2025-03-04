@@ -16,10 +16,11 @@ class CustomNotifications extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              offset: Offset(0.0, 3.0,),
+              offset: Offset(0.0, 03,),
+              blurRadius: 10,
               color: Colors.grey.shade300,
-              blurStyle: BlurStyle.solid,
-              spreadRadius: 0.3,
+              blurStyle: BlurStyle.normal,
+              spreadRadius: 3,
             ),
           ],
           color: AppColors.tileColor,
@@ -34,7 +35,7 @@ class CustomNotifications extends StatelessWidget {
                 backgroundImage: AssetImage(AppImages.profileImage),
               ),
             ),
-            SizedBox(width: 12,),
+            SizedBox(width: 09,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -46,24 +47,20 @@ class CustomNotifications extends StatelessWidget {
                     color: AppColors.blackTextClr,
                   ),
                 ),
-                Flexible(
-                  child: Text('Lorem ipsum dolor sit amet, consectetu adipiscing,\n'
-                      'vsghdsgfsfdjhgsfdjhfdbjhfdbjfhbfdshbsdffdbjfdbj\n'
-                      'fskfsjndjfgdjfgdnbjbfghjfbh'
-                      ,style: TextStyle(
-                      color: AppColors.blackTextClr,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w600
-                    ),),
-                ),
+                Text('Lorem ipsum dolor sit amet, consectetu adipiscing,\n'
+                    'vsghdsgfsfdjhgsfdjhfdbjhfdbjfhbfdshbsdffdbjfdbj\n'
+                    'fskfsjndjfgdjfgdnbjbfghjfbh'
+                    ,style: TextStyle(
+                    color: AppColors.blackTextClr,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w600
+                  ),),
               ],
             ),
-            Expanded(
-                child: SizedBox(width: 70,)
-            ),
+            Expanded(child: SizedBox(width: 10,)),
             Padding(
-              padding: const EdgeInsets.only(top: 10,right: 15),
-              child: Text("Nov 24 , 2022",
+              padding: const EdgeInsets.only(top: 10,right: 5),
+              child: Text("24-Nov,2024",
               style: TextStyle(
                 color: AppColors.blackTextClr,
                 fontSize: 12  ,

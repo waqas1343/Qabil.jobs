@@ -10,17 +10,18 @@ class SelectorsModel{
 }
 
 List<SelectorsModel> listRepo = [
-
+  SelectorsModel(AppStrings.uiUxLogo,AppLogo.uiUx),
+  SelectorsModel(AppStrings.eCommerceLogo, AppLogo.e_Commerce),
+  SelectorsModel(AppStrings.marketingLogo, AppLogo.marketingLogo),
   SelectorsModel(AppStrings.flutterLogo, AppLogo.flutter),
   SelectorsModel(AppStrings.figmaLogo, AppLogo.figma),
   SelectorsModel(AppStrings.dartLogo, AppLogo.dart),
   SelectorsModel(AppStrings.htmlCssLogo, AppLogo.htmlCss),
-  SelectorsModel(AppStrings.dartLogo, AppLogo.dart),
-  SelectorsModel(AppStrings.flutterLogo, AppLogo.flutter),
-  SelectorsModel(AppStrings.figmaLogo, AppLogo.figma),
-  SelectorsModel(AppStrings.htmlCssLogo, AppLogo.htmlCss),
-  SelectorsModel(AppStrings.flutterLogo, AppLogo.flutter),
-  SelectorsModel(AppStrings.dartLogo, AppLogo.dart),
-
+  SelectorsModel(AppStrings.dataAnalystLogo,AppLogo.dataAnalysis),
+  SelectorsModel(AppStrings.pythonLogo,AppLogo.python),
+  SelectorsModel(AppStrings.cyberSecurityLogo,AppLogo.cyberSecurity),
+  SelectorsModel(AppStrings.amazonLogo, AppLogo.amazonPrivate),
+  SelectorsModel(AppStrings.jsReactLogo, AppLogo.jsReact),
+  SelectorsModel(AppStrings.leadGenerationLogo, AppLogo.leadGeneration),
 
 ];

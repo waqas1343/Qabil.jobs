@@ -14,10 +14,14 @@ class ExploreScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.postCardColor,
       appBar: AppBar(
-        title: const Text('Explore'),
+
+        title: const Text('Explore',
+        style: TextStyle(
+          color: AppColors.appBackground
+        ),),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
+        backgroundColor: AppColors.textColor,
       ),
       body: ListView.builder(
         itemCount: provider.posts.length,

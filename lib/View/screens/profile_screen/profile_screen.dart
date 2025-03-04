@@ -45,7 +45,7 @@ class Profilescreen extends StatelessWidget {
                           radius: 60,
                           backgroundColor: Colors.grey,
                           backgroundImage: AssetImage(
-                              AppImages.profileImage),
+                              AppImages.profileImage ),
                           // click.image != null
                           //     ? FileImage(click.image!)
                           //     : null,

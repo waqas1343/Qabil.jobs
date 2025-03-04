@@ -51,7 +51,8 @@ class PostCard extends StatelessWidget {
               Row(
                 children: [
                   CircleAvatar(
-                    backgroundImage: AssetImage(post['image'] ?? 'assets/images/default.png'),
+                    backgroundImage:
+                    AssetImage(post['image'] ?? 'assets/images/default.png'),
                     radius: 20,
                   ),
                   const SizedBox(width: 10),
@@ -87,8 +88,8 @@ class PostCard extends StatelessWidget {
               Text(
                 post['title2'] ?? '',
                 style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
                 ),
               ),
               const SizedBox(height: 10),
@@ -162,7 +163,7 @@ class PostCard extends StatelessWidget {
                   IconButton(
                     icon: Icon(
                       isSaved ? Icons.bookmark : Icons.bookmark_border,
-                      color: isSaved ? AppColors.textColor : AppColors.appBackground,
+                      color: isSaved ? AppColors.textColor : AppColors.textColorGrey,
                       size: 33,
                     ),
                     onPressed: () {
