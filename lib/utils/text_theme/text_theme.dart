@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
+
+import '../../constant/app_colours/appcolors.dart';
 
 class AppTheme {
   static ThemeData get theme {
@@ -25,7 +26,7 @@ class AppTheme {
         titleLarge: TextStyle(
           fontSize: 20.0,
           fontWeight: FontWeight.w600,
-          color: AppColors.blackTextClr,
+          color: AppColors.appBackground,
         ),
         titleMedium: TextStyle(
           fontSize: 14.0,

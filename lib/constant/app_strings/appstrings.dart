@@ -1,6 +1,7 @@
 class AppStrings {
   // Login Screen
   static const String loginTitle = "log In account";
+  static const String profile = "Profile";
   static const String loginSubtitle = "Please sign in to continue";
   static const String passwordTitle = "Password";
   static const String confirim = "Confirm";
@@ -126,4 +127,6 @@ class AppStrings {
 
   static const String logoutButton = "logout";
   static const String cencalText = "Cencel";
+
+  static var createPost = 'Create Post';
 }

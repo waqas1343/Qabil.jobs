@@ -1,41 +1,24 @@
 class RouteNames {
-  //splash screen
-
+  // Splash Screen
   static const String splashscreen = "/";
 
-  //auth module
+  // Auth Module
+  static const String login = "/login";
+  static const String registerStudent = "/registerStudent";
+  static const String registerMentor = "/registerMentor";
+  static const String completeProfile = "/completeProfile";
+  static const String forgotPassword = "/forgotPassword";
+  static const String enterOtp = "/enterOtp";
+  static const String resetPassword = "/resetPassword";
 
-  static const String registersStudentScreen = "/registerAsStudent";
-  static const String registersMentorScreen = "/registerAsMentor";
+  // Navbar & Dashboard
   static const String bottomNavBar = "/bottomNavBar";
-  static const String resetPassScreen = "/resetPassScreen";
-  static const String login = "/LoginScreens";
-  static const String completeProfile = "/CompleteProfile";
-  static const String signout = "/";
-  static const String forgotpassword = "/ForgetPassword";
-  static const String resetpassword = "/ResetPassword";
-  static const String enterotp = "/EnterOtp";
-  static const String resend = "/";
-  static const String verify = "";
-  static const String save = "";
+  static const String dashboard = "/dashboard";
 
-  //dashboard
-
-  static const String dashboard = "/DashboardScreen";
-
-  //profile mentor
-
-  static const String profileMentor = "/MentorProfile";
-
-  //notification
-
-  static const String notification = "/NotificationScreen";
-  static const String notificationEmpty = "/NotificationEmpty";
-
-  //bottom navigator taps
-
-  static const String expolre = "";
-  static const String savequires = "";
-  static const String profile = "";
-  static const String home = "";
+  // Screens
+  static const String exploreScreen = "/exploreScreen";
+  static const String saveScreen = "/saveScreen";
+  static const String queryScreen = "/queryScreen";
+  static const String profileScreen = "/profileScreen";
+  static const String notification = "/notification";
 }

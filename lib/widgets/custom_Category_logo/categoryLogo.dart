@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import '../../view_model/controller/icon_selecting/icon_selecting.dart';
+
+import '../../constant/app_colours/appcolors.dart';
+import '../../view_model/controller/icon_selector_controller/icon_selector.dart';
 
 class CustomLogoCategory extends StatelessWidget {
   const CustomLogoCategory(
@@ -32,8 +33,8 @@ class CustomLogoCategory extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                        height: provider.iconSelect == index ? 80 : 65,
-                        width: provider.iconSelect == index ? 80 : 65,
+                        height: provider.iconSelect == index ? 60 : 45,
+                        width: provider.iconSelect == index ? 60 : 45,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             border: Border.all(

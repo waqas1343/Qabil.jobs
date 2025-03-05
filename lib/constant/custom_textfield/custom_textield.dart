@@ -14,7 +14,6 @@ class AppTextFields {
     EdgeInsetsGeometry? contentPadding,
     FormFieldValidator<String>? validator,
     bool? readOnly,
-    final double hintTextSize = 12,
   }) {
     return TextFormField(
       readOnly: readOnly ?? false,

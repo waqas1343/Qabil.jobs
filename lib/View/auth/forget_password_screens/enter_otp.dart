@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/view_model/controller/validation.dart';
-import '../../../navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
+import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_images/app_images.dart';
 import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
+import '../../../navigation_screen/app_navigators.dart';
 import '../../../routes/routes_name/routes_names.dart';
-import '../../../widgets/customFlushbar/customFlushbar.dart';
+import '../../../view_model/controller/validation.dart';
+import '../../../widgets/customFlushbar/custom_flushbar.dart';
 
 class EnterOtp extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -104,7 +104,7 @@ class EnterOtp extends StatelessWidget {
                         );
                         Future.delayed(const Duration(milliseconds: 1700), () {
                           AppNavigators.nextscreen(
-                              context, RouteNames.resetPassScreen);
+                              context, RouteNames.resetPassword);
                         });
                       } else {
                         CustomFlushBar.customFlushBar(

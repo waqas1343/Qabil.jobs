@@ -1,4 +1,4 @@
-name: qabil_app
+name: qabil_project01_final
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -19,7 +19,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.6.0
+  sdk: ^3.6.1
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -42,7 +42,7 @@ dependencies:
 
   image_picker: ^1.1.2
   readmore: ^3.0.0
-
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:

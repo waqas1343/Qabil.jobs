@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/constant/app_button/app_button.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/constant/app_icons/app_icons.dart';
-import 'package:qabil_app/constant/app_images/app_images.dart';
-import 'package:qabil_app/constant/app_sizes/app_sizes.dart';
-import 'package:qabil_app/constant/app_strings/appstrings.dart';
-import 'package:qabil_app/constant/custom_text/custom_text.dart';
-import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
-import 'package:qabil_app/routes/routes_name/routes_names.dart';
-import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
-import 'package:qabil_app/view_model/controller/validation.dart';
-
-import '../../../navigation_screening/app_navigators.dart';
-import '../../../widgets/customFlushbar/customFlushbar.dart';
+import '../../../constant/app_button/app_button.dart';
+import '../../../constant/app_colours/appcolors.dart';
+import '../../../constant/app_icons/app_icons.dart';
+import '../../../constant/app_images/app_images.dart';
+import '../../../constant/app_sizes/app_sizes.dart';
+import '../../../constant/app_strings/appstrings.dart';
+import '../../../constant/custom_text/custom_text.dart';
+import '../../../constant/custom_textfield/custom_textield.dart';
+import '../../../navigation_screen/app_navigators.dart';
+import '../../../routes/routes_name/routes_names.dart';
+import '../../../view_model/controller/all_textediting_controller/all_textediting_controller.dart';
+import '../../../view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
+import '../../../view_model/controller/validation.dart';
+import '../../../widgets/customFlushbar/custom_flushbar.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  final TextEditingController _confirmPassController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   ResetPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textController =
+        Provider.of<TextEditingControllerManager>(context, listen: false);
     final provider = Provider.of<SuffixIconController>(context);
     return Scaffold(
       body: Padding(
@@ -78,7 +78,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   validator: Validators.passwordValidator,
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
-                  controller: _confirmPassController,
+                  controller: textController.confirmPassController,
                 ),
                 SizedBox(
                   height: AppSizes.height01(context),
@@ -90,7 +90,7 @@ class ResetPasswordScreen extends StatelessWidget {
                 AppTextFields.customTextField(
                   obscureText: provider.isVisibleSecond,
                   validator: (value) => Validators.confirmPasswordValidator(
-                      value, _confirmPassController.text),
+                      value, textController.confirmPassController.text),
                   suffixIcon: IconButton(
                     onPressed: () {
                       print("object");
@@ -102,7 +102,7 @@ class ResetPasswordScreen extends StatelessWidget {
                   ),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
-                  controller: passwordController,
+                  controller: textController.passwordController,
                 ),
                 SizedBox(
                   height: AppSizes.height06(context),
