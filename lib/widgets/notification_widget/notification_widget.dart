@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class NotificationScreen extends StatelessWidget {
   NotificationScreen({super.key});
 
-  // ✅ Dummy Data with Image URLs
+  
   final List<Map<String, String>> newNotifications = [
     {
       "title": "Welcome!",

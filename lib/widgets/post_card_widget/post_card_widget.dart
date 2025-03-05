@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/widgets/comment_screen_widget/comment_screen_widget.dart';
 import '../../models/post_model/post_model.dart';
 import '../../view_model/controller/like_conter_controller/like_conter.dart';
 import '../../view_model/controller/query_post_controller/query_post_controller.dart';
@@ -27,7 +28,6 @@ class PostCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-             
                   Row(
                     children: [
                       CircleAvatar(
@@ -124,7 +124,17 @@ class PostCard extends StatelessWidget {
                       IconButton(
                         icon: Icon(Icons.comment_outlined,
                             color: Colors.blue, size: 20),
-                        onPressed: () {},
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            builder: (context) =>
+                                CommentBottomSheet(postId: post.id ?? ''),
+                          );
+                        },
                       ),
                       Spacer(),
                       IconButton(

@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-
+import 'package:qabil_project01_final/widgets/notification_widget/notification_widget.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String greeting;
@@ -96,7 +96,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               IconButton(
                 onPressed: () {
-                    
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => NotificationScreen()),
+                  );
                 },
                 icon: const Icon(
                   Icons.notifications_outlined,
