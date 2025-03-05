@@ -28,7 +28,7 @@ class DashboardScreen extends StatelessWidget {
         profileImagePath: imageProvider.images1 != null
             ? imageProvider.images1!.path
             : 'assets/images/profileimage.png',
-        notificationCount: 0,
+        notificationCount: 2,
       ),
       body: Column(
         children: [

@@ -95,7 +95,7 @@ class CompleteProfile extends StatelessWidget {
                 AppTextFields.customTextField(
                   validator: Validators.passwordValidator,
                   prefixIcon: AppIcons.emailIcon,
-                  hintText: AppStrings.passwordTitle,
+                  hintText: AppStrings.biO,
                   controller: textController.bioController,
                 ),
                 SizedBox(height: AppSizes.height02(context)),

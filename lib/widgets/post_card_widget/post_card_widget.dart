@@ -29,29 +29,29 @@ class PostCard extends StatelessWidget {
           return Card(
             color: AppColors.appBackground,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(10),
             ),
             elevation: 2,
-            // margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+            // margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
                       CircleAvatar(
-                        radius: 22,
+                        radius: 25,
                         backgroundColor: AppColors.cardsColor2,
                         backgroundImage: imageProvider.images1 != null
                             ? FileImage(imageProvider.images1!)
                             : null,
                         child: imageProvider.images1 == null
                             ? const Icon(Icons.person,
-                                size: 18, color: Colors.white)
+                                size: 20, color: Colors.white)
                             : null,
                       ),
-                      const SizedBox(width: 6),
+                      const SizedBox(width: 8),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,66 +61,80 @@ class PostCard extends StatelessWidget {
                                   textController.nameController.text.isNotEmpty
                                       ? textController.nameController.text
                                       : "Your Name",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(fontSize: 13),
+                              style: Theme.of(context).textTheme.bodyLarge,
                             ),
                             Text(
                               timeago.format(post.time),
                               style: TextStyle(
-                                  color: Colors.grey.shade600, fontSize: 10),
+                                  color: Colors.grey.shade600, fontSize: 11),
                             ),
                           ],
                         ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: 8),
                   Text(
                     post.title,
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 13,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 14,
                     ),
                   ),
-                  const SizedBox(height: 3),
+                  const SizedBox(height: 4),
                   Text(
                     post.description,
                     style: const TextStyle(
-                      fontSize: 11,
+                      fontSize: 12,
                       color: Colors.black87,
                     ),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                   if (post.images.isNotEmpty) ...[
-                    const SizedBox(height: 6),
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: SizedBox(
-                        height: 180,
-                        child: CarouselSlider(
-                          options: CarouselOptions(
-                            enableInfiniteScroll: false,
-                            autoPlay: false,
-                            viewportFraction: 1,
-                            onPageChanged: (index, reason) {
-                              postController.updateIndex(index);
-                            },
-                          ),
-                          items: post.images.map((image) {
-                            return Image.file(
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      height: 180,
+                      child: CarouselSlider(
+                        options: CarouselOptions(
+                          enableInfiniteScroll: false,
+                          autoPlay: false,
+                          viewportFraction: 1,
+                          onPageChanged: (index, reason) {
+                            postController.updateIndex(index);
+                          },
+                        ),
+                        items: post.images.map((image) {
+                          return ClipRRect(
+                            borderRadius: BorderRadius.circular(6),
+                            child: Image.file(
                               image,
                               fit: BoxFit.cover,
                               width: double.infinity,
-                            );
-                          }).toList(),
-                        ),
+                            ),
+                          );
+                        }).toList(),
                       ),
                     ),
+                    const SizedBox(height: 6),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(post.images.length, (index) {
+                        return Container(
+                          width: 7,
+                          height: 7,
+                          margin: const EdgeInsets.symmetric(horizontal: 3),
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: postController.currentIndex == index
+                                ? AppColors.cardsColor2
+                                : Colors.grey.shade400,
+                          ),
+                        );
+                      }),
+                    ),
                   ],
-                  const SizedBox(height: 6),
+      
                   Row(
                     children: [
                       IconButton(
@@ -129,7 +143,7 @@ class PostCard extends StatelessWidget {
                               ? Icons.thumb_up
                               : Icons.thumb_up_outlined,
                           color: AppColors.cardsColor2,
-                          size: 18,
+                          size: 20,
                         ),
                         onPressed: () {
                           postController.likeCounter();
@@ -138,11 +152,11 @@ class PostCard extends StatelessWidget {
                       Text(
                         '${postController.counter}',
                         style: const TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.bold),
+                            fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                       IconButton(
                         icon: const Icon(Icons.comment_outlined,
-                            color: AppColors.cardsColor2, size: 18),
+                            color: AppColors.cardsColor2, size: 20),
                         onPressed: () {
                           showModalBottomSheet(
                             context: context,
@@ -164,7 +178,7 @@ class PostCard extends StatelessWidget {
                           color: postController.isSaved
                               ? AppColors.cardsColor2
                               : Colors.grey,
-                          size: 18,
+                          size: 22,
                         ),
                         onPressed: () {
                           postController.toggleSavePost(post, queryController);
