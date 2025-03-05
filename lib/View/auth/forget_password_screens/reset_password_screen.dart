@@ -24,114 +24,114 @@ class ResetPasswordScreen extends StatelessWidget {
     final textController =
         Provider.of<TextEditingControllerManager>(context, listen: false);
     final provider = Provider.of<SuffixIconController>(context);
+
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: SafeArea(
         child: SingleChildScrollView(
-          child: Form(
-            key: formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: AppSizes.height04(context),
-                ),
-                Center(
-                  child: Image.asset(
-                    AppImages.forumLogo,
-                    width: 169,
-                    height: 169,
+          keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+              key: formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height *
+                          0.05), // Top Spacing
+                  Center(
+                    child: Image.asset(
+                      AppImages.forumLogo,
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: MediaQuery.of(context).size.width * 0.4,
+                    ),
                   ),
-                ),
-                SizedBox(
-                  height: AppSizes.height03(context),
-                ),
-                CustomText(
-                  text: AppStrings.resetPassword,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                SizedBox(
-                  height: AppSizes.height02(context),
-                ),
-                CustomText(
-                  text: AppStrings.resetTitle,
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-                SizedBox(
-                  height: AppSizes.height04(context),
-                ),
-                CustomText(
-                  text: AppStrings.passwordTitle,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                AppTextFields.customTextField(
-                  obscureText: provider.isVisibleFirst,
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      print("object");
-                      provider.iconToggleFirst();
-                    },
-                    icon: provider.isVisibleFirst
-                        ? AppIcons.suffixIconOnn
-                        : AppIcons.suffixIconOff,
+                  SizedBox(height: AppSizes.height03(context)),
+                  CustomText(
+                    text: AppStrings.resetPassword,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
-                  validator: Validators.passwordValidator,
-                  prefixIcon: AppIcons.passwordIcon,
-                  hintText: AppStrings.passwordTitle,
-                  controller: textController.confirmPassController,
-                ),
-                SizedBox(
-                  height: AppSizes.height01(context),
-                ),
-                CustomText(
-                  text: AppStrings.confirmPassword,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                AppTextFields.customTextField(
-                  obscureText: provider.isVisibleSecond,
-                  validator: (value) => Validators.confirmPasswordValidator(
-                      value, textController.confirmPassController.text),
-                  suffixIcon: IconButton(
-                    onPressed: () {
-                      print("object");
-                      provider.iconToggleSecond();
-                    },
-                    icon: provider.isVisibleSecond
-                        ? AppIcons.suffixIconOff
-                        : AppIcons.suffixIconOnn,
+                  SizedBox(height: AppSizes.height02(context)),
+                  CustomText(
+                    text: AppStrings.resetTitle,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  prefixIcon: AppIcons.passwordIcon,
-                  hintText: AppStrings.passwordTitle,
-                  controller: textController.passwordController,
-                ),
-                SizedBox(
-                  height: AppSizes.height06(context),
-                ),
-                CustomButton(
-                  btnText: AppStrings.loginButton,
-                  color: AppColors.cardsColor2,
-                  ontap: () {
-                    if (formKey.currentState?.validate() ?? false) {
-                      CustomFlushBar.customFlushBar(
-                        context,
-                        'Your password is changed',
-                        Icons.verified,
-                        Colors.green,
-                      );
-                      Future.delayed(const Duration(milliseconds: 1700), () {
-                        AppNavigators.nextscreen(context, RouteNames.login);
-                      });
-                    } else {
-                      CustomFlushBar.customFlushBar(
-                        context,
-                        'Wrong Password',
-                        Icons.info,
-                        Colors.red,
-                      );
-                    }
-                  },
-                ),
-              ],
+                  SizedBox(height: AppSizes.height04(context)),
+
+                  // Password Field
+                  CustomText(
+                    text: AppStrings.passwordTitle,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  AppTextFields.customTextField(
+                    obscureText: provider.isVisibleFirst,
+                    suffixIcon: IconButton(
+                      onPressed: () => provider.iconToggleFirst(),
+                      icon: provider.isVisibleFirst
+                          ? AppIcons.suffixIconOnn
+                          : AppIcons.suffixIconOff,
+                    ),
+                    validator: Validators.passwordValidator,
+                    prefixIcon: AppIcons.passwordIcon,
+                    hintText: AppStrings.passwordTitle,
+                    controller: textController.confirmPassController,
+                  ),
+                  SizedBox(height: AppSizes.height02(context)),
+
+                  // Confirm Password Field
+                  CustomText(
+                    text: AppStrings.confirmPassword,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  AppTextFields.customTextField(
+                    obscureText: provider.isVisibleSecond,
+                    validator: (value) => Validators.confirmPasswordValidator(
+                        value, textController.confirmPassController.text),
+                    suffixIcon: IconButton(
+                      onPressed: () => provider.iconToggleSecond(),
+                      icon: provider.isVisibleSecond
+                          ? AppIcons.suffixIconOff
+                          : AppIcons.suffixIconOnn,
+                    ),
+                    prefixIcon: AppIcons.passwordIcon,
+                    hintText: AppStrings.passwordTitle,
+                    controller: textController.passwordController,
+                  ),
+                  SizedBox(
+                      height: MediaQuery.of(context).size.height *
+                          0.05), // Button Spacing
+
+                  // Submit Button
+                  Center(
+                    child: CustomButton(
+                      btnText: AppStrings.loginButton,
+                      color: AppColors.cardsColor2,
+                      ontap: () {
+                        if (formKey.currentState?.validate() ?? false) {
+                          CustomFlushBar.customFlushBar(
+                            context,
+                            'Your password is changed',
+                            Icons.verified,
+                            Colors.green,
+                          );
+                          Future.delayed(const Duration(milliseconds: 1700),
+                              () {
+                            AppNavigators.nextscreen(context, RouteNames.login);
+                          });
+                        } else {
+                          CustomFlushBar.customFlushBar(
+                            context,
+                            'Wrong Password',
+                            Icons.info,
+                            Colors.red,
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                ],
+              ),
             ),
           ),
         ),

@@ -5,8 +5,8 @@ import 'package:qabil_project01_final/view_model/controller/comment_controller/c
 import 'package:qabil_project01_final/widgets/comment_widget/comment_widget.dart';
 
 class CommentScreen extends StatelessWidget {
-  final String postId; // Post ID ka parameter
-  CommentScreen({required this.postId});
+  final String postId; 
+  const CommentScreen({super.key, required this.postId});
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +33,10 @@ class CommentScreen extends StatelessWidget {
   }
 }
 
-// 📌 Comment Bottom Sheet Widget
+
 class CommentBottomSheet extends StatelessWidget {
   final String postId;
-  CommentBottomSheet({required this.postId});
+  const CommentBottomSheet({super.key, required this.postId});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class CommentBottomSheet extends StatelessWidget {
 
     return DraggableScrollableSheet(
       expand: false,
-      initialChildSize: 0.6, // Bottom sheet ki height ka control
+      initialChildSize: 0.6, 
       minChildSize: 0.4,
       maxChildSize: 0.9,
       builder: (context, scrollController) {
@@ -67,7 +67,7 @@ class CommentBottomSheet extends StatelessWidget {
               ),
               Expanded(
                 child: ListView.builder(
-                  controller: scrollController, // 🛠️ Scroll Control Fix
+                  controller: scrollController, 
                   itemCount: commentProvider.commentsList.length,
                   itemBuilder: (context, index) {
                     return Column(

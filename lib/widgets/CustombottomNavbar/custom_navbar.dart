@@ -116,7 +116,7 @@ class CustomNavbar extends StatelessWidget {
                                   ? AppColors.cardsColor2
                                   : AppColors.iconColorGrey,
                               iconSize: 35,
-                              iconText: 'Sessions',
+                              iconText: 'Save',
                               iconTextColor: provider.pageIndex == 1
                                   ? AppColors.cardsColor2
                                   : AppColors.textColorGrey,

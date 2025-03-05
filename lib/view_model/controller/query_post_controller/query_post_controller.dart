@@ -30,7 +30,7 @@ class QueryController extends ChangeNotifier {
 
     final newPost = PostModel(
       username: "User Name",
-      time: DateTime.now().toString(),
+      time: DateTime.now(),
       title: titleController.text,
       description: descriptionController.text,
       images: List.from(imagesList),
@@ -43,12 +43,15 @@ class QueryController extends ChangeNotifier {
     imagesList.clear();
     notifyListeners();
   }
+
   void savePost(PostModel post) {
-  if (!savedPosts.contains(post)) {
-    savedPosts.add(post);
+    if (savedPosts.contains(post)) {
+      savedPosts.remove(post); 
+    } else {
+      savedPosts.add(post); 
+    }
     notifyListeners();
   }
-}
 
   @override
   void dispose() {

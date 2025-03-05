@@ -52,7 +52,7 @@ class SelectCourseWidget extends StatelessWidget {
             text: AppStrings.course,
             style: Theme.of(context).textTheme.titleMedium,
           ),
-          items: proProvider.studentsName.map((student) {
+          items: proProvider.selectCourse.map((student) {
             return DropdownMenuItem<String>(
               value: student,
               child: Consumer<ListPractice>(

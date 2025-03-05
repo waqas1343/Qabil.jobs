@@ -4,12 +4,14 @@ import '../query_post_controller/query_post_controller.dart';
 
 class PostCardController extends ChangeNotifier {
   int _currentIndex = 0;
-  bool _isSaved = false;
   int _counter = 0;
+  bool _isSaved = false;
+  bool _isLike = false;
 
   int get currentIndex => _currentIndex;
   bool get isSaved => _isSaved;
   int get counter => _counter;
+  bool get isLike => _isLike;
 
   void updateIndex(int index) {
     _currentIndex = index;
@@ -23,7 +25,12 @@ class PostCardController extends ChangeNotifier {
   }
 
   void likeCounter() {
-    _counter++;
+    if (_isLike) {
+      _counter--;
+    } else {
+      _counter++;
+    }
+    _isLike = !_isLike;
     notifyListeners();
   }
 }
