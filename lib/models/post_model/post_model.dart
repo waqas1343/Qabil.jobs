@@ -1,7 +1,7 @@
 import 'dart:io';
 
 class PostModel {
-  String? id;  // Optional ID
+  String? id; 
   final String username;
   final String time;
   final String title;
@@ -9,7 +9,7 @@ class PostModel {
   final List<File> images;
 
   PostModel({
-    this.id, // Optional ID
+    this.id, 
     required this.username,
     required this.time,
     required this.title,
