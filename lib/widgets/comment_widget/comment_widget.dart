@@ -5,7 +5,8 @@ class CustomComment extends StatelessWidget {
   final int commentIndex;
   final VoidCallback onReply;
 
-  CustomComment({
+  const CustomComment({
+    super.key,
     required this.commentData,
     required this.commentIndex,
     required this.onReply,

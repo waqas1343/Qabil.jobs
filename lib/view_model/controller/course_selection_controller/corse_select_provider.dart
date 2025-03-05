@@ -1,7 +1,24 @@
 import 'package:flutter/material.dart';
 
 class ListPractice extends ChangeNotifier {
-  List<String> studentsName = ['Waqas', 'Ali', 'Ahmed', 'Sara', 'Zara'];
+  List<String> selectCourse = [
+    'Flutter Development',
+    'Web Development',
+    'Graphic Designing',
+    'UI/UX Designing',
+    'Digital Marketing',
+    'Video Editing & Animation',
+    'Amazon FBA',
+    'Cyber Security',
+    'Game Development',
+    'MERN Stack Development',
+    'Data Science & Machine Learning',
+    'Python Programming',
+    'Mobile App Development',
+    'Artificial Intelligence',
+    'Blockchain Development'
+  ];
+
   List<String> studentAdded = [];
   String? selectedItem;
   Map<String, bool> studentChecked = {};
