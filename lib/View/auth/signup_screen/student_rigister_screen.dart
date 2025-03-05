@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/view_model/controller/bottom_roll_controller/bottom_roll_controller.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -130,12 +131,16 @@ class StudentRigisterScreen extends StatelessWidget {
                   color: AppColors.cardsColor2,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
+                      Provider.of<BottomRollController>(context, listen: false)
+                          .setRole("student");
+
                       CustomFlushBar.customFlushBar(
                         context,
                         'Complete your profile',
                         Icons.verified,
                         Colors.green,
                       );
+
                       Future.delayed(const Duration(milliseconds: 1700), () {
                         AppNavigators.nextscreen(
                             context, RouteNames.completeProfile);

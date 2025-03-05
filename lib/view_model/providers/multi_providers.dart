@@ -1,4 +1,6 @@
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/view_model/controller/bottom_roll_controller/bottom_roll_controller.dart';
+import 'package:qabil_project01_final/view_model/controller/comment_controller/comment_controller.dart';
 import 'package:qabil_project01_final/view_model/controller/course_selection_controller/corse_select_provider.dart';
 import 'package:qabil_project01_final/view_model/controller/gender_selection_controller/gender_provider.dart';
 import '../controller/all_textediting_controller/all_textediting_controller.dart';
@@ -34,5 +36,9 @@ final List<ChangeNotifierProvider> multiAppProviders = [
   ChangeNotifierProvider<QueryController>(create: (_) => QueryController()),
 
   ChangeNotifierProvider<IconSelecting>(create: (_) => IconSelecting()),
-  ChangeNotifierProvider<PostCardController>(create: (_) => PostCardController()),
+  ChangeNotifierProvider<PostCardController>(
+      create: (_) => PostCardController()),
+  ChangeNotifierProvider<BottomRollController>(
+      create: (_) => BottomRollController()),
+  ChangeNotifierProvider<CommentController>(create: (_) => CommentController()),
 ];
