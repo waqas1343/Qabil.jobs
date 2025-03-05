@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:qabil_project01_final/navigation_screen/app_navigators.dart';
-import 'package:qabil_project01_final/routes/routes_name/routes_names.dart';
+
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String greeting;
@@ -98,7 +96,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               IconButton(
                 onPressed: () {
-                  AppNavigators.nextscreen(context, RouteNames.notification);
+                    
                 },
                 icon: const Icon(
                   Icons.notifications_outlined,

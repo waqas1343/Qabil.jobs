@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:qabil_app/Navigation_screening/app_navigators.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/constant/app_images/app_images.dart';
-import 'package:qabil_app/routes/routes_name/routes_names.dart';
-import 'package:qabil_app/view_model/selectors_logo/selector_model.dart';
-import 'package:qabil_app/widgets/custom_Category_logo/categoryLogo.dart';
+import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
+import 'package:qabil_project01_final/constant/app_images/app_images.dart';
+import 'package:qabil_project01_final/models/selector_model/selector_model.dart';
+import 'package:qabil_project01_final/navigation_screen/app_navigators.dart';
+import 'package:qabil_project01_final/routes/routes_name/routes_names.dart';
+import 'package:qabil_project01_final/widgets/custom_Category_logo/categoryLogo.dart';
 
 class DashBoardScreen extends StatelessWidget {
   const DashBoardScreen({super.key});

@@ -31,13 +31,15 @@ class AppTextFields {
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: fillColor ?? Colors.white,
-        hintStyle: TextStyle(color: Colors.grey, fontSize: hintTextSize),
+        hintStyle: TextStyle(
+          color: Colors.grey,
+        ),
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
           borderSide: readOnly ?? false
-        ? BorderSide(color: borderColor ?? Colors.black, width: 1)
+              ? BorderSide(color: borderColor ?? Colors.black, width: 1)
               : BorderSide(color: borderColor ?? Colors.grey, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
