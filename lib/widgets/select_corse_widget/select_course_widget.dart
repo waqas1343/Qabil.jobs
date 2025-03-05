@@ -4,7 +4,7 @@ import '../../constant/app_sizes/app_sizes.dart';
 import '../../constant/app_strings/appstrings.dart';
 import '../../constant/custom_text/custom_text.dart';
 import '../../view_model/controller/validation.dart';
-import '../../view_model/providers/corse_select_provider.dart';
+import '../../view_model/controller/course_selection_controller/corse_select_provider.dart';
 
 class SelectCourseWidget extends StatelessWidget {
   const SelectCourseWidget({super.key});

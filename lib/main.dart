@@ -1,40 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/View/auth/login_screen/login_screen.dart';
 
-import 'package:qabil_app/View/screens/exploreScreen/exploreScreen.dart';
-import 'package:qabil_app/View/screens/notification/notifications.dart';
-
-import 'package:qabil_app/View/screens/profile_screen/profile_screen.dart';
-import 'package:qabil_app/View/screens/student_profile/student_profile.dart';
-
-
-import 'package:qabil_app/View/splash_screen/splash_screen.dart';
-
-import 'package:qabil_app/View/splash_screen/splash_screen.dart';
-
-
-import 'package:qabil_app/View/screens/dashboard/dashboard_screen.dart';
-
-import 'package:qabil_app/routes/routes_name/routes_names.dart';
-import 'package:qabil_app/routes/routes_screens/routes_screens.dart';
-import 'package:qabil_app/utils/text_theme/text_theme.dart';
-import 'package:qabil_app/view_model/providers/multi_providers.dart';
-import 'View/splash_screen/splash_screen.dart';
 import 'constant/app_colours/appcolors.dart';
+import 'routes/routes_name/routes_names.dart';
+import 'routes/routes_screens/routes_screens.dart';
+import 'utils/text_theme/text_theme.dart';
+import 'view/splash_screen/splash_screen.dart';
+import 'view_model/providers/multi_providers.dart';
 
 void main() {
   runApp(const MyApp());
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      statusBarColor: AppColors.textColor,
+      statusBarColor: AppColors.appBackground,
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.light,
-      systemNavigationBarColor: AppColors.textColor,
+      systemNavigationBarColor: AppColors.appBackground,
     ),
   );
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -42,13 +28,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: multiAppProviders,
-      child: MaterialApp( 
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: RouteNames.splashscreen,
         routes: RouteScreens.getScreens(),
         theme: AppTheme.theme,
         home: SplashScreen(),
-
       ),
     );
   }

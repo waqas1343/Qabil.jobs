@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/constant/app_button/app_button.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/constant/app_icons/app_icons.dart';
-import 'package:qabil_app/constant/app_images/app_images.dart';
-import 'package:qabil_app/constant/app_sizes/app_sizes.dart';
-import 'package:qabil_app/constant/app_strings/appstrings.dart';
-import 'package:qabil_app/constant/custom_text/custom_text.dart';
-import 'package:qabil_app/constant/custom_textfield/custom_textield.dart';
-import 'package:qabil_app/routes/routes_name/routes_names.dart';
-import 'package:qabil_app/view_model/controller/validation.dart';
-
-import '../../../navigation_screening/app_navigators.dart';
+import 'package:qabil_project01_final/routes/routes_name/routes_names.dart';
+import '../../../constant/app_button/app_button.dart';
+import '../../../constant/app_colours/appcolors.dart';
+import '../../../constant/app_icons/app_icons.dart';
+import '../../../constant/app_images/app_images.dart';
+import '../../../constant/app_sizes/app_sizes.dart';
+import '../../../constant/app_strings/appstrings.dart';
+import '../../../constant/custom_text/custom_text.dart';
+import '../../../constant/custom_textfield/custom_textield.dart';
+import '../../../navigation_screen/app_navigators.dart';
+import '../../../view_model/controller/all_textediting_controller/all_textediting_controller.dart';
 import '../../../view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
-import '../../../widgets/customFlushbar/customFlushbar.dart';
+import '../../../view_model/controller/validation.dart';
+import '../../../widgets/customFlushbar/custom_flushbar.dart';
 
 class LoginScreen extends StatelessWidget {
-  final TextEditingController studenIDController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textController =
+        Provider.of<TextEditingControllerManager>(context, listen: false);
+
     final provider = Provider.of<SuffixIconController>(context);
     return Scaffold(
       body: Padding(
@@ -62,7 +63,7 @@ class LoginScreen extends StatelessWidget {
                   validator: Validators.studentId,
                   prefixIcon: AppIcons.idIcon,
                   hintText: AppStrings.studentId,
-                  controller: studenIDController,
+                  controller: textController.studentIDController,
                 ),
                 SizedBox(
                   height: AppSizes.height01(context),
@@ -85,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
-                  controller: passwordController,
+                  controller: textController.passwordController,
                 ),
                 SizedBox(
                   height: AppSizes.height01(context),
@@ -96,7 +97,7 @@ class LoginScreen extends StatelessWidget {
                     CustomText(
                       onTap: () {
                         AppNavigators.nextscreen(
-                            context, RouteNames.forgotpassword);
+                            context, RouteNames.forgotPassword);
                       },
                       text: AppStrings.forgotPassword,
                       fontSize: 14,
@@ -145,7 +146,7 @@ class LoginScreen extends StatelessWidget {
                       CustomText(
                         onTap: () {
                           AppNavigators.nextscreen(
-                              context, RouteNames.registersStudentScreen);
+                              context, RouteNames.registerStudent);
                         },
                         text: AppStrings.regAsStudent,
                         color: AppColors.textColor,

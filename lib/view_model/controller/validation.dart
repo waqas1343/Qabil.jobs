@@ -1,4 +1,5 @@
-import 'package:qabil_app/constant/app_strings/appstrings.dart';
+
+import '../../constant/app_strings/appstrings.dart';
 
 class Validators {
   static String? enterName(String? value) {

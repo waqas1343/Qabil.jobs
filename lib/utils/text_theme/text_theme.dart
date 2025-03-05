@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
+
+import '../../constant/app_colours/appcolors.dart';
 
 class AppTheme {
   static ThemeData get theme {

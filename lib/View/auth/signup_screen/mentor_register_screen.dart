@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
-import 'package:qabil_app/view_model/controller/validation.dart';
-import '../../../navigation_screening/app_navigators.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -11,20 +8,23 @@ import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
+import '../../../navigation_screen/app_navigators.dart';
 import '../../../routes/routes_name/routes_names.dart';
-import '../../../widgets/customFlushbar/customFlushbar.dart';
+import '../../../view_model/controller/all_textediting_controller/all_textediting_controller.dart';
+import '../../../view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
+import '../../../view_model/controller/validation.dart';
+import '../../../widgets/customFlushbar/custom_flushbar.dart';
 
 class MentorRegisterScreen extends StatelessWidget {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController studentIDController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confiremPassController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   MentorRegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textController =
+        Provider.of<TextEditingControllerManager>(context, listen: false);
+
     final provider = Provider.of<SuffixIconController>(context);
     return Scaffold(
       body: Padding(
@@ -69,7 +69,7 @@ class MentorRegisterScreen extends StatelessWidget {
                   validator: Validators.enterName,
                   prefixIcon: AppIcons.nameIcon,
                   hintText: AppStrings.nameText,
-                  controller: nameController,
+                  controller: textController.nameController,
                 ),
                 CustomText(
                   text: AppStrings.email,
@@ -79,7 +79,7 @@ class MentorRegisterScreen extends StatelessWidget {
                   validator: Validators.emailValidation,
                   prefixIcon: AppIcons.emailIcon,
                   hintText: AppStrings.emailEnter,
-                  controller: studentIDController,
+                  controller: textController.studentIDController,
                 ),
                 CustomText(
                   text: AppStrings.headingPhoneNum,
@@ -91,7 +91,7 @@ class MentorRegisterScreen extends StatelessWidget {
                   validator: Validators.phoneNumber,
                   prefixIcon: AppIcons.phoneIcon,
                   hintText: AppStrings.phoneTitle,
-                  controller: passwordController,
+                  controller: textController.passwordController,
                 ),
                 CustomText(
                   text: AppStrings.passwordTitle,
@@ -110,7 +110,7 @@ class MentorRegisterScreen extends StatelessWidget {
                   ),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
-                  controller: confiremPassController,
+                  controller: textController.confirmPassController,
                 ),
                 SizedBox(
                   height: AppSizes.height04(context),
@@ -153,7 +153,7 @@ class MentorRegisterScreen extends StatelessWidget {
                       CustomText(
                         onTap: () {
                           AppNavigators.nextscreen(
-                              context, RouteNames.registersStudentScreen);
+                              context, RouteNames.registerStudent);
                         },
                         text: AppStrings.regAsStudent,
                         color: AppColors.textColor,
