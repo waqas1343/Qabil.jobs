@@ -31,7 +31,7 @@ class NotificationScreen extends StatelessWidget {
           ),
         )
         ],
-      ),
+      )  ,
     //   body: savedPosts.isEmpty
     //       ? Column(
     //     mainAxisAlignment: MainAxisAlignment.start,
