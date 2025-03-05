@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
 
 import '../../../models/post_model/post_model.dart';
 import '../../../view_model/controller/query_post_controller/query_post_controller.dart';
@@ -13,7 +14,10 @@ class ExploreScreen extends StatelessWidget {
     final queryController = Provider.of<QueryController>(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text("Explore")),
+      appBar: CustomAppBar(
+        centerTitle: true,
+        username: 'Explore',
+      ),
       body: queryController.posts.isEmpty
           ? Center(child: Text("No posts available"))
           : ListView.builder(

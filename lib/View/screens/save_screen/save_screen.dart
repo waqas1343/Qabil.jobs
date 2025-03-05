@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
+import '../../../constant/custom_appbar/custom_appbar.dart' show CustomAppBar;
 import '../../../models/post_model/post_model.dart';
 import '../../../view_model/controller/query_post_controller/query_post_controller.dart';
 
@@ -13,7 +14,10 @@ class SaveScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Saved Posts")),
+      appBar: CustomAppBar(
+        centerTitle: true,
+        username: 'Save',
+      ),
       body: queryController.savedPosts.isEmpty
           ? const Center(child: Text("No saved posts"))
           : Padding(

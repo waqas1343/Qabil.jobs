@@ -6,7 +6,6 @@ import '../../../constant/custom_appbar/custom_appbar.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../view_model/controller/image_picker/image_picker_controller.dart';
 import '../../../view_model/controller/all_textediting_controller/all_textediting_controller.dart';
-import '../../../constant/app_strings/appstrings.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -18,14 +17,10 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        greeting: AppStrings.profile,
+        centerTitle: true,
         username: textController.nameController.text.isNotEmpty
             ? textController.nameController.text
             : "Your Name",
-        profileImagePath: imageProvider.images1 != null
-            ? imageProvider.images1!.path
-            : 'assets/images/profileimage.png',
-        notificationCount: 0,
       ),
       body: Center(
         child: Column(
