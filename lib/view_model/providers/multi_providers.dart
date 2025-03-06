@@ -1,16 +1,12 @@
 import 'package:provider/provider.dart';
-import 'package:qabil_app/view_model/controller/profile_controller/profile_controller.dart';
-import 'package:qabil_app/view_model/controller/save_card_controller/saveCard.dart';
-import 'package:qabil_app/view_model/providers/corse_select_provider.dart';
-import 'package:qabil_app/view_model/providers/select%20gender.dart';
-
-import '../controller/Curser_tab/curser_post_slider.dart';
+import 'package:qabil_project01_final/view_model/controller/course_selection_controller/corse_select_provider.dart';
+import 'package:qabil_project01_final/view_model/controller/gender_selection_controller/gender_provider.dart';
+import '../controller/all_textediting_controller/all_textediting_controller.dart';
 import '../controller/bottom_navbar_controller/bottom_navbar_controller.dart';
-import '../controller/course_select_controller/course_select_scontroller.dart';
-import '../controller/icon_selecting/icon_selecting.dart';
+import '../controller/icon_selector_controller/icon_selector.dart';
 import '../controller/image_picker/image_picker_controller.dart';
-import '../controller/image_post_controller/query_post_controller.dart';
-import '../controller/post_card_screen/explore_cards_controller.dart';
+import '../controller/like_conter_controller/like_conter.dart';
+import '../controller/query_post_controller/query_post_controller.dart';
 import '../controller/splash_provider/splash_screen_controller.dart';
 import '../controller/suffix_icon_controller/suffix_icon_controller.dart';
 
@@ -22,32 +18,21 @@ final List<ChangeNotifierProvider> multiAppProviders = [
   ChangeNotifierProvider<ImagePickerController>(
       create: (_) => ImagePickerController()),
   ////////////
-  ChangeNotifierProvider<Providerc>(create: (_) => Providerc()),
-  ////////////////
   ChangeNotifierProvider<SuffixIconController>(
       create: (_) => SuffixIconController()),
   ////////////////////
   ChangeNotifierProvider<BottomNavbarController>(
       create: (_) => BottomNavbarController()),
-  ////////////////////////
-  ChangeNotifierProvider<IconSelecting>(create: (_) => IconSelecting()),
 
-  /////////////////////
-  ChangeNotifierProvider<PostProvider>(create: (_) => PostProvider()),
-  ///////////////////
-  ChangeNotifierProvider<QueryPostController>(
-      create: (_) => QueryPostController()),
   ///////////////////////////
-  ChangeNotifierProvider<ProfileController>(create: (_) => ProfileController()),
-
   ChangeNotifierProvider<SplashScreenController>(
       create: (_) => SplashScreenController()),
+  //////////////////
+  ChangeNotifierProvider<TextEditingControllerManager>(
+      create: (_) => TextEditingControllerManager()),
   ///////////////////////////
-  ChangeNotifierProvider<SavedCardProvider>(create: (_) => SavedCardProvider()),
+  ChangeNotifierProvider<QueryController>(create: (_) => QueryController()),
 
-  ///////////////////////////
-  ChangeNotifierProvider<CurserPostSlider>(create: (_) => CurserPostSlider()),
-
-  ChangeNotifierProvider<QueryPostController>(create: (_) => QueryPostController()),
-
+  ChangeNotifierProvider<IconSelecting>(create: (_) => IconSelecting()),
+  ChangeNotifierProvider<PostCardController>(create: (_) => PostCardController()),
 ];

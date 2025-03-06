@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -8,23 +7,24 @@ import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
-import '../../../navigation_screening/app_navigators.dart';
+import '../../../navigation_screen/app_navigators.dart';
 import '../../../routes/routes_name/routes_names.dart';
+import '../../../view_model/controller/all_textediting_controller/all_textediting_controller.dart';
 import '../../../view_model/controller/image_picker/image_picker_controller.dart';
 import '../../../view_model/controller/validation.dart';
-import '../../../widgets/customFlushbar/customFlushbar.dart';
+import '../../../widgets/customFlushbar/custom_flushbar.dart';
 import '../../../widgets/select_corse_widget/select_course_widget.dart';
 import '../../../widgets/select_gender/select_gender_widget.dart';
 
 class CompleteProfile extends StatelessWidget {
   CompleteProfile({super.key});
 
-  final TextEditingController studentIDController = TextEditingController();
-  final TextEditingController bioController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final textController =
+        Provider.of<TextEditingControllerManager>(context, listen: false);
     final provider = Provider.of<ImagePickerController>(context);
     return Scaffold(
       body: Padding(
@@ -85,7 +85,7 @@ class CompleteProfile extends StatelessWidget {
                   validator: Validators.enterName,
                   prefixIcon: AppIcons.emailIcon,
                   hintText: AppStrings.nHintText,
-                  controller: studentIDController,
+                  controller: textController.nameController,
                 ),
                 SizedBox(height: AppSizes.height01(context)),
                 CustomText(
@@ -96,7 +96,7 @@ class CompleteProfile extends StatelessWidget {
                   validator: Validators.passwordValidator,
                   prefixIcon: AppIcons.emailIcon,
                   hintText: AppStrings.passwordTitle,
-                  controller: bioController,
+                  controller: textController.bioController,
                 ),
                 SizedBox(height: AppSizes.height02(context)),
                 SelectGenderWidget(),

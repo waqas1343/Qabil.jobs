@@ -1,0 +1,2 @@
+D:/Qabil.Waqas/Qabil.jobs/android/app/.cxx/Debug/6e1sl4w6/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Qabil.Waqas/Qabil.jobs/android/app/.cxx/Debug/6e1sl4w6/armeabi-v7a/CMakeFiles/rebuild_cache.dir

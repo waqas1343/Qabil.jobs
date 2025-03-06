@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/widgets/custom_notification_screen/custom_notifications.dart';
+import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_images/app_images.dart';
-import '../../../view_model/controller/save_card_controller/saveCard.dart';
+import '../../../widgets/notification_widget/notification_widget.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({super.key});
@@ -11,7 +10,7 @@ class NotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final savedPosts = Provider.of<SavedCardProvider>(context).savedPosts;
+    //final savedPosts = Provider.of<SavedCardProvider>(context).savedPosts;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -31,7 +30,7 @@ class NotificationScreen extends StatelessWidget {
           ),
         )
         ],
-      )  ,
+      ),
     //   body: savedPosts.isEmpty
     //       ? Column(
     //     mainAxisAlignment: MainAxisAlignment.start,
@@ -86,7 +85,8 @@ class NotificationScreen extends StatelessWidget {
           ),
           Expanded(child: ListView.builder(
               itemBuilder: (BuildContext context, int index) {
-                return CustomNotifications();
+                return CustomNotifications(
+                  title: '', message: '', image: '',);
               }, itemCount: 6
           ),),
           SizedBox(height: 2,),
@@ -120,7 +120,8 @@ class NotificationScreen extends StatelessWidget {
             child: ListView.builder(
                 itemCount: 8,
                 itemBuilder: (BuildContext context, int index) {
-                  return CustomNotifications();
+                  return CustomNotifications(title: 'title',
+                      message:'', image: '');
                 }),
           ),
 

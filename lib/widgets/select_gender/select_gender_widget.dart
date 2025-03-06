@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
+import '../../constant/app_colours/appcolors.dart';
 import '../../constant/app_strings/appstrings.dart';
 import '../../constant/custom_text/custom_text.dart';
-import '../../view_model/providers/select gender.dart';
-import '../../view_model/controller/validation.dart'; // Validators import kiya
+import '../../view_model/controller/gender_selection_controller/gender_provider.dart';
+import '../../view_model/controller/validation.dart';
 
 class SelectGenderWidget extends StatelessWidget {
   const SelectGenderWidget({super.key});

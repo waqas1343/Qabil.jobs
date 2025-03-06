@@ -1,4 +1,6 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String greeting;
@@ -11,14 +13,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.greeting,
     required this.username,
     required this.profileImagePath,
-    this.notificationCount = 0,
+    required this.notificationCount,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      centerTitle: true,
       automaticallyImplyLeading: false,
       elevation: 10,
+      backgroundColor: Colors.transparent,
       flexibleSpace: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -32,28 +36,34 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           boxShadow: [
             BoxShadow(
               color: Colors.black,
-              blurRadius: 10,
-              offset: const Offset(0, 5),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
             ),
           ],
         ),
       ),
       title: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CircleAvatar(
             radius: 25,
             backgroundColor: Colors.white,
             child: ClipOval(
-              child: Image.asset(
-                profileImagePath,
-                height: 50,
-                width: 50,
-                fit: BoxFit.cover,
-              ),
+              child: profileImagePath.startsWith('assets/')
+                  ? Image.asset(
+                      profileImagePath,
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover,
+                    )
+                  : Image.file(
+                      File(profileImagePath),
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover,
+                    ),
             ),
           ),
-          const SizedBox(width: 10),
+          const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -61,16 +71,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               Text(
                 greeting,
                 style: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 16,
                   fontWeight: FontWeight.w500,
                   color: Colors.white,
                 ),
               ),
-              const SizedBox(height: 2),
               Text(
                 username,
                 style: const TextStyle(
-                  fontSize: 22,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: Colors.yellowAccent,
                 ),
@@ -85,10 +94,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: Stack(
             clipBehavior: Clip.none,
             children: [
-              const Icon(
-                Icons.notifications_outlined,
-                size: 30,
-                color: Colors.white,
+              IconButton(
+                onPressed: () {
+                    
+                },
+                icon: const Icon(
+                  Icons.notifications_outlined,
+                  size: 30,
+                  color: Colors.white,
+                ),
               ),
               if (notificationCount > 0)
                 Positioned(
@@ -122,5 +136,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(100);
+  Size get preferredSize => const Size.fromHeight(80);
 }

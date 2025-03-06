@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:qabil_app/Navigation_screening/app_navigators.dart';
-import 'package:qabil_app/constant/app_colours/appcolors.dart';
-import 'package:qabil_app/constant/app_images/app_images.dart';
-import 'package:qabil_app/routes/routes_name/routes_names.dart';
-import 'package:qabil_app/widgets/custom_notification_screen/custom_notifications.dart';
-import 'package:qabil_app/widgets/logout_dialog/logout_dialog.dart';
-
-import '../../../constant/app_strings/appstrings.dart';
-import '../../../widgets/select_Imagesource/select_image_source.dart';
+import '../../../constant/app_colours/appcolors.dart';
+import '../../../constant/app_images/app_images.dart';
+import '../../../navigation_screen/app_navigators.dart';
+import '../../../routes/routes_name/routes_names.dart';
+import '../../../widgets/notification_widget/notification_widget.dart';
 
 class ProfileStudent extends StatelessWidget {
   const ProfileStudent({super.key});
@@ -85,21 +80,10 @@ class ProfileStudent extends StatelessWidget {
                           color: AppColors.textColor,
                           width: 2.0,
                           style: BorderStyle.solid)),
-
-                  // child: SelectImageSource(icon:
-                  // Icons.camera_alt_outlined,
-                  //     title: AppStrings.insertgallery,
-                  //     onTap: () {
-                  //       Navigator.pop(context);
-                  //     }),
-                  child:
-                  IconButton(
-                    icon: Center(
-                        child: Icon(Icons.camera_alt_outlined)),
-                    color: AppColors.textColorGrey,
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+                  child: Icon(
+                    Icons.camera_alt_outlined,
+                    size: 18,
+                    color: AppColors.textColor,
                   ),
                 ),
               )
@@ -182,7 +166,8 @@ class ProfileStudent extends StatelessWidget {
                     child: ListView.builder(
                         itemCount: 8,
                         itemBuilder: (BuildContext context, int index) {
-                          return CustomNotifications();
+                          return CustomNotifications(title: 'hdjhsa',
+                            message: 'sfdjsafdhj', image: 'sfdsfaf',);
                         }),
                   ),
                 ],

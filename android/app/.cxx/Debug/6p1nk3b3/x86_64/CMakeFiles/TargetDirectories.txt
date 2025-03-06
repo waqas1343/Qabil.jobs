@@ -1,0 +1,2 @@
+E:/Offiice work + projects/Qabil.jobs/android/app/.cxx/Debug/6p1nk3b3/x86_64/CMakeFiles/edit_cache.dir
+E:/Offiice work + projects/Qabil.jobs/android/app/.cxx/Debug/6p1nk3b3/x86_64/CMakeFiles/rebuild_cache.dir

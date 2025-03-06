@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_app/view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
-import 'package:qabil_app/view_model/controller/validation.dart';
-import 'package:qabil_app/widgets/customFlushbar/customFlushbar.dart';
-
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -12,20 +8,23 @@ import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
-import '../../../navigation_screening/app_navigators.dart';
+import '../../../navigation_screen/app_navigators.dart';
 import '../../../routes/routes_name/routes_names.dart';
+import '../../../view_model/controller/all_textediting_controller/all_textediting_controller.dart';
+import '../../../view_model/controller/suffix_icon_controller/suffix_icon_controller.dart';
+import '../../../view_model/controller/validation.dart';
+import '../../../widgets/customFlushbar/custom_flushbar.dart';
 
 class StudentRigisterScreen extends StatelessWidget {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController studentIDController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confiremPassController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   StudentRigisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final textController =
+        Provider.of<TextEditingControllerManager>(context, listen: false);
+
     final provider = Provider.of<SuffixIconController>(context);
     return Scaffold(
       body: Padding(
@@ -71,7 +70,7 @@ class StudentRigisterScreen extends StatelessWidget {
                   validator: Validators.enterName,
                   prefixIcon: AppIcons.nameIcon,
                   hintText: AppStrings.nameText,
-                  controller: nameController,
+                  controller: textController.nameController,
                 ),
                 CustomText(
                   text: AppStrings.studentId,
@@ -82,7 +81,7 @@ class StudentRigisterScreen extends StatelessWidget {
                   validator: Validators.studentId,
                   prefixIcon: AppIcons.idIcon,
                   hintText: AppStrings.studentId,
-                  controller: studentIDController,
+                  controller: textController.studentIDController,
                 ),
                 CustomText(
                   text: AppStrings.passwordTitle,
@@ -100,7 +99,7 @@ class StudentRigisterScreen extends StatelessWidget {
                           : AppIcons.suffixIconOff),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
-                  controller: passwordController,
+                  controller: textController.passwordController,
                 ),
                 CustomText(
                   text: AppStrings.confirmPassword,
@@ -110,7 +109,7 @@ class StudentRigisterScreen extends StatelessWidget {
                   obscureText: provider.isVisibleSecond,
                   validator: (value) {
                     return Validators.confirmPasswordValidator(
-                        value, passwordController.text);
+                        value, textController.passwordController.text);
                   },
                   suffixIcon: IconButton(
                       onPressed: () {
@@ -121,7 +120,7 @@ class StudentRigisterScreen extends StatelessWidget {
                           : AppIcons.suffixIconOff),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
-                  controller: confiremPassController,
+                  controller: textController.confirmPassController,
                 ),
                 SizedBox(
                   height: AppSizes.height04(context),
@@ -164,7 +163,7 @@ class StudentRigisterScreen extends StatelessWidget {
                       CustomText(
                         onTap: () {
                           AppNavigators.nextscreen(
-                              context, RouteNames.registersMentorScreen);
+                              context, RouteNames.registerMentor);
                         },
                         text: AppStrings.regAsMentor,
                         color: AppColors.textColor,

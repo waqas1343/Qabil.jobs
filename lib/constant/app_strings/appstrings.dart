@@ -1,6 +1,7 @@
 class AppStrings {
   // Login Screen
   static const String loginTitle = "log In account";
+  static const String profile = "Profile";
   static const String loginSubtitle = "Please sign in to continue";
   static const String passwordTitle = "Password";
   static const String confirim = "Confirm";
@@ -41,6 +42,7 @@ class AppStrings {
   static const String haveAcount = "Already have an account?";
 
   static const String nameText = "Name";
+  static const String querryDescriptionText = "Query Description";
   static const String nHintText = "Waqas iLyas";
   static const String phone = "0XXX XXXXXXX";
 
@@ -99,15 +101,6 @@ class AppStrings {
   static const String flutterLogo = "Flutter";
   static const String htmlCssLogo = "HTML,CSS\n& JavaScript";
   static const String figmaLogo = "Figma";
-  static const String dataAnalystLogo = "Data Analysis";
-  static const String eCommerceLogo = "E-Commerce";
-  static const String jsReactLogo = "js React ";
-  static const String pythonLogo = "Python";
-  static const String uiUxLogo = "UI/UX";
-  static const String cyberSecurityLogo = "Cyber Security";
-  static const String marketingLogo = "Marketing";
-  static const String amazonLogo = "Amazon";
-  static const String leadGenerationLogo = "Lead Generation";
 
   // courses
 
@@ -122,7 +115,6 @@ class AppStrings {
   static const String gameing = "Game Developments";
 
   //query info
-  static const String query = "Queries";
   static const String addquery = "Add Query Detail";
   static const String querydescription = "QueryDescription";
   static const String addaphoto = "Add a Picture";
@@ -135,4 +127,6 @@ class AppStrings {
 
   static const String logoutButton = "logout";
   static const String cencalText = "Cencel";
+
+  static var createPost = 'Create Post';
 }
