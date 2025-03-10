@@ -5,7 +5,6 @@ import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
 import '../../../constant/app_images/app_images.dart';
-import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../constant/app_strings/appstrings.dart';
 import '../../../constant/custom_text/custom_text.dart';
 import '../../../constant/custom_textfield/custom_textield.dart';
@@ -24,7 +23,6 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final textController =
         Provider.of<TextEditingControllerManager>(context, listen: false);
-
     final provider = Provider.of<SuffixIconController>(context);
     return Scaffold(
       body: Padding(
@@ -36,7 +34,7 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: AppSizes.height08(context),
+                  height: MediaQuery.of(context).size.height * 0.08,
                 ),
                 Center(
                   child: Image.asset(
@@ -49,14 +47,14 @@ class LoginScreen extends StatelessWidget {
                   child: CustomText(text: AppStrings.loginSubtitle),
                 ),
                 SizedBox(
-                  height: AppSizes.height10(context),
+                  height: MediaQuery.of(context).size.height * 0.02,
                 ),
                 CustomText(
                   text: AppStrings.studentId,
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 SizedBox(
-                  height: AppSizes.height01(context),
+                  height: 8,
                 ),
                 AppTextFields.customTextField(
                   keyboardType: TextInputType.number,
@@ -66,7 +64,7 @@ class LoginScreen extends StatelessWidget {
                   controller: textController.studentIDController,
                 ),
                 SizedBox(
-                  height: AppSizes.height01(context),
+                  height: 8,
                 ),
                 CustomText(
                   text: AppStrings.passwordTitle,
@@ -77,7 +75,6 @@ class LoginScreen extends StatelessWidget {
                   validator: Validators.passwordValidator,
                   suffixIcon: IconButton(
                     onPressed: () {
-                      print("object");
                       provider.iconToggleFirst();
                     },
                     icon: provider.isVisibleFirst
@@ -89,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                   controller: textController.passwordController,
                 ),
                 SizedBox(
-                  height: AppSizes.height01(context),
+                  height: 8,
                 ),
                 Row(
                   children: [
@@ -106,7 +103,7 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: AppSizes.height04(context),
+                  height: 16,
                 ),
                 CustomButton(
                   btnText: AppStrings.loginButton,
@@ -134,15 +131,13 @@ class LoginScreen extends StatelessWidget {
                   },
                 ),
                 SizedBox(
-                  height: AppSizes.height02(context),
+                  height: 16,
                 ),
                 Center(
                   child: Column(
                     children: [
                       CustomText(text: AppStrings.oR),
-                      SizedBox(
-                        height: AppSizes.height01(context),
-                      ),
+                      SizedBox(height: 8),
                       CustomText(
                         onTap: () {
                           AppNavigators.nextscreen(

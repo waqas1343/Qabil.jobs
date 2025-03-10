@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/view_model/controller/bottom_roll_controller/bottom_roll_controller.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_icons/app_icons.dart';
@@ -24,8 +25,10 @@ class MentorRegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final textController =
         Provider.of<TextEditingControllerManager>(context, listen: false);
-
     final provider = Provider.of<SuffixIconController>(context);
+    final userRoleProvider = Provider.of<BottomRollController>(context,
+        listen: false); // Role Provider
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -35,22 +38,13 @@ class MentorRegisterScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: AppSizes.height02(context),
-                ),
+                SizedBox(height: AppSizes.height02(context)),
                 Center(
-                  child: Image.asset(
-                    AppImages.forumLogo,
-                    width: 100,
-                    height: 100,
-                  ),
+                  child:
+                      Image.asset(AppImages.forumLogo, width: 100, height: 100),
                 ),
-                Center(
-                  child: CustomText(text: AppStrings.loginSubtitle),
-                ),
-                SizedBox(
-                  height: AppSizes.height04(context),
-                ),
+                Center(child: CustomText(text: AppStrings.loginSubtitle)),
+                SizedBox(height: AppSizes.height04(context)),
                 Row(
                   children: [
                     CustomText(
@@ -112,14 +106,15 @@ class MentorRegisterScreen extends StatelessWidget {
                   hintText: AppStrings.passwordTitle,
                   controller: textController.confirmPassController,
                 ),
-                SizedBox(
-                  height: AppSizes.height04(context),
-                ),
+                SizedBox(height: AppSizes.height04(context)),
                 CustomButton(
                   btnText: AppStrings.register,
                   color: AppColors.cardsColor2,
                   ontap: () {
                     if (formKey.currentState?.validate() ?? false) {
+                      // Role set kar rahe hain
+                      userRoleProvider.setRole("mentor");
+
                       CustomFlushBar.customFlushBar(
                         context,
                         'Complete your profile',
@@ -140,48 +135,6 @@ class MentorRegisterScreen extends StatelessWidget {
                     }
                   },
                 ),
-                SizedBox(
-                  height: AppSizes.height02(context),
-                ),
-                Center(
-                  child: Column(
-                    children: [
-                      CustomText(text: AppStrings.oR),
-                      SizedBox(
-                        height: AppSizes.height01(context),
-                      ),
-                      CustomText(
-                        onTap: () {
-                          AppNavigators.nextscreen(
-                              context, RouteNames.registerStudent);
-                        },
-                        text: AppStrings.regAsStudent,
-                        color: AppColors.textColor,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: AppSizes.height02(context),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CustomText(
-                      text: AppStrings.haveAcount,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    CustomText(
-                      onTap: () {
-                        AppNavigators.nextscreen(context, RouteNames.login);
-                      },
-                      text: AppStrings.loginButton,
-                      color: AppColors.cardsColor2,
-                      fontWeight: FontWeight.w700,
-                    )
-                  ],
-                )
               ],
             ),
           ),

@@ -22,82 +22,86 @@ class ForgetPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final textController =
         Provider.of<TextEditingControllerManager>(context, listen: false);
+
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: formKey,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: AppSizes.height08(context),
+      body: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              SizedBox(
+                  height:
+                      MediaQuery.of(context).size.height * 0.1),
+              Center(
+                child: Image.asset(
+                  AppImages.forumLogo,
+                  width: 169,
+                  height: 169,
                 ),
-                Center(
-                  child: Image.asset(
-                    AppImages.forumLogo,
-                    width: 169,
-                    height: 169,
-                  ),
+              ),
+              SizedBox(height: AppSizes.height03(context)),
+              CustomText(
+                text: AppStrings.forgotPassword,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              SizedBox(height: AppSizes.height02(context)),
+              CustomText(
+                text: AppStrings.forgetTitle,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              SizedBox(height: AppSizes.height04(context)),
+
+            
+              Form(
+                key: formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomText(
+                      text: AppStrings.email,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    AppTextFields.customTextField(
+                      keyboardType: TextInputType.emailAddress,
+                      validator: Validators.emailValidation,
+                      prefixIcon: AppIcons.emailIcon,
+                      hintText: AppStrings.enteremail,
+                      controller: textController.emailController,
+                    ),
+                    SizedBox(height: AppSizes.height03(context)),
+                  ],
                 ),
-                SizedBox(
-                  height: AppSizes.height03(context),
-                ),
-                CustomText(
-                  text: AppStrings.forgotPassword,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                SizedBox(
-                  height: AppSizes.height02(context),
-                ),
-                CustomText(
-                  text: AppStrings.forgetTitle,
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-                SizedBox(
-                  height: AppSizes.height04(context),
-                ),
-                CustomText(
-                  text: AppStrings.email,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                AppTextFields.customTextField(
-                  keyboardType: TextInputType.emailAddress,
-                  validator: Validators.emailValidation,
-                  prefixIcon: AppIcons.emailIcon,
-                  hintText: AppStrings.enteremail,
-                  controller: textController.emailController,
-                ),
-                SizedBox(
-                  height: AppSizes.height08(context),
-                ),
-                CustomButton(
-                  btnText: AppStrings.forgotSendbutton,
-                  color: AppColors.cardsColor2,
-                  ontap: () {
-                    if (formKey.currentState?.validate() ?? false) {
-                      CustomFlushBar.customFlushBar(
-                        context,
-                        'Email sent successfully',
-                        Icons.verified,
-                        Colors.green,
-                      );
-                      Future.delayed(const Duration(milliseconds: 1700), () {
-                        AppNavigators.nextscreen(context, RouteNames.enterOtp);
-                      });
-                    } else {
-                      CustomFlushBar.customFlushBar(
-                        context,
-                        'Email is required',
-                        Icons.info,
-                        Colors.red,
-                      );
-                    }
-                  },
-                ),
-              ],
-            ),
+              ),
+
+              CustomButton(
+                btnText: AppStrings.forgotSendbutton,
+                color: AppColors.cardsColor2,
+                ontap: () {
+                  if (formKey.currentState?.validate() ?? false) {
+                    CustomFlushBar.customFlushBar(
+                      context,
+                      'Email sent successfully',
+                      Icons.verified,
+                      Colors.green,
+                    );
+                    Future.delayed(const Duration(milliseconds: 1700), () {
+                      AppNavigators.nextscreen(context, RouteNames.enterOtp);
+                    });
+                  } else {
+                    CustomFlushBar.customFlushBar(
+                      context,
+                      'Email is required',
+                      Icons.info,
+                      Colors.red,
+                    );
+                  }
+                },
+              ),
+              SizedBox(
+                  height: MediaQuery.of(context).size.height *
+                      0.05), 
+            ],
           ),
         ),
       ),

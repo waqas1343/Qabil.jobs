@@ -6,16 +6,18 @@ import '../../../models/post_model/post_model.dart';
 class QueryController extends ChangeNotifier {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
-  List<PostModel> savedPosts = [];
-  List<File> imagesList = [];
-  List<PostModel> posts = [];
-
   final ImagePicker _picker = ImagePicker();
+
+  List<PostModel> posts = [];
+  List<File> imagesList = [];
+  List<PostModel> savedPosts = [];
 
   Future<void> pickImages() async {
     final List<XFile> pickedFiles = await _picker.pickMultiImage();
-    imagesList.addAll(pickedFiles.map((file) => File(file.path)));
-    notifyListeners();
+    if (pickedFiles.isNotEmpty) {
+      imagesList.addAll(pickedFiles.map((file) => File(file.path)));
+      notifyListeners();
+    }
   }
 
   void removeImage(int index) {
@@ -23,14 +25,17 @@ class QueryController extends ChangeNotifier {
     notifyListeners();
   }
 
-  void uploadPost() {
+  void uploadPost(BuildContext context) {
     if (titleController.text.isEmpty || descriptionController.text.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Title aur Description zaroori hain!")),
+      );
       return;
     }
 
     final newPost = PostModel(
       username: "User Name",
-      time: DateTime.now().toString(),
+      time: DateTime.now(),
       title: titleController.text,
       description: descriptionController.text,
       images: List.from(imagesList),
@@ -38,17 +43,25 @@ class QueryController extends ChangeNotifier {
 
     posts.insert(0, newPost);
 
+    // Fields clear karna
     titleController.clear();
     descriptionController.clear();
     imagesList.clear();
+
     notifyListeners();
+
+    // ✅ Bottom Sheet close karna
+    Navigator.pop(context);
   }
+
   void savePost(PostModel post) {
-  if (!savedPosts.contains(post)) {
-    savedPosts.add(post);
+    if (savedPosts.contains(post)) {
+      savedPosts.remove(post);
+    } else {
+      savedPosts.add(post);
+    }
     notifyListeners();
   }
-}
 
   @override
   void dispose() {

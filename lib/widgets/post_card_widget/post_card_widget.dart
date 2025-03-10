@@ -1,6 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
+import 'package:qabil_project01_final/view_model/controller/image_picker/image_picker_controller.dart';
+import 'package:timeago/timeago.dart' as timeago;
+import 'package:qabil_project01_final/constant/custom_text/custom_text.dart';
+import 'package:qabil_project01_final/view_model/controller/all_textediting_controller/all_textediting_controller.dart';
+import 'package:qabil_project01_final/widgets/comment_screen_widget/comment_screen_widget.dart';
 import '../../models/post_model/post_model.dart';
 import '../../view_model/controller/like_conter_controller/like_conter.dart';
 import '../../view_model/controller/query_post_controller/query_post_controller.dart';
@@ -11,129 +17,166 @@ class PostCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final imageProvider = Provider.of<ImagePickerController>(context);
     final queryController =
         Provider.of<QueryController>(context, listen: false);
+    final textController = Provider.of<TextEditingControllerManager>(context);
+
     return ChangeNotifierProvider(
       create: (_) => PostCardController(),
       child: Consumer<PostCardController>(
         builder: (context, postController, child) {
           return Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            color: AppColors.appBackground,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10),
+            ),
             elevation: 2,
-            margin: EdgeInsets.symmetric(vertical: 6, horizontal: 10),
+            // margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
             child: Padding(
-              padding: EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-             
                   Row(
                     children: [
                       CircleAvatar(
-                        backgroundImage:
-                            AssetImage('assets/default_profile.png'),
-                        radius: 18,
+                        radius: 25,
+                        backgroundColor: AppColors.cardsColor2,
+                        backgroundImage: imageProvider.images1 != null
+                            ? FileImage(imageProvider.images1!)
+                            : null,
+                        child: imageProvider.images1 == null
+                            ? const Icon(Icons.person,
+                                size: 20, color: Colors.white)
+                            : null,
                       ),
-                      SizedBox(width: 8),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            post.username,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 13),
-                          ),
-                          Text(
-                            post.time,
-                            style: TextStyle(
-                                color: Colors.grey.shade600, fontSize: 11),
-                          ),
-                        ],
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText(
+                              text:
+                                  textController.nameController.text.isNotEmpty
+                                      ? textController.nameController.text
+                                      : "Your Name",
+                              style: Theme.of(context).textTheme.bodyLarge,
+                            ),
+                            Text(
+                              timeago.format(post.time),
+                              style: TextStyle(
+                                  color: Colors.grey.shade600, fontSize: 11),
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   Text(
                     post.title,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 14,
+                    ),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     post.description,
-                    style: TextStyle(fontSize: 13, color: Colors.black87),
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.black87,
+                    ),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
                   if (post.images.isNotEmpty) ...[
-                    SizedBox(height: 10),
-                    CarouselSlider(
-                      options: CarouselOptions(
-                        height: 160,
-                        enableInfiniteScroll: false,
-                        autoPlay: false,
-                        viewportFraction: 1,
-                        onPageChanged: (index, reason) {
-                          postController.updateIndex(index);
-                        },
+                    const SizedBox(height: 10),
+                    SizedBox(
+                      height: 180,
+                      child: CarouselSlider(
+                        options: CarouselOptions(
+                          enableInfiniteScroll: false,
+                          autoPlay: false,
+                          viewportFraction: 1,
+                          onPageChanged: (index, reason) {
+                            postController.updateIndex(index);
+                          },
+                        ),
+                        items: post.images.map((image) {
+                          return ClipRRect(
+                            borderRadius: BorderRadius.circular(6),
+                            child: Image.file(
+                              image,
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                            ),
+                          );
+                        }).toList(),
                       ),
-                      items: post.images.map((image) {
-                        return ClipRRect(
-                          borderRadius: BorderRadius.circular(6),
-                          child: Image.file(
-                            image,
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                          ),
-                        );
-                      }).toList(),
                     ),
-                    SizedBox(height: 6),
+                    const SizedBox(height: 6),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: post.images.asMap().entries.map((entry) {
+                      children: List.generate(post.images.length, (index) {
                         return Container(
                           width: 7,
                           height: 7,
-                          margin: EdgeInsets.symmetric(horizontal: 3),
+                          margin: const EdgeInsets.symmetric(horizontal: 3),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
-                            color: postController.currentIndex == entry.key
-                                ? Colors.blue
+                            color: postController.currentIndex == index
+                                ? AppColors.cardsColor2
                                 : Colors.grey.shade400,
                           ),
                         );
-                      }).toList(),
+                      }),
                     ),
                   ],
-                  SizedBox(height: 8),
+      
                   Row(
                     children: [
                       IconButton(
-                        icon: Icon(Icons.thumb_up_outlined,
-                            color: Colors.blue, size: 20),
+                        icon: Icon(
+                          postController.isLike
+                              ? Icons.thumb_up
+                              : Icons.thumb_up_outlined,
+                          color: AppColors.cardsColor2,
+                          size: 20,
+                        ),
                         onPressed: () {
                           postController.likeCounter();
                         },
                       ),
                       Text(
                         '${postController.counter}',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontSize: 14, fontWeight: FontWeight.bold),
                       ),
                       IconButton(
-                        icon: Icon(Icons.comment_outlined,
-                            color: Colors.blue, size: 20),
-                        onPressed: () {},
+                        icon: const Icon(Icons.comment_outlined,
+                            color: AppColors.cardsColor2, size: 20),
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            builder: (context) =>
+                                CommentBottomSheet(postId: post.id ?? ''),
+                          );
+                        },
                       ),
-                      Spacer(),
+                      const Spacer(),
                       IconButton(
                         icon: Icon(
                           postController.isSaved
                               ? Icons.bookmark
                               : Icons.bookmark_border,
                           color: postController.isSaved
-                              ? Colors.blue
+                              ? AppColors.cardsColor2
                               : Colors.grey,
                           size: 22,
                         ),

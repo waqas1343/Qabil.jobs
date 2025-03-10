@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:qabil_project01_final/view/auth/signup_screen/student_rigister_screen.dart';
 import '../../view/auth/forget_password_screens/enter_otp.dart';
 import '../../view/auth/forget_password_screens/forget_password_screen.dart';
 import '../../view/auth/forget_password_screens/reset_password_screen.dart';
@@ -24,13 +25,13 @@ class RouteScreens {
 
       // Complete Profile
       RouteNames.completeProfile: (context) => CompleteProfile(),
+      RouteNames.registerStudent: (context) => StudentRigisterScreen(),
 
       // Bottom Navbar & Dashboard
       RouteNames.bottomNavBar: (context) => CustomNavbar(),
       RouteNames.dashboard: (context) => DashboardScreen(),
 
       // Other Screens
-
     };
   }
 }

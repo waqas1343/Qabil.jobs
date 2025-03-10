@@ -6,53 +6,51 @@ class AppTextFields {
     required TextEditingController controller,
     bool obscureText = false,
     TextInputType keyboardType = TextInputType.text,
-    Icon? prefixIcon,
+    Widget? prefixIcon,
     Widget? suffixIcon,
     Color? fillColor,
     Color? borderColor,
-    double borderRadius = 1.0,
+    double borderRadius = 8.0, // Updated default border radius
     EdgeInsetsGeometry? contentPadding,
     FormFieldValidator<String>? validator,
-    bool? readOnly,
+    bool readOnly = false, // Default value set to false
+    TextStyle? textStyle,
+    TextStyle? hintStyle,
+    TextStyle? errorStyle,
   }) {
     return TextFormField(
-      readOnly: readOnly ?? false,
+      readOnly: readOnly,
       controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
-      style: TextStyle(fontSize: 14),
+      style: textStyle ?? const TextStyle(fontSize: 14, color: Colors.black),
       decoration: InputDecoration(
-        errorStyle: TextStyle(
-          color: const Color.fromARGB(255, 24, 206, 166),
-          fontSize: 10,
-        ),
+        errorStyle: errorStyle ??
+            const TextStyle(
+              color: Colors.red, // Default error color red
+              fontSize: 10,
+            ),
         hintText: hintText,
+        hintStyle: hintStyle ?? const TextStyle(color: Colors.grey),
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         filled: true,
         fillColor: fillColor ?? Colors.white,
-        hintStyle: TextStyle(
-          color: Colors.grey,
-        ),
         contentPadding: contentPadding ??
-            EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+            const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: readOnly ?? false
-              ? BorderSide(color: borderColor ?? Colors.black, width: 1)
-              : BorderSide(color: borderColor ?? Colors.grey, width: 1),
+          borderSide: BorderSide(color: borderColor ?? Colors.grey, width: 1),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: readOnly ?? false
-              ? BorderSide(color: borderColor ?? Colors.black, width: 1)
-              : BorderSide(color: borderColor ?? Colors.blue, width: 2),
+          borderSide: BorderSide(
+              color: readOnly ? (borderColor ?? Colors.black) : Colors.blue,
+              width: 2),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(borderRadius),
-          borderSide: readOnly ?? false
-              ? BorderSide(color: borderColor ?? Colors.black, width: 1)
-              : BorderSide(color: borderColor ?? Colors.grey, width: 1),
+          borderSide: BorderSide(color: borderColor ?? Colors.grey, width: 1),
         ),
       ),
       validator: validator,
