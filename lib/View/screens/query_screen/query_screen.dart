@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
 import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../view_model/controller/query_post_controller/query_post_controller.dart';
 
@@ -11,12 +12,14 @@ class QueryScreen extends StatelessWidget {
     final queryController = Provider.of<QueryController>(context);
 
     return Scaffold(
+      backgroundColor: AppColors.appBackground,
       appBar: AppBar(
         title: const Text("Create Post"),
         centerTitle: true,
+        backgroundColor: AppColors.appBackground,
+        automaticallyImplyLeading: false,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -54,51 +57,49 @@ class QueryScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: AppSizes.height01(context)),
-            Expanded(
-              child: queryController.imagesList.isNotEmpty
-                  ? GridView.builder(
-                      itemCount: queryController.imagesList.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3,
-                        crossAxisSpacing: 8,
-                        mainAxisSpacing: 8,
-                      ),
-                      itemBuilder: (context, index) {
-                        return Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.file(
-                                queryController.imagesList[index],
-                                fit: BoxFit.cover,
-                                width: double.infinity,
-                              ),
+            SizedBox(height: AppSizes.height20(context)),
+            queryController.imagesList.isNotEmpty
+                ? GridView.builder(
+                    itemCount: queryController.imagesList.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      crossAxisSpacing: 8,
+                      mainAxisSpacing: 8,
+                    ),
+                    itemBuilder: (context, index) {
+                      return Stack(
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Image.file(
+                              queryController.imagesList[index],
+                              fit: BoxFit.cover,
+                              width: double.infinity,
                             ),
-                            Positioned(
-                              right: 5,
-                              top: 5,
-                              child: GestureDetector(
-                                onTap: () => queryController.removeImage(index),
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.red,
-                                  ),
-                                  padding: const EdgeInsets.all(4),
-                                  child: const Icon(Icons.close,
-                                      color: Colors.white, size: 16),
+                          ),
+                          Positioned(
+                            right: 5,
+                            top: 5,
+                            child: GestureDetector(
+                              onTap: () => queryController.removeImage(index),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Colors.red,
                                 ),
+                                padding: const EdgeInsets.all(4),
+                                child: const Icon(Icons.close,
+                                    color: Colors.white, size: 16),
                               ),
                             ),
-                          ],
-                        );
-                      },
-                    )
-                  : const Center(child: Text("No images selected")),
-            ),
-            SizedBox(height: AppSizes.height01(context)),
+                          ),
+                        ],
+                      );
+                    },
+                  )
+                : const Center(child: Text("No images selected")),
+            SizedBox(height: AppSizes.height10(context)),
             Center(
               child: ElevatedButton(
                 onPressed: () =>

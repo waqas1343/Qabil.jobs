@@ -17,7 +17,6 @@ class CustomNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<BottomRollController>(
       builder: (context, provider, child) {
-        // Role-Based Pages
         final pages = provider.role == "mentor"
             ? [
                 DashboardScreen(),
@@ -54,6 +53,8 @@ class CustomNavbar extends StatelessWidget {
                     child: IconButton(
                       onPressed: () {
                         showModalBottomSheet(
+                          backgroundColor: AppColors.appBackground,
+                          // isScrollControlled: true,
                           scrollControlDisabledMaxHeightRatio: 0.8,
                           context: context,
                           builder: (context) {

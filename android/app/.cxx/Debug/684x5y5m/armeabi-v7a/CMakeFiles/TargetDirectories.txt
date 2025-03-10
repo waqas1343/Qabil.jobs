@@ -1,0 +1,2 @@
+D:/Tehami/Incubation/done/Qabil.jobs/android/app/.cxx/Debug/684x5y5m/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/Tehami/Incubation/done/Qabil.jobs/android/app/.cxx/Debug/684x5y5m/armeabi-v7a/CMakeFiles/rebuild_cache.dir
