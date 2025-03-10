@@ -95,6 +95,7 @@ class PostCard extends StatelessWidget {
                     const SizedBox(height: 10),
                     SizedBox(
                       height: 180,
+                      width: double.infinity,
                       child: CarouselSlider(
                         options: CarouselOptions(
                           enableInfiniteScroll: false,

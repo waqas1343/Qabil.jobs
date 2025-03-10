@@ -37,6 +37,7 @@ class AppSizes {
   static double smallBodyText(BuildContext context) => getWidth(context, 0.04);
 
   // Height-based calculations for various heights
+  static double height001(BuildContext context) => getHeight(context, 0.010);
   static double height01(BuildContext context) => getHeight(context, 0.01);
   static double height02(BuildContext context) => getHeight(context, 0.02);
   static double height03(BuildContext context) => getHeight(context, 0.03);
@@ -47,7 +48,7 @@ class AppSizes {
   static double height08(BuildContext context) => getHeight(context, 0.08);
   static double height09(BuildContext context) => getHeight(context, 0.09);
 
-  static double height10(BuildContext context) => getHeight(context, 0.06);
+  static double height10(BuildContext context) => getHeight(context, 0.10);
   static double height20(BuildContext context) => getHeight(context, 0.20);
   static double height30(BuildContext context) => getHeight(context, 0.30);
   static double height40(BuildContext context) => getHeight(context, 0.40);
