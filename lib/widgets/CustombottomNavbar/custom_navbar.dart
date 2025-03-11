@@ -17,7 +17,7 @@ class CustomNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<BottomRollController>(
       builder: (context, provider, child) {
-        // Role-Based Pages
+       
         final pages = provider.role == "mentor"
             ? [
                 DashboardScreen(),

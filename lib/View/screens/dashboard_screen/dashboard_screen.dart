@@ -21,6 +21,7 @@ class DashboardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
+        preSize: 70,
         greeting: 'hi!',
         username: textController.nameController.text.isNotEmpty
             ? textController.nameController.text

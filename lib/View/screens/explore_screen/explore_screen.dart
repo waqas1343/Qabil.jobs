@@ -15,6 +15,7 @@ class ExploreScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
+        preSize: 50,
         centerTitle: true,
         username: 'Explore',
       ),
