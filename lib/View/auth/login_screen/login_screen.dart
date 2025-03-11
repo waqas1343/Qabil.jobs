@@ -78,8 +78,8 @@ class LoginScreen extends StatelessWidget {
                       provider.iconToggleFirst();
                     },
                     icon: provider.isVisibleFirst
-                        ? AppIcons.suffixIconOnn
-                        : AppIcons.suffixIconOff,
+                        ? AppIcons.suffixIconOff
+                        : AppIcons.suffixIconOnn ,
                   ),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,
