@@ -7,6 +7,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? greeting; // Optional
   final String? username; // Optional
   final String? profileImagePath;
+  final String? profileImagePath2;
+
   final int notificationCount;
   final bool? centerTitle; // Optional
   final double? preSize;
@@ -16,8 +18,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.username, // Optional
     this.profileImagePath,
     this.notificationCount = 0,
-    this.centerTitle, 
-     this.preSize, // Made optional
+    this.centerTitle,
+    this.preSize,
+    this.profileImagePath2, // Made optional
   });
 
   @override
@@ -32,15 +35,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: AppColors.cardsColor2,
         ),
       ),
-      title: Row(
-        mainAxisAlignment: centerTitle == true
-            ? MainAxisAlignment.center
-            : MainAxisAlignment.start, // Center or start based on centerTitle
-        children: [
-          if (profileImagePath != null) ...[
-            CircleAvatar(
+      leadingWidth: 70,
+      leading: profileImagePath != null
+          ? CircleAvatar(
               radius: 25,
-              backgroundColor: Colors.white,
+              backgroundColor: Colors.transparent,
               child: ClipOval(
                 child: profileImagePath!.startsWith('assets/')
                     ? Image.asset(
@@ -56,9 +55,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                         fit: BoxFit.cover,
                       ),
               ),
-            ),
-            const SizedBox(width: 12),
-          ],
+            )
+          : const SizedBox(), // If null, return an empty widget
+
+      title: Row(
+        mainAxisAlignment: centerTitle == true
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.start,
+        children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -133,10 +137,33 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               ],
             ),
           ),
+        if (profileImagePath2 != null)
+          CircleAvatar(
+            radius: 25,
+            backgroundColor: Colors.transparent,
+            child: ClipOval(
+              child: profileImagePath2!.startsWith('assets/')
+                  ? Image.asset(
+                      profileImagePath2!,
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover,
+                    )
+                  : Image.file(
+                      File(profileImagePath2!),
+                      height: 50,
+                      width: 50,
+                      fit: BoxFit.cover,
+                    ),
+            ),
+          ),
+        SizedBox(
+          width: 10,
+        )
       ],
     );
   }
 
   @override
-  Size get preferredSize =>  Size.fromHeight(preSize!);
+  Size get preferredSize => Size.fromHeight(preSize!);
 }
