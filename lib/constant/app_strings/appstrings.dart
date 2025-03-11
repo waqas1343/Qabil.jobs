@@ -99,8 +99,21 @@ class AppStrings {
 
   static const String dartLogo = "Dart";
   static const String flutterLogo = "Flutter";
-  static const String htmlCssLogo = "HTML,CSS\n& JavaScript";
+  static const String htmlCssLogo = "HTML,CSS\n&JavaScript";
   static const String figmaLogo = "Figma";
+  static const String amazonPrivate = "Amazon Private";
+  static const String e_commerece = "E-Commerece";
+  static const String gameDevelop = "Game Development";
+  static const String leadGenerate = "Lead Generation";
+  static const String nodeJs = "Node.Js";
+  static const String python = "Python";
+  static const String uiux = "UI/UX";
+  static const String marketingLogo = "Marketing";
+  static const String cyberSecurity = "Cyber Security";
+  static const String amazonVa = "Amazon Virtual\nAssistant";
+  static const String videoEditing = "Video Editing";
+  static const String reactJs = 'React.Js';
+
 
   // courses
 

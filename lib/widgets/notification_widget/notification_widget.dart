@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
+import 'package:qabil_project01_final/constant/app_images/app_images.dart';
+import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
 import 'package:provider/provider.dart';
 import 'package:qabil_project01_final/constant/app_images/app_images.dart';
 import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
@@ -56,6 +59,13 @@ class NotificationScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
+        profileImagePath: AppImages.profileImage,
+        greeting: 'Notifications',
+        centerTitle: true,
+      ),
+      // appBar: AppBar(
+      //   elevation: 5,
+      //   backgroundColor: AppColors.textColor,
         preSize: 70,
         greeting: 'notification',
         centerTitle: true,

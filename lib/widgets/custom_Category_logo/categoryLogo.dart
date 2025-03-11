@@ -33,14 +33,14 @@ class CustomLogoCategory extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                        height: provider.iconSelect == index ? 60 : 45,
-                        width: provider.iconSelect == index ? 60 : 45,
+                        height: provider.iconSelect == index ? 80 : 65,
+                        width: provider.iconSelect == index ? 80 : 65,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             border: Border.all(
                                 color: provider.iconSelect == index
                                     ? AppColors.textColor
-                                    : AppColors.textColorGrey,
+                                    : Colors.transparent,
                                 width: provider.iconSelect == index ? 3 : 1.3),
                             boxShadow: [
                               BoxShadow(
@@ -59,7 +59,7 @@ class CustomLogoCategory extends StatelessWidget {
                             image,
                             height: provider.iconSelect == index ? 70 : 60,
                             width: provider.iconSelect == index ? 70 : 60,
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fitWidth,
                           ),
                         )),
                     const SizedBox(

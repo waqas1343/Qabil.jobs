@@ -52,9 +52,9 @@ class DashboardScreen extends StatelessWidget {
 
   Widget _buildCategoryList() {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(8.0),
       child: SizedBox(
-        height: 110,
+        height: 130,
         width: double.infinity,
         child: listRepo.isEmpty
             ? Center(child: Text("No categories available"))
