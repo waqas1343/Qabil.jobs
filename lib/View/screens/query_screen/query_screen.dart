@@ -62,7 +62,7 @@ class QueryScreen extends StatelessWidget {
               SizedBox(height: AppSizes.height06(context)),
               SizedBox(
                 width: double.infinity,
-                height: AppSizes.height20(context),
+                height: AppSizes.height10(context),
                 child: queryController.imagesList.isNotEmpty
                     ? GridView.builder(
                         itemCount: queryController.imagesList.length,
@@ -106,11 +106,9 @@ class QueryScreen extends StatelessWidget {
                       )
                     : const Center(child: Text("No images selected")),
               ),
-              SizedBox(height: AppSizes.height06(context)),
               Center(
                 child: ElevatedButton(
-                  onPressed: () =>
-                      queryController.uploadPost(context), // ✅ Fix applied
+                  onPressed: () => queryController.uploadPost(context),
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 40, vertical: 14),

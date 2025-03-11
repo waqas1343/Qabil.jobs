@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
 import 'package:qabil_project01_final/widgets/notification_widget/notification_widget.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -8,14 +9,15 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? profileImagePath;
   final int notificationCount;
   final bool? centerTitle; // Optional
-
+  final double? preSize;
   const CustomAppBar({
     super.key,
     this.greeting,
     this.username, // Optional
     this.profileImagePath,
     this.notificationCount = 0,
-    this.centerTitle, // Made optional
+    this.centerTitle, 
+     this.preSize, // Made optional
   });
 
   @override
@@ -27,21 +29,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       flexibleSpace: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Colors.greenAccent.shade200,
-              const Color.fromARGB(255, 11, 75, 68),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black,
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
+          color: AppColors.cardsColor2,
         ),
       ),
       title: Row(
@@ -150,5 +138,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(80);
+  Size get preferredSize =>  Size.fromHeight(preSize!);
 }
