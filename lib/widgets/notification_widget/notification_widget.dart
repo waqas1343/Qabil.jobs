@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
 import 'package:qabil_project01_final/constant/app_images/app_images.dart';
 import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
+import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/constant/app_images/app_images.dart';
+import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
+import 'package:qabil_project01_final/view_model/controller/all_textediting_controller/all_textediting_controller.dart';
+import 'package:qabil_project01_final/view_model/controller/image_picker/image_picker_controller.dart';
 
 class NotificationScreen extends StatelessWidget {
   NotificationScreen({super.key});
 
-  
   final List<Map<String, String>> newNotifications = [
     {
       "title": "Welcome!",
@@ -50,6 +54,9 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textController = Provider.of<TextEditingControllerManager>(context);
+    final imageProvider = Provider.of<ImagePickerController>(context);
+
     return Scaffold(
       appBar: CustomAppBar(
         profileImagePath: AppImages.profileImage,
@@ -59,6 +66,14 @@ class NotificationScreen extends StatelessWidget {
       // appBar: AppBar(
       //   elevation: 5,
       //   backgroundColor: AppColors.textColor,
+        preSize: 70,
+        greeting: 'notification',
+        centerTitle: true,
+        profileImagePath2: AppImages.profileImage,
+      ),
+      // appBar: AppBar(
+      //   elevation: 5,
+      //   backgroundColor: Colors.black,
       //   title: Text(
       //     "Notifications",
       //     style: TextStyle(
