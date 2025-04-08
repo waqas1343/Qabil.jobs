@@ -36,11 +36,6 @@ class CompleteProfile extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: AppSizes.height08(context)),
-                CustomText(
-                  text: AppStrings.completP,
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                SizedBox(height: AppSizes.height02(context)),
                 Center(
                   child: GestureDetector(
                     onTap: () {
@@ -69,9 +64,30 @@ class CompleteProfile extends StatelessWidget {
                         Positioned(
                             bottom: 12,
                             right: 2,
-                            child: Icon(Icons.camera_alt_rounded))
+                            child: Container(
+                                width: 32,
+                                height: 32,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: AppColors.cardsColor2,
+                                    border: Border.all(
+                                        color: AppColors.appBackground,
+                                        width: 2)),
+                                child: Icon(
+                                  Icons.camera_alt_rounded,
+                                  size: 20,
+                                  color:
+                                      const Color.fromARGB(255, 235, 231, 231),
+                                )))
                       ],
                     ),
+                  ),
+                ),
+                SizedBox(height: AppSizes.height01(context)),
+                Center(
+                  child: CustomText(
+                    text: AppStrings.completP,
+                    style: Theme.of(context).textTheme.titleMedium,
                   ),
                 ),
                 SizedBox(height: AppSizes.height02(context)),

@@ -135,7 +135,6 @@ class PostCard extends StatelessWidget {
                       }),
                     ),
                   ],
-      
                   Row(
                     children: [
                       IconButton(

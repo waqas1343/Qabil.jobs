@@ -30,29 +30,25 @@ class ForgetPasswordScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              SizedBox(
-                  height:
-                      MediaQuery.of(context).size.height * 0.1),
+              SizedBox(height: MediaQuery.of(context).size.height * 0.2),
               Center(
                 child: Image.asset(
                   AppImages.forumLogo,
-                  width: 169,
-                  height: 169,
+                  width: 120,
+                  height: 120,
                 ),
               ),
-              SizedBox(height: AppSizes.height03(context)),
+              SizedBox(height: AppSizes.height01(context)),
               CustomText(
                 text: AppStrings.forgotPassword,
-                style: Theme.of(context).textTheme.titleMedium,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               SizedBox(height: AppSizes.height02(context)),
               CustomText(
                 text: AppStrings.forgetTitle,
-                style: Theme.of(context).textTheme.bodySmall,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               SizedBox(height: AppSizes.height04(context)),
-
-            
               Form(
                 key: formKey,
                 child: Column(
@@ -73,7 +69,6 @@ class ForgetPasswordScreen extends StatelessWidget {
                   ],
                 ),
               ),
-
               CustomButton(
                 btnText: AppStrings.forgotSendbutton,
                 color: AppColors.cardsColor2,
@@ -98,9 +93,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                   }
                 },
               ),
-              SizedBox(
-                  height: MediaQuery.of(context).size.height *
-                      0.05), 
+              SizedBox(height: MediaQuery.of(context).size.height * 0.05),
             ],
           ),
         ),

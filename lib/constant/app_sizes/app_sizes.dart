@@ -49,8 +49,10 @@ class AppSizes {
   static double height09(BuildContext context) => getHeight(context, 0.09);
 
   static double height10(BuildContext context) => getHeight(context, 0.10);
+  static double height15(BuildContext context) => getHeight(context, 0.15);
   static double height20(BuildContext context) => getHeight(context, 0.20);
   static double height30(BuildContext context) => getHeight(context, 0.30);
+  static double height25(BuildContext context) => getHeight(context, 0.25);
   static double height40(BuildContext context) => getHeight(context, 0.40);
   static double height50(BuildContext context) => getHeight(context, 0.50);
   static double height60(BuildContext context) => getHeight(context, 0.60);

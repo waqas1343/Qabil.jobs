@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/constant/app_button/app_button.dart';
 import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
 import '../../../constant/app_sizes/app_sizes.dart';
 import '../../../view_model/controller/query_post_controller/query_post_controller.dart';
@@ -28,35 +29,51 @@ class QueryScreen extends StatelessWidget {
               TextField(
                 controller: queryController.titleController,
                 decoration: InputDecoration(
-                  labelText: "Title",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
+                    labelText: "Title",
+                    labelStyle: TextStyle(
+                      color: AppColors.cardsColor2,
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: AppColors.cardsColor2,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          BorderSide(color: AppColors.cardsColor2, width: 2),
+                    )),
               ),
               SizedBox(height: AppSizes.height01(context)),
               TextField(
                 controller: queryController.descriptionController,
                 maxLines: 4,
                 decoration: InputDecoration(
-                  labelText: "Description",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
+                    labelText: "Description",
+                    labelStyle: TextStyle(
+                      color: AppColors.cardsColor2,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide:
+                          BorderSide(color: AppColors.cardsColor2, width: 2),
+                    )),
               ),
               SizedBox(height: AppSizes.height02(context)),
               Center(
-                child: ElevatedButton.icon(
-                  onPressed: queryController.pickImages,
-                  icon: const Icon(Icons.add_a_photo, size: 20),
-                  label: const Text("Add Images"),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 12),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
-                  ),
+                child: CustomButton(
+                  btnText: 'Add Images',
+                  color: AppColors.cardsColor2,
+                  ontap: queryController.pickImages,
+                  icon: Icons.add_a_photo,
+                  iconSize: 20,
+                  seperationContent: 10,
+                  iconColor: AppColors.appBackground,
+                  btnWidth: 190,
                 ),
               ),
               SizedBox(height: AppSizes.height06(context)),
@@ -106,17 +123,26 @@ class QueryScreen extends StatelessWidget {
                       )
                     : const Center(child: Text("No images selected")),
               ),
+              SizedBox(
+                height: AppSizes.height02(context),
+              ),
               Center(
-                child: ElevatedButton(
-                  onPressed: () => queryController.uploadPost(context),
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 40, vertical: 14),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                  ),
-                  child: const Text("Post", style: TextStyle(fontSize: 16)),
+                child: CustomButton(
+                  btnText: 'Post',
+                  color: AppColors.cardsColor2,
+                  ontap: () => queryController.uploadPost(context),
+                  btnWidth: 190,
                 ),
+                // child: ElevatedButton(
+                //   onPressed: () => queryController.uploadPost(context),
+                //   style: ElevatedButton.styleFrom(
+                //     padding: const EdgeInsets.symmetric(
+                //         horizontal: 40, vertical: 14),
+                //     shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(10)),
+                //   ),
+                //   child: const Text("Post", style: TextStyle(fontSize: 16)),
+                // ),
               ),
             ],
           ),

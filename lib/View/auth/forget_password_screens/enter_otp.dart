@@ -42,17 +42,17 @@ class EnterOtp extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: AppSizes.height07(context),
+                  height: AppSizes.height20(context),
                 ),
                 Center(
                   child: Image.asset(
                     AppImages.forumLogo,
-                    width: 169,
-                    height: 169,
+                    width: 120,
+                    height: 120,
                   ),
                 ),
                 SizedBox(
-                  height: AppSizes.height10(context),
+                  height: AppSizes.height02(context),
                 ),
                 CustomText(
                   text: AppStrings.forgetOTPTitle,

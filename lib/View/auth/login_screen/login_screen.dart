@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/constant/app_sizes/app_sizes.dart';
 import 'package:qabil_project01_final/routes/routes_name/routes_names.dart';
 import '../../../constant/app_button/app_button.dart';
 import '../../../constant/app_colours/appcolors.dart';
@@ -34,13 +35,13 @@ class LoginScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.08,
+                  height: AppSizes.height15(context),
                 ),
                 Center(
                   child: Image.asset(
                     AppImages.forumLogo,
-                    width: 169,
-                    height: 169,
+                    width: 120,
+                    height: 120,
                   ),
                 ),
                 Center(
@@ -64,7 +65,7 @@ class LoginScreen extends StatelessWidget {
                   controller: textController.studentIDController,
                 ),
                 SizedBox(
-                  height: 8,
+                  height: AppSizes.height01(context),
                 ),
                 CustomText(
                   text: AppStrings.passwordTitle,
@@ -79,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                     },
                     icon: provider.isVisibleFirst
                         ? AppIcons.suffixIconOff
-                        : AppIcons.suffixIconOnn ,
+                        : AppIcons.suffixIconOnn,
                   ),
                   prefixIcon: AppIcons.passwordIcon,
                   hintText: AppStrings.passwordTitle,

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
 import 'package:qabil_project01_final/constant/app_images/app_images.dart';
 import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_project01_final/constant/app_images/app_images.dart';
-import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
 import 'package:qabil_project01_final/view_model/controller/all_textediting_controller/all_textediting_controller.dart';
 import 'package:qabil_project01_final/view_model/controller/image_picker/image_picker_controller.dart';
 
@@ -59,45 +56,12 @@ class NotificationScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
+        preSize: 70,
+        gapping: 80,
         profileImagePath: AppImages.profileImage,
         greeting: 'Notifications',
         centerTitle: true,
       ),
-      // appBar: AppBar(
-      //   elevation: 5,
-      //   backgroundColor: AppColors.textColor,
-        preSize: 70,
-        greeting: 'notification',
-        centerTitle: true,
-        profileImagePath2: AppImages.profileImage,
-      ),
-      // appBar: AppBar(
-      //   elevation: 5,
-      //   backgroundColor: Colors.black,
-      //   title: Text(
-      //     "Notifications",
-      //     style: TextStyle(
-      //       fontSize: 20,
-      //       color: Colors.white,
-      //     ),
-      //   ),
-      //   leading: IconButton(
-      //     icon: Icon(Icons.arrow_back, color: Colors.white),
-      //     onPressed: () {
-      //       Navigator.pop(context);
-      //     },
-      //   ),
-      //   actions: [
-      //     Padding(
-      //       padding: const EdgeInsets.all(9.0),
-      //       child: CircleAvatar(
-      //         radius: 20,
-      //         backgroundImage: AssetImage(
-      //             "assets/profile.jpg"), // Replace with your profile image
-      //       ),
-      //     ),
-      //   ],
-      // ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(

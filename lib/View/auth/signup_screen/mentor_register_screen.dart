@@ -38,10 +38,10 @@ class MentorRegisterScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: AppSizes.height02(context)),
+                SizedBox(height: AppSizes.height05(context)),
                 Center(
                   child:
-                      Image.asset(AppImages.forumLogo, width: 100, height: 100),
+                      Image.asset(AppImages.forumLogo, width: 120, height: 120),
                 ),
                 Center(child: CustomText(text: AppStrings.loginSubtitle)),
                 SizedBox(height: AppSizes.height04(context)),
@@ -65,6 +65,7 @@ class MentorRegisterScreen extends StatelessWidget {
                   hintText: AppStrings.nameText,
                   controller: textController.nameController,
                 ),
+                SizedBox(height: AppSizes.height01(context)),
                 CustomText(
                   text: AppStrings.email,
                   style: Theme.of(context).textTheme.titleMedium,
@@ -75,6 +76,7 @@ class MentorRegisterScreen extends StatelessWidget {
                   hintText: AppStrings.emailEnter,
                   controller: textController.studentIDController,
                 ),
+                SizedBox(height: AppSizes.height01(context)),
                 CustomText(
                   text: AppStrings.headingPhoneNum,
                   style: Theme.of(context).textTheme.titleMedium,
@@ -87,6 +89,7 @@ class MentorRegisterScreen extends StatelessWidget {
                   hintText: AppStrings.phoneTitle,
                   controller: textController.passwordController,
                 ),
+                SizedBox(height: AppSizes.height01(context)),
                 CustomText(
                   text: AppStrings.passwordTitle,
                   style: Theme.of(context).textTheme.titleMedium,

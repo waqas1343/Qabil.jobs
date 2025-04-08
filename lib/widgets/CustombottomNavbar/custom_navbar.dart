@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/View/screens/student_profile/student_profile.dart';
 import '../../constant/app_colours/appcolors.dart';
 import '../../view/screens/dashboard_screen/dashboard_screen.dart';
 import '../../view/screens/explore_screen/explore_screen.dart';
@@ -17,7 +18,6 @@ class CustomNavbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<BottomRollController>(
       builder: (context, provider, child) {
-       
         final pages = provider.role == "mentor"
             ? [
                 DashboardScreen(),
@@ -28,7 +28,7 @@ class CustomNavbar extends StatelessWidget {
                 DashboardScreen(),
                 ExploreScreen(),
                 SaveScreen(),
-                ProfileScreen(),
+                ProfileStudent(),
               ];
 
         return Scaffold(

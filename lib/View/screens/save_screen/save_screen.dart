@@ -1,127 +1,188 @@
+// import 'package:flutter/material.dart';
+// import 'package:provider/provider.dart';
+// import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
+// import '../../../constant/custom_appbar/custom_appbar.dart' show CustomAppBar;
+// import '../../../models/post_model/post_model.dart';
+// import '../../../view_model/controller/query_post_controller/query_post_controller.dart';
+
+// class SaveScreen extends StatelessWidget {
+//   const SaveScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final queryController = Provider.of<QueryController>(context);
+//     final size = MediaQuery.of(context).size;
+
+//     return Scaffold(
+//       appBar: CustomAppBar(
+//         gapping: 80,
+//         preSize: 50,
+//         centerTitle: true,
+//         username: 'Save',
+//       ),
+//       body: queryController.savedPosts.isEmpty
+//           ? const Center(child: Text("No saved posts"))
+//           : Padding(
+//               padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+//               child: ListView.builder(
+//                 itemCount: queryController.savedPosts.length,
+//                 itemBuilder: (context, index) {
+//                   final PostModel post = queryController.savedPosts[index];
+//                   return PostCard(post: post);
+//                 },
+//               ),
+//             ),
+//     );
+//   }
+// }
+
+// class PostCard extends StatelessWidget {
+//   final PostModel post;
+//   const PostCard({super.key, required this.post});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final queryController =
+//         Provider.of<QueryController>(context, listen: false);
+//     final size = MediaQuery.of(context).size;
+
+//     return Card(
+//       elevation: 3,
+//       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+//       margin: EdgeInsets.symmetric(vertical: size.height * 0.01),
+//       child: Padding(
+//         padding: EdgeInsets.all(size.width * 0.03),
+//         child: Row(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             ClipRRect(
+//               borderRadius: BorderRadius.circular(10),
+//               child: post.images.isNotEmpty
+//                   ? Image.file(
+//                       post.images.first,
+//                       width: size.width * 0.3,
+//                       height: size.width * 0.3,
+//                       fit: BoxFit.cover,
+//                     )
+//                   : Image.asset(
+//                       'assets/default_image.png',
+//                       width: size.width * 0.3,
+//                       height: size.width * 0.3,
+//                       fit: BoxFit.cover,
+//                     ),
+//             ),
+//             SizedBox(width: size.width * 0.04),
+//             Expanded(
+//               child: Column(
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 children: [
+//                   Text(
+//                     post.title,
+//                     style: TextStyle(
+//                       fontWeight: FontWeight.bold,
+//                       fontSize: size.width * 0.045,
+//                     ),
+//                   ),
+//                   SizedBox(height: size.height * 0.005),
+//                   Text(
+//                     post.description,
+//                     maxLines: 2,
+//                     overflow: TextOverflow.ellipsis,
+//                     style: TextStyle(fontSize: size.width * 0.035),
+//                   ),
+//                   SizedBox(height: size.height * 0.015),
+//                   Row(
+//                     children: [
+//                       IconButton(
+//                         icon: const Icon(Icons.favorite_border),
+//                         onPressed: () {},
+//                       ),
+//                       IconButton(
+//                         icon: const Icon(Icons.comment),
+//                         onPressed: () {},
+//                       ),
+//                       const Spacer(),
+//                       IconButton(
+//                         icon: Icon(
+//                           queryController.savedPosts.contains(post)
+//                               ? Icons.bookmark
+//                               : Icons.bookmark_border,
+//                           color: queryController.savedPosts.contains(post)
+//                               ? AppColors.cardsColor2
+//                               : Colors.black,
+//                         ),
+//                         onPressed: () {
+//                           queryController.savePost(post);
+//                         },
+//                       ),
+//                     ],
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
-import '../../../constant/custom_appbar/custom_appbar.dart' show CustomAppBar;
-import '../../../models/post_model/post_model.dart';
-import '../../../view_model/controller/query_post_controller/query_post_controller.dart';
+import 'package:qabil_app/constant/app_colours/appcolors.dart';
+import 'package:qabil_app/constant/app_images/app_images.dart';
+import 'package:qabil_app/view_model/controller/save_card_controller/saveCard.dart';
+import 'package:qabil_app/widgets/customSaveCard/custom_save_card.dart';
 
-class SaveScreen extends StatelessWidget {
-  const SaveScreen({super.key});
+class SavedPostsScreen extends StatelessWidget {
+  const SavedPostsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final queryController = Provider.of<QueryController>(context);
-    final size = MediaQuery.of(context).size;
-
+    final savedPosts = Provider.of<SavedCardProvider>(context).savedPosts;
+    // final savedPosts = SavedCardProvider().savedPosts;
     return Scaffold(
-      appBar: CustomAppBar(
-        preSize: 50,
-        centerTitle: true,
-        username: 'Save',
+      appBar: AppBar(
+        title: const Text('Saved Posts',
+        style: TextStyle(
+          color: AppColors.appBackground,
+        ),),
+        actions: [
+          Icon(Icons.notifications_none_rounded,
+            color: AppColors.appBackground ,
+            size: 30,
+          ),
+          SizedBox(width: 8,),
+
+          CircleAvatar(
+            radius: 20,
+            backgroundImage: AssetImage(AppImages.profileImage),
+          )
+        ],
+        automaticallyImplyLeading: false,
+        backgroundColor: AppColors.textColor,
       ),
-      body: queryController.savedPosts.isEmpty
-          ? const Center(child: Text("No saved posts"))
-          : Padding(
-              padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
-              child: ListView.builder(
-                itemCount: queryController.savedPosts.length,
-                itemBuilder: (context, index) {
-                  final PostModel post = queryController.savedPosts[index];
-                  return PostCard(post: post);
-                },
-              ),
+      // body: savedPosts.isEmpty
+      //     ? Center(
+      //         child: Column(
+      //           mainAxisAlignment: MainAxisAlignment.center,
+      //           children: [
+      //             Icon(Icons.bookmark_outline, size: 120, color: Colors.grey),
+      //             CustomText(text: 'No saved posts yet!'),
+      //           ],
+      //         ),
+      //       )
+          body : ListView.builder(
+              itemCount: savedPosts.length,
+              itemBuilder: (context, index) {
+                return CustomSaveCard(
+                  imageUrl: savedPosts[index]['image']!,
+                  description: savedPosts[index]['title']!,
+                  title: savedPosts[index] ['name']!,
+                  post: savedPosts[index],
+                );
+              },
             ),
-    );
-  }
-}
-
-class PostCard extends StatelessWidget {
-  final PostModel post;
-  const PostCard({super.key, required this.post});
-
-  @override
-  Widget build(BuildContext context) {
-    final queryController =
-        Provider.of<QueryController>(context, listen: false);
-    final size = MediaQuery.of(context).size;
-
-    return Card(
-      elevation: 3,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
-      margin: EdgeInsets.symmetric(vertical: size.height * 0.01),
-      child: Padding(
-        padding: EdgeInsets.all(size.width * 0.03),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: post.images.isNotEmpty
-                  ? Image.file(
-                      post.images.first,
-                      width: size.width * 0.3,
-                      height: size.width * 0.3,
-                      fit: BoxFit.cover,
-                    )
-                  : Image.asset(
-                      'assets/default_image.png',
-                      width: size.width * 0.3,
-                      height: size.width * 0.3,
-                      fit: BoxFit.cover,
-                    ),
-            ),
-            SizedBox(width: size.width * 0.04),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    post.title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: size.width * 0.045,
-                    ),
-                  ),
-                  SizedBox(height: size.height * 0.005),
-                  Text(
-                    post.description,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(fontSize: size.width * 0.035),
-                  ),
-                  SizedBox(height: size.height * 0.015),
-                  Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.favorite_border),
-                        onPressed: () {},
-                      ),
-                      IconButton(
-                        icon: const Icon(Icons.comment),
-                        onPressed: () {},
-                      ),
-                      const Spacer(),
-                      IconButton(
-                        icon: Icon(
-                          queryController.savedPosts.contains(post)
-                              ? Icons.bookmark
-                              : Icons.bookmark_border,
-                          color: queryController.savedPosts.contains(post)
-                              ? AppColors.cardsColor2
-                              : Colors.black,
-                        ),
-                        onPressed: () {
-                          queryController.savePost(post);
-                        },
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }

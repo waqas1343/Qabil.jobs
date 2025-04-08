@@ -16,7 +16,10 @@ class SplashScreen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Center(
-            child: Image.asset('assets/images/forumLogo.png'),
+            child: Padding(
+              padding: const EdgeInsets.all(32.0),
+              child: Image.asset('assets/images/forumLogo.png'),
+            ),
           ),
           SizedBox(
             height: 15,

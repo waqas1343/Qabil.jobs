@@ -23,6 +23,7 @@ class CustomText extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Text(
+        textAlign: TextAlign.center,
         text,
         style: style ??
             TextStyle(

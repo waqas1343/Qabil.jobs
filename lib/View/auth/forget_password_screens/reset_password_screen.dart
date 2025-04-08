@@ -42,19 +42,23 @@ class ResetPasswordScreen extends StatelessWidget {
                   Center(
                     child: Image.asset(
                       AppImages.forumLogo,
-                      width: MediaQuery.of(context).size.width * 0.4,
-                      height: MediaQuery.of(context).size.width * 0.4,
+                      width: MediaQuery.of(context).size.width * 0.3,
+                      height: MediaQuery.of(context).size.width * 0.3,
                     ),
                   ),
                   SizedBox(height: AppSizes.height03(context)),
-                  CustomText(
-                    text: AppStrings.resetPassword,
-                    style: Theme.of(context).textTheme.titleMedium,
+                  Center(
+                    child: CustomText(
+                      text: AppStrings.resetPassword,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ),
                   SizedBox(height: AppSizes.height02(context)),
-                  CustomText(
-                    text: AppStrings.resetTitle,
-                    style: Theme.of(context).textTheme.bodySmall,
+                  Center(
+                    child: CustomText(
+                      text: AppStrings.resetTitle,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
                   ),
                   SizedBox(height: AppSizes.height04(context)),
 

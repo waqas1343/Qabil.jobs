@@ -37,13 +37,13 @@ class StudentRigisterScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: AppSizes.height02(context),
+                  height: AppSizes.height05(context),
                 ),
                 Center(
                   child: Image.asset(
                     AppImages.forumLogo,
-                    width: 100,
-                    height: 100,
+                    width: 120,
+                    height: 120,
                   ),
                 ),
                 Center(
@@ -73,6 +73,7 @@ class StudentRigisterScreen extends StatelessWidget {
                   hintText: AppStrings.nameText,
                   controller: textController.nameController,
                 ),
+                SizedBox(height: AppSizes.height01(context)),
                 CustomText(
                   text: AppStrings.studentId,
                   style: Theme.of(context).textTheme.titleMedium,
@@ -84,6 +85,7 @@ class StudentRigisterScreen extends StatelessWidget {
                   hintText: AppStrings.studentId,
                   controller: textController.studentIDController,
                 ),
+                SizedBox(height: AppSizes.height01(context)),
                 CustomText(
                   text: AppStrings.passwordTitle,
                   style: Theme.of(context).textTheme.titleMedium,
@@ -102,6 +104,7 @@ class StudentRigisterScreen extends StatelessWidget {
                   hintText: AppStrings.passwordTitle,
                   controller: textController.passwordController,
                 ),
+                SizedBox(height: AppSizes.height01(context)),
                 CustomText(
                   text: AppStrings.confirmPassword,
                   style: Theme.of(context).textTheme.titleMedium,

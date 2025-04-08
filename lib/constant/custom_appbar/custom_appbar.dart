@@ -8,6 +8,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String? username; // Optional
   final String? profileImagePath;
   final String? profileImagePath2;
+  final double? gapping;
 
   final int notificationCount;
   final bool? centerTitle; // Optional
@@ -20,7 +21,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.notificationCount = 0,
     this.centerTitle,
     this.preSize,
-    this.profileImagePath2, // Made optional
+    this.profileImagePath2,
+    this.gapping, // Made optional
   });
 
   @override
@@ -35,7 +37,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: AppColors.cardsColor2,
         ),
       ),
-      leadingWidth: 70,
+      leadingWidth: 80,
       leading: profileImagePath != null
           ? CircleAvatar(
               radius: 25,
@@ -56,7 +58,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ),
               ),
             )
-          : const SizedBox(), // If null, return an empty widget
+          : const SizedBox(),
 
       title: Row(
         mainAxisAlignment: centerTitle == true
@@ -67,7 +69,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              if (greeting != null) // Only show if greeting is not null
+              if (greeting != null)
                 Text(
                   greeting!,
                   style: const TextStyle(
@@ -76,7 +78,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     color: Colors.white,
                   ),
                 ),
-              if (username != null) // Only show if username is not null
+              if (username != null)
                 Text(
                   username!,
                   style: const TextStyle(
@@ -158,7 +160,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             ),
           ),
         SizedBox(
-          width: 10,
+          width: gapping,
         )
       ],
     );
