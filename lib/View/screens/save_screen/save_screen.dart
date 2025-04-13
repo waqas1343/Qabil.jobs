@@ -17,8 +17,8 @@ class SaveScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-       
         username: 'Saved Posts',
+        showNotificationIcon: false,
       ),
       body: queryController.savedPosts.isEmpty
           ? Center(
@@ -92,7 +92,7 @@ class PostCard extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black,
               blurRadius: 10,
               offset: const Offset(0, 5),
             ),

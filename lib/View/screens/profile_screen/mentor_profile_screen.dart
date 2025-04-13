@@ -35,7 +35,7 @@ class MentorProfileScreen extends StatelessWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
+                    color: Colors.black,
                     blurRadius: 10,
                     offset: Offset(0, 5),
                   ),
