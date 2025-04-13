@@ -4,7 +4,7 @@ class AppLogo {
   static const String figma = 'assets/appLogos/figma1.png';
   static const String dart = 'assets/appLogos/dart.png';
   static const String marketLogo = 'assets/appLogos/marketing logo.png';
-  static const String e_commereceLogo = 'assets/appLogos/E-commerce.png';
+  static const String eCommereceLogo = 'assets/appLogos/E-commerce.png';
   static const String gameDevelopLogo = 'assets/appLogos/game development.png';
   static const String  reactJs = 'assets/appLogos/js with react.png';
   static const String nodeJsLogo = 'assets/appLogos/node JS.png';

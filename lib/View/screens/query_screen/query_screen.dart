@@ -77,7 +77,7 @@ class QueryScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: AppSizes.height06(context)),
-              // Displaying the images as Chips
+         
               SizedBox(
                 width: double.infinity,
                 child: queryController.imagesList.isNotEmpty

@@ -102,7 +102,7 @@ class AppStrings {
   static const String htmlCssLogo = "HTML,CSS\n&JavaScript";
   static const String figmaLogo = "Figma";
   static const String amazonPrivate = "Amazon Private";
-  static const String e_commerece = "E-Commerece";
+  static const String eCommerece = "E-Commerece";
   static const String gameDevelop = "Game Development";
   static const String leadGenerate = "Lead Generation";
   static const String nodeJs = "Node.Js";
