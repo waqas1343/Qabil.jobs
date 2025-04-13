@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/View/screens/profile_screen/mentor_profile_screen.dart';
+import 'package:qabil_project01_final/View/screens/save_screen/save_screen.dart';
 import 'package:qabil_project01_final/View/screens/student_profile/student_profile.dart';
 import '../../constant/app_colours/appcolors.dart';
 import '../../view/screens/dashboard_screen/dashboard_screen.dart';
 import '../../view/screens/explore_screen/explore_screen.dart';
-import '../../view/screens/profile_screen/profile_screen.dart';
 import '../../view/screens/query_screen/query_screen.dart';
-import '../../view/screens/save_screen/save_screen.dart';
 
 import '../../view_model/controller/bottom_roll_controller/bottom_roll_controller.dart';
 import 'custom_icon_button/custom_icon_button.dart';
@@ -22,7 +22,7 @@ class CustomNavbar extends StatelessWidget {
             ? [
                 DashboardScreen(),
                 ExploreScreen(),
-                ProfileScreen(),
+                MentorProfileScreen(),
               ]
             : [
                 DashboardScreen(),

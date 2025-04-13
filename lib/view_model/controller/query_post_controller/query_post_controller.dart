@@ -43,14 +43,11 @@ class QueryController extends ChangeNotifier {
 
     posts.insert(0, newPost);
 
-    // Fields clear karna
+ 
     titleController.clear();
     descriptionController.clear();
     imagesList.clear();
-
     notifyListeners();
-
-    // ✅ Bottom Sheet close karna
     Navigator.pop(context);
   }
 

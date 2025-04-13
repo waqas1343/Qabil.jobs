@@ -15,9 +15,6 @@ class ExploreScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        gapping: 80,
-        preSize: 50,
-        centerTitle: true,
         username: 'Explore',
       ),
       body: queryController.posts.isEmpty

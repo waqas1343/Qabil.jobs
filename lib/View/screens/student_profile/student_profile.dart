@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
 import '../../../constant/app_colours/appcolors.dart';
 import '../../../constant/app_images/app_images.dart';
-import '../../../navigation_screen/app_navigators.dart';
-import '../../../routes/routes_name/routes_names.dart';
+import '../../../view_model/controller/all_textediting_controller/all_textediting_controller.dart';
 import '../../../widgets/notification_widget/notification_widget.dart';
 
 class ProfileStudent extends StatelessWidget {
@@ -10,55 +11,28 @@ class ProfileStudent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: AppColors.textColor,
-        title: Text(
-          "Profile",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-            color: AppColors.appBackground,
-          ),
-        ),
-        actions: [
-         IconButton(onPressed:(){
-           AppNavigators.nextscreen(context, RouteNames.notification);
-         }, icon: Icon(
-           Icons.notifications_none_rounded,
-           size: 30,
-           color: AppColors.appBackground,
-         ),),
-          SizedBox(
-            width: 10,
-          ),
-          IconButton(
-            onPressed: () {
+    final textController = Provider.of<TextEditingControllerManager>(context);
 
-            },
-            icon: Icon(Icons.logout_rounded,
-                size: 30, color: AppColors.appBackground),
-          )
-        ],
+    return Scaffold(
+      appBar: CustomAppBar(
+        username: 'profile',
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20),
           Stack(
             children: [
               Center(
                 child: Container(
                   height: 130,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.textColorGrey,
-                      border: Border.all(
-                          color: AppColors.textColor,
-                          width: 2.5,
-                          style: BorderStyle.solid)),
+                    shape: BoxShape.circle,
+                    color: AppColors.textColorGrey,
+                    border: Border.all(
+                      color: AppColors.textColor,
+                      width: 2.5,
+                    ),
+                  ),
                   child: Center(
                     child: CircleAvatar(
                       radius: 60,
@@ -74,12 +48,13 @@ class ProfileStudent extends StatelessWidget {
                 child: Container(
                   height: 27,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.appBackground,
-                      border: Border.all(
-                          color: AppColors.textColor,
-                          width: 2.0,
-                          style: BorderStyle.solid)),
+                    shape: BoxShape.circle,
+                    color: AppColors.appBackground,
+                    border: Border.all(
+                      color: AppColors.textColor,
+                      width: 2.0,
+                    ),
+                  ),
                   child: Icon(
                     Icons.camera_alt_outlined,
                     size: 18,
@@ -89,38 +64,34 @@ class ProfileStudent extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                width: 15,
-              ),
+              SizedBox(width: 15),
               Text(
-                "Waqas Tehami",
+                textController.nameController.text.isEmpty
+                    ? "User Name"
+                    : textController.nameController.text,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
                   color: AppColors.textColor,
                 ),
               ),
-              SizedBox(
-                width: 2,
-              ),
+              SizedBox(width: 2),
               Icon(
                 Icons.edit,
                 color: AppColors.textColorGrey,
               ),
             ],
           ),
-          SizedBox(
-            height: 3,
-          ),
+          SizedBox(height: 3),
           Center(
             child: Text(
-              "Junior Flutter Developer",
+              textController.bioController.text.isEmpty
+                  ? "Your Headline"
+                  : textController.bioController.text,
               style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
@@ -128,9 +99,7 @@ class ProfileStudent extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
-            height: 20,
-          ),
+          SizedBox(height: 20),
           Expanded(
             child: Container(
               width: double.infinity,
@@ -149,9 +118,10 @@ class ProfileStudent extends StatelessWidget {
                     child: Text(
                       "My Queries",
                       style: TextStyle(
-                          color: AppColors.textColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
+                        color: AppColors.textColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                   Padding(
@@ -164,16 +134,20 @@ class ProfileStudent extends StatelessWidget {
                   ),
                   Expanded(
                     child: ListView.builder(
-                        itemCount: 8,
-                        itemBuilder: (BuildContext context, int index) {
-                          return CustomNotifications(title: 'hdjhsa',
-                            message: 'sfdjsafdhj', image: 'sfdsfaf',);
-                        }),
+                      itemCount: 8,
+                      itemBuilder: (BuildContext context, int index) {
+                        return CustomNotifications(
+                          title: 'hdjhsa',
+                          message: 'sfdjsafdhj',
+                          image: 'sfdsfaf',
+                        );
+                      },
+                    ),
                   ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );

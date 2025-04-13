@@ -12,6 +12,10 @@ class AppIcons {
   static const Icon domain = Icon(Icons.domain_add_outlined);
   static const Icon bio = Icon(Icons.description);
   static const Icon person = Icon(Icons.person_2_outlined);
+  static const Icon edit = Icon(Icons.edit_attributes_outlined);
+  static const Icon logout = Icon(Icons.logout_outlined);
+
+
 
   static Icon customIcon(IconData iconData,
       {Color color = Colors.grey, double size = 24.0}) {

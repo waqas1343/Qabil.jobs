@@ -3,6 +3,7 @@ import 'package:qabil_project01_final/view_model/controller/bottom_roll_controll
 import 'package:qabil_project01_final/view_model/controller/comment_controller/comment_controller.dart';
 import 'package:qabil_project01_final/view_model/controller/course_selection_controller/corse_select_provider.dart';
 import 'package:qabil_project01_final/view_model/controller/gender_selection_controller/gender_provider.dart';
+import 'package:qabil_project01_final/view_model/controller/image_slider_provider/image_slider_provider.dart';
 import '../controller/all_textediting_controller/all_textediting_controller.dart';
 import '../controller/bottom_navbar_controller/bottom_navbar_controller.dart';
 import '../controller/icon_selector_controller/icon_selector.dart';
@@ -41,4 +42,5 @@ final List<ChangeNotifierProvider> multiAppProviders = [
   ChangeNotifierProvider<BottomRollController>(
       create: (_) => BottomRollController()),
   ChangeNotifierProvider<CommentController>(create: (_) => CommentController()),
+  ChangeNotifierProvider<ImageSliderProvider>(create: (_) => ImageSliderProvider()),
 ];

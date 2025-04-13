@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:qabil_project01_final/constant/app_images/app_images.dart';
-import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
 import 'package:provider/provider.dart';
-import 'package:qabil_project01_final/view_model/controller/all_textediting_controller/all_textediting_controller.dart';
+import 'package:qabil_project01_final/constant/custom_appbar/custom_appbar.dart';
 import 'package:qabil_project01_final/view_model/controller/image_picker/image_picker_controller.dart';
 
 class NotificationScreen extends StatelessWidget {
@@ -51,27 +49,23 @@ class NotificationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textController = Provider.of<TextEditingControllerManager>(context);
     final imageProvider = Provider.of<ImagePickerController>(context);
-
     return Scaffold(
       appBar: CustomAppBar(
-        preSize: 70,
-        gapping: 80,
-        profileImagePath: AppImages.profileImage,
-        greeting: 'Notifications',
-        centerTitle: true,
+        profileImagePath: imageProvider.images1 != null
+            ? imageProvider.images1!.path
+            : 'assets/images/profileimage.png',
+        username: 'notification',
+        showNotificationIcon: false,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 20),
-
-            // ✅ New Notifications (Fixed 3 items with data)
+            const SizedBox(height: 20),
             _buildSectionTitle("New"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Column(
               children: newNotifications.map((notif) {
                 return CustomNotifications(
@@ -81,32 +75,29 @@ class NotificationScreen extends StatelessWidget {
                 );
               }).toList(),
             ),
-
-            SizedBox(height: 15),
-
-            // ✅ Previous Notifications (Scrollable List with Data)
+            const SizedBox(height: 15),
             _buildSectionTitle("Previous"),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Expanded(
               child: ListView.builder(
                 itemCount: previousNotifications.length,
                 itemBuilder: (context, index) {
+                  final notif = previousNotifications[index];
                   return CustomNotifications(
-                    title: previousNotifications[index]["title"]!,
-                    message: previousNotifications[index]["message"]!,
-                    image: previousNotifications[index]["image"]!,
+                    title: notif["title"]!,
+                    message: notif["message"]!,
+                    image: notif["image"]!,
                   );
                 },
               ),
             ),
-
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Center(
               child: GestureDetector(
                 onTap: () {
                   print("Manage Notification Clicked");
                 },
-                child: Text(
+                child: const Text(
                   "Manage notification?",
                   style: TextStyle(
                     color: Colors.black,
@@ -116,27 +107,26 @@ class NotificationScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
           ],
         ),
       ),
     );
   }
 
-  // ✅ Function to Create Section Titles
   Widget _buildSectionTitle(String title) {
     return Row(
       children: [
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 15,
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(width: 6),
-        Expanded(
+        const SizedBox(width: 6),
+        const Expanded(
           child: Divider(
             color: Colors.black,
             thickness: 1.0,
@@ -147,37 +137,45 @@ class NotificationScreen extends StatelessWidget {
   }
 }
 
-// ✅ Custom Notification Widget with Image
 class CustomNotifications extends StatelessWidget {
   final String title;
   final String message;
   final String image;
 
-  const CustomNotifications(
-      {super.key,
-      required this.title,
-      required this.message,
-      required this.image});
+  const CustomNotifications({
+    super.key,
+    required this.title,
+    required this.message,
+    required this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 6),
+      margin: const EdgeInsets.symmetric(vertical: 6),
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: ListTile(
-        leading: CircleAvatar(
-          radius: 25,
-          backgroundImage: AssetImage(image), // ✅ Show Image
-          onBackgroundImageError: (_, __) =>
-              Icon(Icons.notifications, color: Colors.red), // ✅ Fallback Icon
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(25),
+          child: Image.asset(
+            image,
+            height: 50,
+            width: 50,
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) => const Icon(
+              Icons.notifications,
+              color: Colors.red,
+              size: 30,
+            ),
+          ),
         ),
         title: Text(
           title,
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Text(message),
-        trailing: Icon(Icons.arrow_forward_ios, size: 16),
+        trailing: const Icon(Icons.arrow_forward_ios, size: 16),
       ),
     );
   }

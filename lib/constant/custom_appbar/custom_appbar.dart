@@ -4,168 +4,217 @@ import 'package:qabil_project01_final/constant/app_colours/appcolors.dart';
 import 'package:qabil_project01_final/widgets/notification_widget/notification_widget.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String? greeting; // Optional
-  final String? username; // Optional
+  final String? username;
   final String? profileImagePath;
-  final String? profileImagePath2;
-  final double? gapping;
+  final String? headline;
+  final int? notificationCount;
+  final bool showNotificationIcon;
+  final VoidCallback? onProfileTap;
+  final Icon? actionIcon;
 
-  final int notificationCount;
-  final bool? centerTitle; // Optional
-  final double? preSize;
   const CustomAppBar({
     super.key,
-    this.greeting,
-    this.username, // Optional
+    this.username,
     this.profileImagePath,
-    this.notificationCount = 0,
-    this.centerTitle,
-    this.preSize,
-    this.profileImagePath2,
-    this.gapping, // Made optional
+    this.headline,
+    this.notificationCount,
+    this.showNotificationIcon = true,
+    this.onProfileTap,
+    this.actionIcon,
   });
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      centerTitle: centerTitle ?? true, // Default to true if null
-      automaticallyImplyLeading: false,
-      elevation: 10,
-      backgroundColor: Colors.transparent,
-      flexibleSpace: Container(
-        decoration: BoxDecoration(
-          color: AppColors.cardsColor2,
+    return PreferredSize(
+      preferredSize: preferredSize,
+      child: ClipRRect(
+        borderRadius: const BorderRadius.only(
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          elevation: 0,
+          backgroundColor: AppColors.cardsColor2,
+          leadingWidth: 80,
+          leading: _buildProfileAvatar(),
+          title: _buildTitle(context),
+          actions: _buildActions(context),
+          centerTitle: true,
         ),
       ),
-      leadingWidth: 80,
-      leading: profileImagePath != null
-          ? CircleAvatar(
-              radius: 25,
-              backgroundColor: Colors.transparent,
-              child: ClipOval(
-                child: profileImagePath!.startsWith('assets/')
-                    ? Image.asset(
-                        profileImagePath!,
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.cover,
-                      )
-                    : Image.file(
-                        File(profileImagePath!),
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.cover,
-                      ),
-              ),
-            )
-          : const SizedBox(),
+    );
+  }
 
-      title: Row(
-        mainAxisAlignment: centerTitle == true
-            ? MainAxisAlignment.center
-            : MainAxisAlignment.start,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (greeting != null)
-                Text(
-                  greeting!,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
-                ),
-              if (username != null)
-                Text(
-                  username!,
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.yellowAccent,
-                  ),
-                ),
-            ],
+  Widget _buildProfileAvatar() {
+    if (profileImagePath == null) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsets.only(left: 16.0),
+      child: GestureDetector(
+        onTap: onProfileTap,
+        child: Container(
+          width: 50,
+          height: 50,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: Colors.lightGreenAccent,
+              width: 3,
+            ),
           ),
-        ],
+          child: CircleAvatar(
+            radius: 25,
+            backgroundColor: Colors.transparent,
+            child: ClipOval(
+              child: _buildImage(),
+            ),
+          ),
+        ),
       ),
-      actions: [
-        if (notificationCount > 0)
-          Padding(
-            padding: const EdgeInsets.only(right: 16.0),
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                IconButton(
+    );
+  }
+
+  Widget _buildImage() {
+    try {
+      if (profileImagePath!.startsWith('assets/')) {
+        return Image.asset(
+          profileImagePath!,
+          height: 50,
+          width: 50,
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) => _buildFallbackAvatar(),
+        );
+      } else {
+        return Image.file(
+          File(profileImagePath!),
+          height: 50,
+          width: 50,
+          fit: BoxFit.cover,
+          errorBuilder: (_, __, ___) => _buildFallbackAvatar(),
+        );
+      }
+    } catch (_) {
+      return _buildFallbackAvatar();
+    }
+  }
+
+  Widget _buildFallbackAvatar() {
+    return const Icon(
+      Icons.person,
+      size: 30,
+      color: Colors.grey,
+    );
+  }
+
+  Widget _buildTitle(BuildContext context) {
+    if (username == null) return const SizedBox.shrink();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          username!,
+          style: const TextStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.w600,
+            color: Colors.white,
+          ),
+        ),
+        if (headline != null)
+          Text(
+            headline!,
+            style: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: Colors.white70,
+            ),
+          ),
+      ],
+    );
+  }
+
+  List<Widget> _buildActions(BuildContext context) {
+    List<Widget> actions = [];
+
+    if (showNotificationIcon) {
+      actions.add(
+        Padding(
+          padding: const EdgeInsets.only(right: 16.0),
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              SizedBox(
+                width: 40,
+                height: 40,
+                child: IconButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => NotificationScreen()),
-                    );
+                    if (showNotificationIcon) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NotificationScreen(),
+                        ),
+                      );
+                    }
                   },
                   icon: const Icon(
-                    Icons.notifications_outlined,
-                    size: 30,
+                    Icons.notifications,
                     color: Colors.white,
                   ),
                 ),
-                if (notificationCount > 0)
-                  Positioned(
-                    right: -4,
-                    top: -4,
-                    child: Container(
-                      padding: const EdgeInsets.all(5),
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        shape: BoxShape.circle,
-                        border: Border.all(
-                          color: Colors.white,
-                          width: 2,
-                        ),
-                      ),
+              ),
+              if (notificationCount != null && notificationCount! > 0)
+                Positioned(
+                  top: 3,
+                  right: 3,
+                  child: Container(
+                    padding: const EdgeInsets.all(4),
+                    decoration: const BoxDecoration(
+                      color: Colors.redAccent,
+                      shape: BoxShape.circle,
+                    ),
+                    constraints: const BoxConstraints(
+                      minWidth: 18,
+                      minHeight: 18,
+                    ),
+                    child: Center(
                       child: Text(
-                        '$notificationCount',
+                        notificationCount! > 99
+                            ? '99+'
+                            : '${notificationCount!}',
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 12,
+                          fontSize: 10,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-              ],
-            ),
+                ),
+            ],
           ),
-        if (profileImagePath2 != null)
-          CircleAvatar(
-            radius: 25,
-            backgroundColor: Colors.transparent,
-            child: ClipOval(
-              child: profileImagePath2!.startsWith('assets/')
-                  ? Image.asset(
-                      profileImagePath2!,
-                      height: 50,
-                      width: 50,
-                      fit: BoxFit.cover,
-                    )
-                  : Image.file(
-                      File(profileImagePath2!),
-                      height: 50,
-                      width: 50,
-                      fit: BoxFit.cover,
-                    ),
-            ),
+        ),
+      );
+    }
+
+    if (actionIcon != null) {
+      actions.add(
+        Padding(
+          padding: const EdgeInsets.only(right: 16.0),
+          child: IconButton(
+            onPressed: () {},
+            icon: actionIcon!,
+            color: AppColors.textColorGrey,
           ),
-        SizedBox(
-          width: gapping,
-        )
-      ],
-    );
+        ),
+      );
+    }
+
+    return actions;
   }
 
   @override
-  Size get preferredSize => Size.fromHeight(preSize!);
+  Size get preferredSize => const Size.fromHeight(80.0);
 }

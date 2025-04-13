@@ -21,8 +21,6 @@ class DashboardScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: CustomAppBar(
-        preSize: 70,
-        greeting: 'hi!',
         username: textController.nameController.text.isNotEmpty
             ? textController.nameController.text
             : "Your Name",
@@ -30,6 +28,7 @@ class DashboardScreen extends StatelessWidget {
             ? imageProvider.images1!.path
             : 'assets/images/profileimage.png',
         notificationCount: 2,
+        headline: textController.bioController.text,
       ),
       body: Column(
         children: [

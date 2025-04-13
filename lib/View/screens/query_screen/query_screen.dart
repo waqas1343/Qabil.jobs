@@ -77,55 +77,40 @@ class QueryScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: AppSizes.height06(context)),
+              // Displaying the images as Chips
               SizedBox(
                 width: double.infinity,
-                height: AppSizes.height10(context),
                 child: queryController.imagesList.isNotEmpty
-                    ? GridView.builder(
-                        itemCount: queryController.imagesList.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 8,
-                          mainAxisSpacing: 8,
-                        ),
-                        itemBuilder: (context, index) {
-                          return Stack(
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: Image.file(
-                                  queryController.imagesList[index],
-                                  fit: BoxFit.cover,
-                                  width: 80,
-                                  height: 80,
-                                ),
+                    ? Wrap(
+                        spacing: 8,
+                        runSpacing: 8,
+                        children: queryController.imagesList.map((image) {
+                          return Chip(
+                            label: const Text('Image'),
+                            avatar: ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.file(
+                                image,
+                                width: 40,
+                                height: 40,
+                                fit: BoxFit.cover,
                               ),
-                              Positioned(
-                                  right: 5,
-                                  top: 5,
-                                  child: GestureDetector(
-                                    onTap: () =>
-                                        queryController.removeImage(index),
-                                    child: Container(
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Colors.red,
-                                      ),
-                                      padding: const EdgeInsets.all(4),
-                                      child: const Icon(Icons.close,
-                                          color: Colors.white, size: 16),
-                                    ),
-                                  ))
-                            ],
+                            ),
+                            deleteIcon: const Icon(
+                              Icons.close,
+                              size: 16,
+                            ),
+                            onDeleted: () {
+                              int index =
+                                  queryController.imagesList.indexOf(image);
+                              queryController.removeImage(index);
+                            },
                           );
-                        },
+                        }).toList(),
                       )
                     : const Center(child: Text("No images selected")),
               ),
-              SizedBox(
-                height: AppSizes.height02(context),
-              ),
+              SizedBox(height: AppSizes.height02(context)),
               Center(
                 child: CustomButton(
                   btnText: 'Post',
@@ -133,16 +118,6 @@ class QueryScreen extends StatelessWidget {
                   ontap: () => queryController.uploadPost(context),
                   btnWidth: 190,
                 ),
-                // child: ElevatedButton(
-                //   onPressed: () => queryController.uploadPost(context),
-                //   style: ElevatedButton.styleFrom(
-                //     padding: const EdgeInsets.symmetric(
-                //         horizontal: 40, vertical: 14),
-                //     shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(10)),
-                //   ),
-                //   child: const Text("Post", style: TextStyle(fontSize: 16)),
-                // ),
               ),
             ],
           ),
